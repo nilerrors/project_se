@@ -3,3 +3,19 @@
 //
 
 #include "System.h"
+
+System::System() {
+
+}
+
+void System::ReadData(std::string file_name) {
+
+}
+
+void System::ReadDevice(TiXmlElement *device_element) {
+
+}
+
+void System::ReadJob(TiXmlElement *job_element) {
+
+}

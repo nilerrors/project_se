@@ -5,9 +5,21 @@
 #ifndef PROJECTTITLE_DEVICE_H
 #define PROJECTTITLE_DEVICE_H
 
+#include <string>
 
-class Device {
+#include "tinyxml.h"
 
+class Device
+{
+public:
+    Device(TiXmlElement device_element);
+
+    Device(const std::string &name, int emission, int speed);
+
+private:
+    std::string name;
+    int emission;
+    int speed;
 };
 
 

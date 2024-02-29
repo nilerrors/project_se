@@ -3,3 +3,10 @@
 //
 
 #include "Job.h"
+
+Job::Job(int jobNumber, int pageCount, const std::string &userName) : jobNumber(jobNumber), pageCount(pageCount),
+                                                                      userName(userName) {}
+
+Job::Job(TiXmlElement job_element) {
+
+}
