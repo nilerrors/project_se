@@ -11,7 +11,7 @@
 
 class Job {
 public:
-    Job(TiXmlElement job_element);
+    Job(TiXmlElement *job_element);
 
     Job(int jobNumber, int pageCount, const std::string &userName);
 

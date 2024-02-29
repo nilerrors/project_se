@@ -12,11 +12,12 @@
 class Device
 {
 public:
-    Device(TiXmlElement device_element);
+    Device(TiXmlElement *device_element);
 
     Device(const std::string &name, int emission, int speed);
 
 private:
+    Device *init_;
     std::string name;
     int emission;
     int speed;

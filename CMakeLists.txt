@@ -17,17 +17,29 @@ link_directories(./gtest/lib)
 # Set source files for RELEASE target
 # Only add cpp files, no h files!
 # Only add files with functionality here, no test files!
-set(RELEASE_SOURCE_FILES src/main.cpp)
+set(RELEASE_SOURCE_FILES src/main.cpp
+        src/System.cpp
+        src/Device.cpp
+        src/Job.cpp
+        src/utils.cpp
+        src/tinystr.cpp
+        src/tinyxml.cpp
+        src/tinyxmlerror.cpp
+        src/tinyxmlparser.cpp
+)
 
 # Set source files for DEBUG target
 # Only add cpp files, no h files!
 set(DEBUG_SOURCE_FILES src/tests.cpp
         src/System.cpp
-        src/System.h
         src/Device.cpp
-        src/Device.h
         src/Job.cpp
-        src/Job.h)
+        src/utils.cpp
+        src/tinystr.cpp
+        src/tinyxml.cpp
+        src/tinyxmlerror.cpp
+        src/tinyxmlparser.cpp
+)
 
 # Create RELEASE target
 add_executable(release_target ${RELEASE_SOURCE_FILES})

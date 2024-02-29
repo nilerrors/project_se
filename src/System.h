@@ -22,10 +22,12 @@ private:
     void ReadDevice(TiXmlElement *device_element);
     void ReadJob(TiXmlElement *job_element);
 
+    bool properlyInitialized() const { return _init == this; }
+
 private:
     System* _init;
     std::vector<Device *> devices;
-    std::vector<Device *> jobs;
+    std::vector<Job *> jobs;
 };
 
 
