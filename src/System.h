@@ -18,7 +18,6 @@ public:
 
     void ReadData(const std::string &file_name);
 
-private:
     void ReadDevice(TiXmlElement *device_element);
     void ReadJob(TiXmlElement *job_element);
 

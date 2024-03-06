@@ -15,6 +15,7 @@ public:
 
     Job(int jobNumber, int pageCount, const std::string &userName);
 
+	bool properlyInitialized() const { return init_ == this; }
 
 private:
     int jobNumber;

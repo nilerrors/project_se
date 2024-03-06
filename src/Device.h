@@ -16,6 +16,8 @@ public:
 
     Device(const std::string &name, int emission, int speed);
 
+	bool properlyInitialized() const { return init_ == this; }
+
 private:
     Device *init_;
     std::string name;
