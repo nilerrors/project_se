@@ -16,7 +16,7 @@ class System
 public:
     System();
 
-    void ReadData(std::string file_name);
+    void ReadData(const std::string &file_name);
 
 private:
     void ReadDevice(TiXmlElement *device_element);

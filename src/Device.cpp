@@ -10,12 +10,12 @@
 Device::Device(const std::string &name, int emission, int speed) : name(name), emission(emission), speed(speed) {}
 
 Device::Device(TiXmlElement *device_node) {
-    std::string temp_name = "";
-    std::string temp_emission = "";
-    std::string temp_speed = "";
+    std::string temp_name;
+    std::string temp_emission;
+    std::string temp_speed;
 
-    for (TiXmlNode *node = device_node->FirstChild(); node != NULL; node = node->NextSibling()) {
-        if (node->FirstChild() == NULL) {
+    for (TiXmlNode *node = device_node->FirstChild(); node != nullptr; node = node->NextSibling()) {
+        if (node->FirstChild() == nullptr) {
             std::cerr << "'" << node->Value() << "' is not allowed to be empty" << std::endl;
             continue;
         }

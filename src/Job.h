@@ -20,6 +20,7 @@ private:
     int jobNumber;
     int pageCount;
     std::string userName;
+	Job *init_;
 };
 
 
