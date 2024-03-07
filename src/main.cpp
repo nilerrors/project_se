@@ -8,6 +8,7 @@ int main(int argc, const char *argv[])
 {
     System system;
     system.ReadData("xml_examples/SystemExample.xml");
+    system.printReport();
 
     return 0;
 }
