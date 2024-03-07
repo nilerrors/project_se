@@ -51,6 +51,9 @@ void System::ReadData(const std::string &file_name) {
             continue;
         }
     }
+
+    VerifyConsistency();
+    doc.Clear();
 }
 
 void System::ReadDevice(TiXmlElement *device_element) {
@@ -62,6 +65,8 @@ void System::ReadDevice(TiXmlElement *device_element) {
         ENSURE(!devices.empty(), "No devices were read after reading xml file");
     }
     catch (const std::runtime_error& error) {
+        if (!log_errors)
+            return;
         std::cerr << error.what() << std::endl;
     }
 }
@@ -75,6 +80,8 @@ void System::ReadJob(TiXmlElement *job_element) {
         ENSURE(!jobs.empty(), "No Jobs were read after reading xml file");
     }
     catch (const std::runtime_error& error) {
+        if (!log_errors)
+            return;
         std::cerr << error.what() << std::endl;
     }
 }
@@ -173,4 +180,12 @@ bool System::VerifyConsistency() const {
 
 bool System::CheckNotNegative(int num) {
     return num*-1 < 0;
+}
+
+bool System::isLogErrors() const {
+    return log_errors;
+}
+
+void System::setLogErrors(bool logErrors) {
+    log_errors = logErrors;
 }

@@ -16,7 +16,6 @@ Device::Device(TiXmlElement *device_node) {
 
     for (TiXmlNode *node = device_node->FirstChild(); node != nullptr; node = node->NextSibling()) {
         if (node->FirstChild() == nullptr) {
-            std::cerr << "'" << node->Value() << "' is not allowed to be empty" << std::endl;
             continue;
         }
         if (std::string(node->Value()) == "name") {
@@ -26,7 +25,7 @@ Device::Device(TiXmlElement *device_node) {
         } else if (std::string(node->Value()) == "speed") {
             temp_speed = node->FirstChild()->Value();
         } else {
-            std::cerr << "Unknown attribute for Device: '" << node->Value() << "'" << std::endl;
+            EXPECT(false, "Unknown attribute for Device: '" + std::string(node->Value()) + "'");
         }
     }
 

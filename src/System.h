@@ -33,8 +33,11 @@ public:
     const std::vector<Device *> &getDevices() const;
     const std::vector<Job *> &getJobs() const;
 
-    std::string printReport() const;
 
+    bool isLogErrors() const;
+    void setLogErrors(bool logErrors);
+
+    std::string printReport() const;
 
     const std::string REPORT_FILE_EXTENSION = ".txt";
 
@@ -42,10 +45,10 @@ private:
     System* _init;
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
+    bool log_errors;
 
     bool VerifyConsistency() const;
-
-    static bool CheckNotNegative(int num) ;
+    static bool CheckNotNegative(int num);
 };
 
 

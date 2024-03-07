@@ -17,7 +17,6 @@ Job::Job(TiXmlElement *job_element) {
 
 	for (TiXmlNode *node = job_element->FirstChild(); node != NULL; node = node->NextSibling()) {
 		if (node->FirstChild() == NULL) {
-			std::cerr << "'" << node->Value() << "' is not allowed to be empty" << std::endl;
 			continue;
 		}
 		if (std::string(node->Value()) == "jobNumber") {
@@ -27,7 +26,7 @@ Job::Job(TiXmlElement *job_element) {
 		} else if (std::string(node->Value()) == "userName") {
 			temp_userName = node->FirstChild()->Value();
 		} else {
-			std::cerr << "Unknown attribute for Device: '" << node->Value() << "'" << std::endl;
+            EXPECT(false, "Unknown attribute for Device: '" + std::string(node->Value()) + "'");
 		}
 	}
 

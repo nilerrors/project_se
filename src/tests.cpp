@@ -8,6 +8,7 @@ protected:
 
 	void SetUp() override {
 		system = new System();
+        system->setLogErrors(false);
 	}
 
 	void TearDown() override {
