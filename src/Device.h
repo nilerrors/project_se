@@ -18,6 +18,12 @@ public:
 
 	bool properlyInitialized() const { return init_ == this; }
 
+    const std::string &getName() const;
+
+    int getEmission() const;
+
+    int getSpeed() const;
+
 private:
     Device *init_;
     std::string name;

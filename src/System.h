@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "tinyxml.h"
 #include "Device.h"
 #include "Job.h"
@@ -29,6 +30,10 @@ private:
     System* _init;
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
+
+    bool VerifyConsistency() const;
+
+    static bool CheckNotNegative(int num) ;
 };
 
 

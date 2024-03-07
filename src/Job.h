@@ -17,6 +17,12 @@ public:
 
 	bool properlyInitialized() const { return init_ == this; }
 
+    int getJobNumber() const;
+
+    int getPageCount() const;
+
+    const std::string &getUserName() const;
+
 private:
     int jobNumber;
     int pageCount;
