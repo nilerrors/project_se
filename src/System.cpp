@@ -70,3 +70,47 @@ void System::ReadJob(TiXmlElement *job_element) {
         std::cerr << error.what() << std::endl;
     }
 }
+
+bool System::VerifyConsistency() const {
+    REQUIRE(properlyInitialized(),  "Class is not properly initialized.");
+
+    std::vector<int> job_nums{};
+    ///Check if PageCount and JobNumber are not negative
+    for(Job *const& job : jobs){
+        if(!CheckNotNegative(job->getPageCount())){
+            std::cerr << "[Inconsistent printing system" <<std::endl;
+            return false;
+        }
+        else if(!CheckNotNegative(job->getJobNumber())){
+            std::cerr << "[Inconsistent printing system" <<std::endl;
+            return false;
+        }
+
+        if(std::find(job_nums.begin(), job_nums.end(),job->getJobNumber()) != job_nums.end()){
+            std::cerr << "[Inconsistent printing system" <<std::endl;
+            return false;
+        }
+        else{
+            job_nums.push_back(job->getJobNumber());
+        }
+    }
+
+    ///Check if Emission and Speed are not negative
+    for(Device *const &device : devices){
+        if(!CheckNotNegative(device->getEmission())){
+            std::cerr << "[Inconsistent printing system" <<std::endl;
+            return false;
+        }
+        else if(!CheckNotNegative(device->getSpeed())){
+            std::cerr << "[Inconsistent printing system" <<std::endl;
+            return false;
+        }
+    }
+
+
+    return true;
+}
+
+bool System::CheckNotNegative(int num) {
+    return num*-1 < 0;
+}
