@@ -15,6 +15,9 @@ class System
 {
 public:
     System();
+    virtual ~System();
+
+    void clear();
 
     void ReadData(const std::string &file_name);
 
@@ -22,6 +25,11 @@ public:
     void ReadJob(TiXmlElement *job_element);
 
     bool properlyInitialized() const { return _init == this; }
+
+    Device *getFirstDevice() const;
+    Job *getFirstJob() const;
+    const std::vector<Device *> &getDevices() const;
+    const std::vector<Job *> &getJobs() const;
 
 private:
     System* _init;

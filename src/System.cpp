@@ -10,6 +10,11 @@ System::System() {
     _init = this;
 }
 
+System::~System() {
+    _init = NULL;
+    this->clear();
+}
+
 void System::ReadData(const std::string &file_name) {
     REQUIRE(properlyInitialized(), "Class is not properly initialized.");
     REQUIRE(FileExists(file_name), "File does not exist.");
@@ -58,5 +63,32 @@ void System::ReadJob(TiXmlElement *job_element) {
     }
     catch (const std::runtime_error& error) {
         std::cerr << error.what() << std::endl;
+    }
+}
+
+Device *System::getFirstDevice() const {
+    return devices.empty() ? nullptr : devices.front();
+}
+
+Job *System::getFirstJob() const {
+    return jobs.empty() ? nullptr : jobs.front();
+}
+
+const std::vector<Device *> &System::getDevices() const {
+    return devices;
+}
+
+const std::vector<Job *> &System::getJobs() const {
+    return jobs;
+}
+
+void System::clear() {
+    for (auto &device : devices) {
+        delete device;
+        device = NULL;
+    }
+    for (auto &job : jobs) {
+        delete job;
+        job = NULL;
     }
 }
