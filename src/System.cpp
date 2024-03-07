@@ -8,7 +8,6 @@
 
 System::System() {
     _init = this;
-	ENSURE(properlyInitialized(), "Constructor must end...");
 }
 
 void System::ReadData(const std::string &file_name) {

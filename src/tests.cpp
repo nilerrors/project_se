@@ -3,7 +3,7 @@
 
 class TestSystem : public ::testing::Test {
 protected:
-	System *system;
+	System *system{};
 
 	void SetUp() override {
 		system = new System();
@@ -14,10 +14,30 @@ protected:
 	}
 };
 
-TEST_F(TestSystem, ReadData) {
-	EXPECT_TRUE(system->properlyInitialized());
-	EXP(system->ReadData("xml_tests/NoName.xml"), "");
+TEST_F(TestSystem, ReadData_NoName) {
+	EXPECT_DEATH(system->ReadData("xml_tests/NoName.xml"),"");
 }
+
+
+TEST_F(TestSystem, ReadData_NoEmission){
+    EXPECT_DEATH(system->ReadData("xml_tests/NoEmission.xml"), "");
+
+}
+
+TEST_F(TestSystem, ReadData_Emission_NaN){
+    EXPECT_DEATH(system->ReadData("xml_tests/EmissionNaN.xml"), "");
+
+}
+
+TEST_F(TestSystem, ReadData_NoSpeed){
+    EXPECT_DEATH(system->ReadData("xml_tests/NoSpeed.xml"), "");
+}
+
+TEST_F(TestSystem, ReadData_SpeedNaN){
+    EXPECT_DEATH(system->ReadData("xml_tests/SpeedNaN.xml"), "");
+}
+
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
