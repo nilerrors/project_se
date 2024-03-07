@@ -83,11 +83,11 @@ const std::vector<Job *> &System::getJobs() const {
 }
 
 void System::clear() {
-    for (auto &device : devices) {
+    for (Device *&device : devices) {
         delete device;
         device = NULL;
     }
-    for (auto &job : jobs) {
+    for (Job *&job : jobs) {
         delete job;
         job = NULL;
     }
