@@ -1,0 +1,32 @@
+<SYSTEM>
+    <DEVICE>
+        <name>Office_Printer5</name>
+        <emission>3</emission>
+        <speed>40</speed>
+    </DEVICE>
+    <DEVICE>
+        <name>Sabre printer X50</name>
+        <emission>6</emission>
+        <speed>50</speed>
+    </DEVICE>
+    <DEVICE>
+        <name>UA printer 23</name>
+        <emission>4</emission>
+        <speed>37</speed>
+    </DEVICE>
+    <JOB>
+        <jobNumber>89751</jobNumber>
+        <pageCount>2</pageCount>
+        <userName>SergeDemeyer</userName>
+    </JOB>
+    <JOB>
+        <jobNumber>89481</jobNumber>
+        <pageCount>200</pageCount>
+        <userName>Tim_Apers</userName>
+    </JOB>
+    <JOB>
+        <jobNumber>2189</jobNumber>
+        <pageCount>3</pageCount>
+        <userName>anonymous_user</userName>
+    </JOB>
+</SYSTEM>
