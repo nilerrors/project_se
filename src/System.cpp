@@ -5,7 +5,10 @@
 #include "DesignByContract.h"
 #include "utils.h"
 #include "System.h"
-
+#include <iostream>
+#include <fstream>
+#include <chrono>
+#include <iomanip>
 System::System() {
     _init = this;
 }
@@ -58,5 +61,18 @@ void System::ReadJob(TiXmlElement *job_element) {
     }
     catch (const std::runtime_error& error) {
         std::cerr << error.what() << std::endl;
+    }
+}
+
+void System::printReport() const {
+    /*
+     Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
+     */
+    time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    std::stringstream ss;
+    ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%X");
+    std::ofstream report("./reports/report-" + ss.str() + ".txt");
+    for(Device* i : devices){
+
     }
 }

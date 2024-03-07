@@ -23,6 +23,8 @@ public:
 
     bool properlyInitialized() const { return _init == this; }
 
+    void printReport() const;
+
 private:
     System* _init;
     std::vector<Device *> devices;
