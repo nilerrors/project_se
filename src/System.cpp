@@ -82,10 +82,18 @@ void System::printReport() const {
     time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::stringstream ss;
     ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%X");
-    std::ofstream report("./reports/report-" + ss.str() + ".txt");
-    for (Device *i: devices) {
 
+    std::ofstream report("./reports/report-" + ss.str() + ".txt");
+    report << "PRINTERS:" << std::endl;
+    for(Device *i : devices) {
+        report << "\t *" +  i->getName() << std::endl;
     }
+    report << "JOBS:" << std::endl;
+    for(Job* i : jobs) {
+        report << "\t *[" +  std::to_string(i->getJobNumber())+ "|"  << i->getUserName() +"]" << std::endl;
+    }
+    report.close();
+
 }
 
 bool System::VerifyConsistency() const {

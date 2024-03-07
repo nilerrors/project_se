@@ -33,11 +33,9 @@ TEST_F(TestSystem, ReadData_NoSpeed){
     EXPECT_DEATH(system->ReadData("xml_tests/NoSpeed.xml"), "");
 }
 
-TEST_F(TestSystem, ReadData_SpeedNaN){
+TEST_F(TestSystem, ReadData_SpeedNaN) {
     EXPECT_DEATH(system->ReadData("xml_tests/SpeedNaN.xml"), "");
 }
-
-
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
