@@ -50,13 +50,17 @@ void System::ReadDevice(TiXmlElement *device_element) {
         Device* device = new Device(device_element);
         devices.push_back(device);
     }
-    catch(){
-
+    catch (const std::runtime_error& error) {
+        std::cerr << error.what() << std::endl;
     }
-
 }
 
 void System::ReadJob(TiXmlElement *job_element) {
-    Job* job = new Job(job_element);
-    jobs.push_back(job);
+    try {
+        Job* job = new Job(job_element);
+        jobs.push_back(job);
+    }
+    catch (const std::runtime_error& error) {
+        std::cerr << error.what() << std::endl;
+    }
 }
