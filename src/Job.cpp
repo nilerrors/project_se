@@ -31,11 +31,11 @@ Job::Job(TiXmlElement *job_element) {
 		}
 	}
 
-	ENSURE(!temp_jobNumber.empty(), "No job number is provided");
-	ENSURE(!temp_pageCount.empty(), "No page count is provided");
-	ENSURE(is_number(temp_jobNumber) , "Job number should be a number");
-	ENSURE(is_number(temp_pageCount) , "Page count should be a number");
-	ENSURE(!temp_userName.empty(), "No user name is provided");
+	EXPECT(!temp_jobNumber.empty(), "No job number is provided");
+	EXPECT(!temp_pageCount.empty(), "No page count is provided");
+	EXPECT(is_number(temp_jobNumber) , "Job number should be a number");
+	EXPECT(is_number(temp_pageCount) , "Page count should be a number");
+	EXPECT(!temp_userName.empty(), "No user name is provided");
 
 	jobNumber = std::stoi(temp_jobNumber);
 	pageCount = std::stoi(temp_pageCount);

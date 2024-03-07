@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <assert.h>
+#include <exception>
 
 #ifdef __MINGW32__
 #define REQUIRE(assertion, what) \
@@ -24,4 +25,9 @@
 #define ENSURE(assertion, what) \
 	if (!(assertion)) __assert (what, __FILE__, __LINE__)
 #endif
+
+
+// Throws, instead of crashing
+#define EXPECT(expected, what) \
+	if (!(expected)) throw std::runtime_error(what)
 
