@@ -42,3 +42,15 @@ Job::Job(TiXmlElement *job_element) {
 	userName = temp_userName;
 	init_ = this;
 }
+
+int Job::getJobNumber() const {
+    return jobNumber;
+}
+
+int Job::getPageCount() const {
+    return pageCount;
+}
+
+const std::string &Job::getUserName() const {
+    return userName;
+}

@@ -41,3 +41,15 @@ Device::Device(TiXmlElement *device_node) {
     speed = std::stoi(temp_speed);
     init_ = this;
 }
+
+const std::string &Device::getName() const {
+    return name;
+}
+
+int Device::getEmission() const {
+    return emission;
+}
+
+int Device::getSpeed() const {
+    return speed;
+}
