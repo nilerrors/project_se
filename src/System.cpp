@@ -107,15 +107,16 @@ void System::clear() {
     }
 }
 
-void System::printReport() const {
+std::string System::printReport() const {
     /*
      Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
+     return: Filename van de report
      */
     time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::stringstream ss;
     ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%X");
-
-    std::ofstream report("./reports/report-" + ss.str() + ".txt");
+    std::string filename = "reports/report-" + ss.str() + REPORT_FILE_EXTENSION;
+    std::ofstream report(filename);
     report << "PRINTERS:" << std::endl;
     for(Device *i : devices) {
         report << "\t *" +  i->getName() << std::endl;
@@ -125,7 +126,7 @@ void System::printReport() const {
         report << "\t *[" +  std::to_string(i->getJobNumber())+ "|"  << i->getUserName() +"]" << std::endl;
     }
     report.close();
-
+    return filename;
 }
 
 bool System::VerifyConsistency() const {

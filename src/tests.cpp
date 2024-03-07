@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "System.h"
+#include "utils.h"
 
 class TestSystem : public ::testing::Test {
 protected:
@@ -102,6 +103,19 @@ TEST_F(TestSystem, ReadData_PageCount_NaN) {
     EXPECT_TRUE(system->getDevices().size() == 1);
     EXPECT_TRUE(system->getJobs().size() == 1);
 }
+//////////////////////////////////////////////////////////////////
+///                         REPORTS                            ///
+//////////////////////////////////////////////////////////////////
+TEST_F(TestSystem, printReportHD){
+    system->ReadData("xml_tests/ReportHD.xml");
+    std::string filename = system->printReport();
+    EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
+
+}
+
+
+
+
 
 
 int main(int argc, char **argv) {

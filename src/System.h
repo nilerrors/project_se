@@ -33,8 +33,10 @@ public:
     const std::vector<Device *> &getDevices() const;
     const std::vector<Job *> &getJobs() const;
 
-    void printReport() const;
+    std::string printReport() const;
 
+
+    const std::string REPORT_FILE_EXTENSION = ".txt";
 
 private:
     System* _init;
