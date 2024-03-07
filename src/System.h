@@ -32,10 +32,14 @@ public:
     const std::vector<Device *> &getDevices() const;
     const std::vector<Job *> &getJobs() const;
 
+    bool isLogErrors() const;
+    void setLogErrors(bool logErrors);
+
 private:
     System* _init;
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
+    bool log_errors;
 
     bool VerifyConsistency() const;
 
