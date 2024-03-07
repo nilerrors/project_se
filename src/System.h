@@ -27,10 +27,14 @@ public:
 
     bool properlyInitialized() const { return _init == this; }
 
+
     Device *getFirstDevice() const;
     Job *getFirstJob() const;
     const std::vector<Device *> &getDevices() const;
     const std::vector<Job *> &getJobs() const;
+
+    void printReport() const;
+
 
 private:
     System* _init;
