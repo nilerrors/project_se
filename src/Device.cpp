@@ -30,6 +30,7 @@ Device::Device(TiXmlElement *device_node) {
         }
     }
 
+
     ENSURE(!temp_name.empty(), "No name is provided");
     ENSURE(!temp_emission.empty(), "No emission is provided");
     ENSURE(is_number(temp_emission) , "Emission should be a number");

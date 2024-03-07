@@ -38,12 +38,22 @@ void System::ReadData(const std::string &file_name) {
         } else if (std::string(elm->Value()) == "JOB") {
             ReadJob(elm);
         }
+        else{
+            std::cerr << "Unrecognizable element"<<std::endl;
+            continue;
+        }
     }
 }
 
 void System::ReadDevice(TiXmlElement *device_element) {
-    Device* device = new Device(device_element);
-    devices.push_back(device);
+    try {
+        Device* device = new Device(device_element);
+        devices.push_back(device);
+    }
+    catch(){
+
+    }
+
 }
 
 void System::ReadJob(TiXmlElement *job_element) {
