@@ -114,6 +114,27 @@ TEST_F(TestSystem, printReportHD){
 
 }
 
+//////////////////////////////////////////////////////////////////
+///                         INCONSISTENCY TEST                  ///
+//////////////////////////////////////////////////////////////////
+
+TEST_F(TestSystem, Inconsistency_Neg_Num1){
+    system->ReadData("xml_tests/Neg_Num.xml");
+    EXPECT_FALSE(system->VerifyConsistency());
+}
+
+TEST_F(TestSystem, Inconsistency_Neg_Num2){
+    system->ReadData("xml_tests/Neg_Num.xml");
+    EXPECT_FALSE(system->VerifyConsistency());
+}
+
+
+
+TEST_F(TestSystem, Inconsistency_Job_Num){
+    system->ReadData("xml_tests/Job_Num.xml");
+    EXPECT_FALSE(system->VerifyConsistency());
+}
+
 
 
 

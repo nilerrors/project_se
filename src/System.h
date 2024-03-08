@@ -23,21 +23,26 @@ public:
     void ReadData(const std::string &file_name);
 
     void ReadDevice(TiXmlElement *device_element);
+
     void ReadJob(TiXmlElement *job_element);
 
     bool properlyInitialized() const { return _init == this; }
 
-
     Device *getFirstDevice() const;
+
     Job *getFirstJob() const;
+
     const std::vector<Device *> &getDevices() const;
+
     const std::vector<Job *> &getJobs() const;
 
-
     bool isLogErrors() const;
+
     void setLogErrors(bool logErrors);
 
     std::string printReport() const;
+
+    bool VerifyConsistency() const;
 
     const std::string REPORT_FILE_EXTENSION = ".txt";
 
@@ -47,8 +52,11 @@ private:
     std::vector<Job *> jobs;
     bool log_errors;
 
-    bool VerifyConsistency() const;
+
     static bool CheckNotNegative(int num);
+
+
+
 };
 
 

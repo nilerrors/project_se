@@ -1,8 +1,5 @@
 PRINTERS:
 	 *Office_Printer5
-	 *Sabre printer X50
-	 *UA printer 23
 JOBS:
 	 *[89751|SergeDemeyer]
-	 *[89481|Tim_Apers]
 	 *[2189|anonymous_user]

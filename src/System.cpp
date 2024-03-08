@@ -14,6 +14,14 @@ System::System() {
 }
 
 System::~System() {
+    for(Device*& device: devices){
+        delete device;
+    }
+    for(Job*& job : jobs){
+        delete job;
+    }
+    devices.clear();
+    jobs.clear();
     _init = NULL;
     this->clear();
 }
@@ -122,7 +130,6 @@ std::string System::printReport() const {
     time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::stringstream ss;
     ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S");
-    std::cout<< ss.str()<<std::endl;
     std::string filename = "reports\\report-" + ss.str() + REPORT_FILE_EXTENSION;
     std::ofstream report;
     report.open(filename);
@@ -145,16 +152,16 @@ bool System::VerifyConsistency() const {
     ///Check if PageCount and JobNumber are not negative
     for(Job *const& job : jobs){
         if(!CheckNotNegative(job->getPageCount())){
-            std::cerr << "[Inconsistent printing system" <<std::endl;
+            std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
         else if(!CheckNotNegative(job->getJobNumber())){
-            std::cerr << "[Inconsistent printing system" <<std::endl;
+            std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
 
         if(std::find(job_nums.begin(), job_nums.end(),job->getJobNumber()) != job_nums.end()){
-            std::cerr << "[Inconsistent printing system" <<std::endl;
+            std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
         else{
@@ -165,11 +172,11 @@ bool System::VerifyConsistency() const {
     ///Check if Emission and Speed are not negative
     for(Device *const &device : devices){
         if(!CheckNotNegative(device->getEmission())){
-            std::cerr << "[Inconsistent printing system" <<std::endl;
+            std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
         else if(!CheckNotNegative(device->getSpeed())){
-            std::cerr << "[Inconsistent printing system" <<std::endl;
+            std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
     }
