@@ -12,6 +12,9 @@
 #include "Device.h"
 #include "Job.h"
 
+static const std::string REPORT_FILE_EXTENSION = ".txt";
+
+
 class System
 {
 public:
@@ -47,8 +50,6 @@ public:
     std::string printReport() const;
 
     bool VerifyConsistency() const;
-
-    const std::string REPORT_FILE_EXTENSION = ".txt";
 
 private:
 	static bool CheckNotNegative(int num);

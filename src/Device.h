@@ -6,8 +6,10 @@
 #define PROJECTTITLE_DEVICE_H
 
 #include <string>
-
+#include <vector>
 #include "tinyxml.h"
+
+class Job;
 
 class Device
 {
@@ -24,11 +26,16 @@ public:
 
     int getSpeed() const;
 
+	void addJob(Job *job);
+
+	std::string printReport() const;
+
 private:
     Device *init_;
     std::string name;
     int emission;
     int speed;
+	std::vector<Job *> jobs;
 };
 
 
