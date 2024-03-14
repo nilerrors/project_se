@@ -1,7 +1,7 @@
 PRINTERS:
-	 *Office_Printer5
-	 *Sabre printer X50
-	 *UA printer 23
+	 *Office_Printer5 (CO2: 3g/page)
+	 *Sabre printer X50 (CO2: 3g/page)
+	 *UA printer 23 (CO2: 3g/page)
 JOBS:
 	 *[89751|SergeDemeyer]
 	 *[89481|Tim_Apers]

@@ -71,20 +71,14 @@ std::string Device::printReport() const
 	 Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
 	 return: Filename van de report
 	 */
-	time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	std::stringstream ss;
-	ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S");
-	std::string filename = "reports/report-" + ss.str() + REPORT_FILE_EXTENSION;
-	std::ofstream report;
-	report.open(filename);
+	std::stringstream report;
 	report << name << " (CO2: " << emission << "g/page)" << ":" << std::endl;
 	if (jobs.empty()) {
 		report << "\t" << "No jobs" << std::endl;
 
-		report.close();
-		return filename;
+        return report.str();
 	}
-	report << "\t* Current:";
+	report << "\t* Current:" << std::endl;
 	report << "\t\t[#" +  std::to_string(jobs.front()->getJobNumber())+ "|"  << jobs.front()->getUserName() +"]" << std::endl;
 	if (jobs.size() > 1)
 	{
@@ -94,6 +88,5 @@ std::string Device::printReport() const
 			report << "\t\t[#" +  std::to_string(job->getJobNumber())+ "|"  << job->getUserName() +"]" << std::endl;
 		}
 	}
-	report.close();
-	return filename;
+	return report.str();
 }

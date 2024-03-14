@@ -152,11 +152,11 @@ std::string System::printReport() const {
     std::string filename = "reports/report-" + ss.str() + REPORT_FILE_EXTENSION;
     std::ofstream report;
     report.open(filename);
-    report << "PRINTERS:" << std::endl;
-    for(Device *i : devices) {
-        report << "\t *" +  i->getName() + "(CO2: " + std::to_string(i->getEmission()) + "g/page):" << std::endl;
+    for(Device *device : devices) {
+        report << device->printReport();
+        if (device != devices.back())
+            report << "\n\n";
     }
-    report << "Current:" << std::endl;
 
     report.close();
     return filename;
