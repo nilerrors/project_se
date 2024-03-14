@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/clion+all,windows,macos,linux,cmake,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=clion+all,windows,macos,linux,cmake,c++
 
+### reports
+reports/
+
 ### C++ ###
 # Prerequisites
 *.d
