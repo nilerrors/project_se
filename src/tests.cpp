@@ -109,6 +109,14 @@ TEST_F(TestSystem, ReadData_PageCount_NaN) {
 //////////////////////////////////////////////////////////////////
 TEST_F(TestSystem, printReportHD){
     system->ReadData("xml_tests/ReportHD.xml");
+    system->getDevices()[0]->addJob(system->getJobs()[0]);
+    system->getDevices()[1]->addJob(system->getJobs()[1]);
+    system->getDevices()[2]->addJob(system->getJobs()[2]);
+    system->getDevices()[0]->addJob(system->getJobs()[3]);
+    system->getDevices()[1]->addJob(system->getJobs()[4]);
+    system->getDevices()[2]->addJob(system->getJobs()[5]);
+    system->getDevices()[0]->addJob(system->getJobs()[6]);
+
     std::string filename = system->printReport();
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
 
