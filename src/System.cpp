@@ -103,12 +103,31 @@ Job *System::getFirstJob() const {
     return jobs.empty() ? nullptr : jobs.front();
 }
 
+Job *System::getFirstUnfinishedJob() const {
+	for(Job *job : jobs){
+		if(!job->isFinished()) {
+			return job;
+		}
+	}
+	return NULL;
+}
+
 const std::vector<Device *> &System::getDevices() const {
     return devices;
 }
 
 const std::vector<Job *> &System::getJobs() const {
     return jobs;
+}
+
+std::vector<Job *> System::getUnfinishedJobs() const {
+	std::vector<Job *> unfinished_jobs;
+	for(Job *job : jobs){
+		if(!job->isFinished()) {
+			unfinished_jobs.push_back(job);
+		}
+	}
+	return unfinished_jobs;
 }
 
 void System::clear() {
