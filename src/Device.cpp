@@ -31,9 +31,9 @@ Device::Device(TiXmlElement *device_node) {
 
     EXPECT(!temp_name.empty(), "No name is provided");
     EXPECT(!temp_emission.empty(), "No emission is provided");
-    EXPECT(is_number(temp_emission) , "Emission should be a number");
+    EXPECT(is_number(temp_emission) , "Emission should be an integer number");
     EXPECT(!temp_speed.empty(), "No speed is provided");
-    EXPECT(is_number(temp_speed) , "Speed should be a number");
+    EXPECT(is_number(temp_speed) , "Speed should be an integer number");
 
     name = temp_name;
     emission = std::stoi(temp_emission);

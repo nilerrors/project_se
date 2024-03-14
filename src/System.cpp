@@ -152,16 +152,21 @@ bool System::VerifyConsistency() const {
     ///Check if PageCount and JobNumber are not negative
     for(Job *const& job : jobs){
         if(!CheckNotNegative(job->getPageCount())){
-            std::cerr << "Inconsistent printing system" <<std::endl;
+            if (log_errors){
+                std::cerr << "Inconsistent printing system" <<std::endl;
+            }
             return false;
         }
         else if(!CheckNotNegative(job->getJobNumber())){
-            std::cerr << "Inconsistent printing system" <<std::endl;
+            if (log_errors){
+                std::cerr << "Inconsistent printing system" <<std::endl;
+            }
             return false;
         }
 
         if(std::find(job_nums.begin(), job_nums.end(),job->getJobNumber()) != job_nums.end()){
-            std::cerr << "Inconsistent printing system" <<std::endl;
+            if(log_errors)
+                std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
         else{
@@ -172,11 +177,14 @@ bool System::VerifyConsistency() const {
     ///Check if Emission and Speed are not negative
     for(Device *const &device : devices){
         if(!CheckNotNegative(device->getEmission())){
-            std::cerr << "Inconsistent printing system" <<std::endl;
+            if(log_errors)
+                std::cerr << "Inconsistent printing system" <<std::endl;
             return false;
         }
         else if(!CheckNotNegative(device->getSpeed())){
-            std::cerr << "Inconsistent printing system" <<std::endl;
+            if(log_errors){
+                std::cerr << "Inconsistent printing system" <<std::endl;
+            }
             return false;
         }
     }
