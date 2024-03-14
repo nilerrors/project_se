@@ -11,6 +11,7 @@
 #include <chrono>
 #include <iomanip>
 #include <sstream>
+#include <thread>
 
 Device::Device(const std::string &name, int emission, int speed) : name(name), emission(emission), speed(speed) {}
 
@@ -89,4 +90,33 @@ std::string Device::printReport() const
 		}
 	}
 	return report.str();
+}
+
+int Device::getLoad() const
+{
+	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	int load = 0;
+	for (Job *job : jobs)
+	{
+		load += job->getPageCount();
+	}
+	ENSURE(load >= 0, "Load is negative.");
+	return load;
+}
+
+void Device::processJob() const
+{
+	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(!jobs.empty(), "No jobs to process.");
+	Job *job = jobs.front();
+	if (job == NULL)
+	{
+		return;
+	}
+
+	std::chrono::seconds duration(job->getPageCount() / speed * 60);
+	std::this_thread::sleep_for(duration);
+
+	jobs.front()->setFinished(true);
+	ENSURE(jobs.front()->isFinished(), "Job is not finished.");
 }

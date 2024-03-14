@@ -9,6 +9,8 @@
 #include <fstream>
 #include <chrono>
 #include <iomanip>
+#include <random>
+
 System::System() {
     _init = this;
 }
@@ -148,7 +150,14 @@ std::string System::printReport() const {
      */
     time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::stringstream ss;
-    ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S");
+
+	// random number
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, 99);
+	int random_number = dis(gen);
+
+    ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S") << "-" << random_number;
     std::string filename = "reports/report-" + ss.str() + REPORT_FILE_EXTENSION;
     std::ofstream report;
     report.open(filename);
@@ -220,4 +229,37 @@ bool System::isLogErrors() const {
 
 void System::setLogErrors(bool logErrors) {
     log_errors = logErrors;
+}
+
+Device *System::getDeviceWithLeastLoad() const {
+	REQUIRE(properlyInitialized(), "System is not properly initialized.");
+	Device *least_loaded_device = devices.front();
+	for(Device *device : devices){
+		if(device->getLoad() < least_loaded_device->getLoad()){
+			least_loaded_device = device;
+		}
+	}
+	return least_loaded_device;
+}
+
+Job *System::getFirstUnprocessedJob() const
+{
+	for(Job *job : jobs){
+		if(!job->isFinished() && !job->isInProcess()) {
+			return job;
+		}
+	}
+	return NULL;
+}
+
+void System::processFirstJob() const {
+	REQUIRE(properlyInitialized(), "System is not properly initialized.");
+	Job *job = getFirstUnprocessedJob();
+	if(job == NULL){
+		return;
+	}
+	Device *device = getDeviceWithLeastLoad();
+	device->addJob(job);
+	job->setInProcess();
+	device->processJob();
 }

@@ -1,21 +1,20 @@
 Office_Printer5 (CO2: 3g/page):
-	*Current:
+	* Current:
 		[#89751|SergeDemeyer]
-	*Queue:
+	* Queue:
 		[#325559|Recep_Tayep_Erdogan]
 		[#651894|Cristiano_Ronaldo]
 
 
 Sabre printer X50 (CO2: 6g/page):
-	*Current:
+	* Current:
 		[#89481|Tim_Apers]
-	*Queue:
+	* Queue:
 		[#321859|Donald_Trump]
 
 
 UA printer 23 (CO2: 4g/page):
-	*Current:
+	* Current:
 		[#2189|anonymous_user]
-	*Queue
+	* Queue:
 		[#165984|Joe_Biden]
-

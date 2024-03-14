@@ -25,10 +25,15 @@ public:
 
 	bool isFinished() const;
 
+	bool isInProcess() const;
+
+	void setInProcess();
+
 	void setFinished(bool finished);
 
 private:
 	bool finished;
+	bool inProcess;
     int jobNumber;
     int pageCount;
     std::string userName;

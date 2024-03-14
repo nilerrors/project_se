@@ -30,6 +30,10 @@ public:
 
 	std::string printReport() const;
 
+	int getLoad() const;
+
+	void processJob() const;
+
 private:
     Device *init_;
     std::string name;

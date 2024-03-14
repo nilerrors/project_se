@@ -37,6 +37,8 @@ public:
 
 	Job *getFirstUnfinishedJob() const;
 
+	Job *getFirstUnprocessedJob() const;
+
     const std::vector<Device *> &getDevices() const;
 
     const std::vector<Job *> &getJobs() const;
@@ -50,6 +52,10 @@ public:
     std::string printReport() const;
 
     bool VerifyConsistency() const;
+
+	Device *getDeviceWithLeastLoad() const;
+
+	void processFirstJob() const;
 
 private:
 	static bool CheckNotNegative(int num);

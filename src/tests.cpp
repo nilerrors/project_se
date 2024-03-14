@@ -119,7 +119,6 @@ TEST_F(TestSystem, printReportHD){
 
     std::string filename = system->printReport();
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
-
 }
 
 TEST_F(TestSystem, printEmpty){

@@ -63,3 +63,13 @@ void Job::setFinished(bool finish)
 {
 	finished = finish;
 }
+
+bool Job::isInProcess() const
+{
+	return inProcess;
+}
+
+void Job::setInProcess()
+{
+	this->inProcess = true;
+}
