@@ -32,9 +32,13 @@ public:
 
     Job *getFirstJob() const;
 
+	Job *getFirstUnfinishedJob() const;
+
     const std::vector<Device *> &getDevices() const;
 
     const std::vector<Job *> &getJobs() const;
+
+	std::vector<Job *> getUnfinishedJobs() const;
 
     bool isLogErrors() const;
 
@@ -47,16 +51,13 @@ public:
     const std::string REPORT_FILE_EXTENSION = ".txt";
 
 private:
+	static bool CheckNotNegative(int num);
+
+private:
     System* _init;
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
     bool log_errors;
-
-
-    static bool CheckNotNegative(int num);
-
-
-
 };
 
 

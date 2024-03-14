@@ -23,7 +23,12 @@ public:
 
     const std::string &getUserName() const;
 
+	bool isFinished() const;
+
+	void setFinished(bool finished);
+
 private:
+	bool finished;
     int jobNumber;
     int pageCount;
     std::string userName;

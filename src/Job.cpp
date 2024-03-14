@@ -53,3 +53,13 @@ int Job::getPageCount() const {
 const std::string &Job::getUserName() const {
     return userName;
 }
+
+bool Job::isFinished() const
+{
+	return finished;
+}
+
+void Job::setFinished(bool finish)
+{
+	finished = finish;
+}
