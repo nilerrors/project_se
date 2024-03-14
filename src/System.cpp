@@ -130,17 +130,15 @@ std::string System::printReport() const {
     time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::stringstream ss;
     ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S");
-    std::string filename = "reports\\report-" + ss.str() + REPORT_FILE_EXTENSION;
+    std::string filename = "reports/report-" + ss.str() + REPORT_FILE_EXTENSION;
     std::ofstream report;
     report.open(filename);
     report << "PRINTERS:" << std::endl;
     for(Device *i : devices) {
-        report << "\t *" +  i->getName() << std::endl;
+        report << "\t *" +  i->getName() + "(CO2: " + std::to_string(i->getEmission()) + "g/page):" << std::endl;
     }
-    report << "JOBS:" << std::endl;
-    for(Job* i : jobs) {
-        report << "\t *[" +  std::to_string(i->getJobNumber())+ "|"  << i->getUserName() +"]" << std::endl;
-    }
+    report << "Current:" << std::endl;
+
     report.close();
     return filename;
 }

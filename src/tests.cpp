@@ -114,6 +114,13 @@ TEST_F(TestSystem, printReportHD){
 
 }
 
+TEST_F(TestSystem, printEmpty){
+    std::string filename = system->printReport();
+    EXPECT_TRUE(FileCompare(filename, "report_tests/ReportEMPTY.txt"));
+}
+
+
+
 //////////////////////////////////////////////////////////////////
 ///                         INCONSISTENCY TEST                  ///
 //////////////////////////////////////////////////////////////////
