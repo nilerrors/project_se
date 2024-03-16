@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project(ProjectTitle)
+project(PrintSystem)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 

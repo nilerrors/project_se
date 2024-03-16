@@ -13,6 +13,10 @@
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
+#include <chrono>
+#include <sstream>
+#include <random>
+#include <iomanip>
 
 using namespace std;
 
@@ -96,5 +100,22 @@ bool is_number(const std::string& s)
         ++it;
 
     return it == s.end();
+}
+
+
+std::string GenerateFileName(const std::string &prefix, const std::string &extension)
+{
+	time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    std::stringstream ss;
+
+	// random number
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, 99);
+	int random_number = dis(gen);
+
+    ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S") << "-" << random_number;
+
+	return prefix + ss.str() + extension;
 }
 

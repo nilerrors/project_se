@@ -10,9 +10,11 @@
 #include <chrono>
 #include <iomanip>
 #include <random>
+#include "utils.h"
 
 System::System() {
     _init = this;
+	log_errors = false;
 }
 
 System::~System() {
@@ -148,17 +150,8 @@ std::string System::printReport() const {
      Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
      return: Filename van de report
      */
-    time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::stringstream ss;
 
-	// random number
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(0, 99);
-	int random_number = dis(gen);
-
-    ss << std::put_time(std::localtime(&now), "%Y-%m-%d-%H%M%S") << "-" << random_number;
-    std::string filename = "reports/report-" + ss.str() + REPORT_FILE_EXTENSION;
+    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
     std::ofstream report;
     report.open(filename);
     for(Device *device : devices) {
@@ -244,6 +237,8 @@ Device *System::getDeviceWithLeastLoad() const {
 
 Job *System::getFirstUnprocessedJob() const
 {
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
+	REQUIRE(!jobs.empty(), "No jobs were found");
 	for(Job *job : jobs){
 		if(!job->isFinished() && !job->isInProcess()) {
 			return job;
@@ -252,14 +247,69 @@ Job *System::getFirstUnprocessedJob() const
 	return NULL;
 }
 
-void System::processFirstJob() const {
-	REQUIRE(properlyInitialized(), "System is not properly initialized.");
-	Job *job = getFirstUnprocessedJob();
-	if(job == NULL){
-		return;
-	}
+Device *System::assignJobToDevice(Job *job) const {
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
+	REQUIRE(!devices.empty(), "No devices were found");
+	REQUIRE(job->getAssignedTo() == NULL, "Job is already assigned to a device.");
+
 	Device *device = getDeviceWithLeastLoad();
 	device->addJob(job);
-	job->setInProcess();
-	device->processJob();
+	job->setAssignedTo(device);
+	return device;
+}
+
+void System::assignAllJobs() const {
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
+	REQUIRE(!jobs.empty(), "No jobs were found");
+	REQUIRE(!devices.empty(), "No devices were found");
+
+	for (Job *job : jobs)
+	{
+		if (job->getAssignedTo() == NULL)
+		{
+			assignJobToDevice(job);
+		}
+	}
+}
+
+void System::processFirstJob() const {
+	REQUIRE(properlyInitialized(), "System is not properly initialized.");
+	REQUIRE(!jobs.empty(), "No jobs were found");
+	REQUIRE(!devices.empty(), "No devices were found");
+	REQUIRE(getFirstUnprocessedJob() != NULL, "All jobs are processed");
+	REQUIRE(getFirstUnprocessedJob()->getAssignedTo() != NULL, "Job is not assigned to a device");
+
+	Job *job = getFirstUnprocessedJob();
+	Device *device = job->getAssignedTo();
+	int initialLoad = device->getLoad();
+	job->setInProcess(true);
+	std::string message = device->processJob();
+
+	if (!log_file_name.empty() && log)
+	{
+		std::ofstream log_file(log_file_name, std::ios_base::app);
+		log_file << message << std::endl;
+		log_file.close();
+	}
+	else if (log)
+	{
+		std::cout << message << std::endl;
+	}
+
+	ENSURE(job->isFinished(), "Job is not finished");
+	ENSURE(job->getAssignedTo()->getLoad() != initialLoad, "Device did not process the job");
+}
+
+void System::setLogFile(const std::string &log_file)
+{
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
+	log_file_name = log_file;
+	ENSURE(log_file_name == log_file, "Log file is not set");
+}
+
+void System::setLogMessages(bool log_messages)
+{
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
+	log = log_messages;
+	ENSURE(log == log_messages, "Log messages are not set");
 }

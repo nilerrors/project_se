@@ -13,6 +13,7 @@
 #include "Job.h"
 
 static const std::string REPORT_FILE_EXTENSION = ".txt";
+static const std::string LOG_FILE_EXTENSION = ".log";
 
 
 class System
@@ -49,13 +50,21 @@ public:
 
     void setLogErrors(bool logErrors);
 
+	void setLogMessages(bool log);
+
     std::string printReport() const;
 
     bool VerifyConsistency() const;
 
 	Device *getDeviceWithLeastLoad() const;
 
+	Device *assignJobToDevice(Job *job) const;
+
+	void assignAllJobs() const;
+
 	void processFirstJob() const;
+
+	void setLogFile(const std::string &log_file_name);
 
 private:
 	static bool CheckNotNegative(int num);
@@ -65,6 +74,8 @@ private:
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
     bool log_errors;
+	std::string log_file_name;
+	bool log = false;
 };
 
 

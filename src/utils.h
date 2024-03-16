@@ -26,4 +26,6 @@ bool FileCompare(const std::string leftFileName, const std::string rightFileName
 
 bool is_number(const std::string& s);
 
+std::string GenerateFileName(const std::string &prefix, const std::string &extension);
+
 #endif //PROJECTTITLE_UTILS_H

@@ -3,9 +3,11 @@
 //
 
 #include <iostream>
+#include <sstream>
 #include "DesignByContract.h"
 #include "utils.h"
 #include "Job.h"
+#include "Device.h"
 
 Job::Job(int jobNumber, int pageCount, const std::string &userName) : jobNumber(jobNumber), pageCount(pageCount),
                                                                       userName(userName) {}
@@ -69,7 +71,32 @@ bool Job::isInProcess() const
 	return inProcess;
 }
 
-void Job::setInProcess()
+void Job::setInProcess(bool process)
 {
-	this->inProcess = true;
+	inProcess = process;
+}
+
+Device *Job::getAssignedTo() const
+{
+	return assignedTo;
+}
+
+void Job::setAssignedTo(Device *assigned)
+{
+	assignedTo = assigned;
+}
+
+std::string Job::finishMessage() const
+{
+	REQUIRE(properlyInitialized(), "Job is not properly initialized");
+	REQUIRE(assignedTo != NULL, "Job is not assigned to a device");
+
+	std::stringstream message;
+
+	message << "Printer " << '"' << assignedTo->getName() << '"' << " finished job:" << std::endl;
+	message << "\tNumber: " << jobNumber << std::endl;
+	message << "\tSubmitted by " << '"' << userName << '"' << std::endl;
+	message << "\t" << pageCount << " pages" << std::endl;
+
+	return message.str();
 }

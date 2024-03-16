@@ -104,19 +104,23 @@ int Device::getLoad() const
 	return load;
 }
 
-void Device::processJob() const
+std::string Device::processJob()
 {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 	REQUIRE(!jobs.empty(), "No jobs to process.");
-	Job *job = jobs.front();
-	if (job == NULL)
-	{
-		return;
-	}
+	REQUIRE(jobs.front() != NULL, "First job is empty");
 
-	std::chrono::seconds duration(job->getPageCount() / speed * 60);
+	Job *job = jobs.front();
+
+	std::chrono::milliseconds duration(job->getPageCount() / speed * 60 * 1000);
 	std::this_thread::sleep_for(duration);
 
-	jobs.front()->setFinished(true);
-	ENSURE(jobs.front()->isFinished(), "Job is not finished.");
+	job->setInProcess(false);
+	job->setFinished(true);
+	jobs.pop_front();
+
+	ENSURE(jobs.front() != job, "Job is not removed");
+	ENSURE(job->isFinished(), "Job is not finished.");
+
+	return job->finishMessage();
 }
