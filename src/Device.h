@@ -6,8 +6,10 @@
 #define PROJECTTITLE_DEVICE_H
 
 #include <string>
-
+#include <deque>
 #include "tinyxml.h"
+
+class Job;
 
 class Device
 {
@@ -24,11 +26,20 @@ public:
 
     int getSpeed() const;
 
+	void addJob(Job *job);
+
+	std::string printReport() const;
+
+	int getLoad() const;
+
+	std::string processJob();
+
 private:
     Device *init_;
     std::string name;
     int emission;
     int speed;
+	std::deque<Job *> jobs;
 };
 
 

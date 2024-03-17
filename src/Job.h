@@ -9,6 +9,8 @@
 
 #include "tinyxml.h"
 
+class Device;
+
 class Job {
 public:
     Job(TiXmlElement *job_element);
@@ -25,10 +27,22 @@ public:
 
 	bool isFinished() const;
 
+	bool isInProcess() const;
+
+	void setInProcess(bool inProcess);
+
 	void setFinished(bool finished);
 
+	Device *getAssignedTo() const;
+
+	void setAssignedTo(Device *assignedTo);
+
+	std::string finishMessage() const;
+
 private:
-	bool finished;
+	bool finished = false;
+	bool inProcess = false;
+	Device *assignedTo = NULL;
     int jobNumber;
     int pageCount;
     std::string userName;

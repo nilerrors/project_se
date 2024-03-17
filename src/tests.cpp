@@ -109,9 +109,16 @@ TEST_F(TestSystem, ReadData_PageCount_NaN) {
 //////////////////////////////////////////////////////////////////
 TEST_F(TestSystem, printReportHD){
     system->ReadData("xml_tests/ReportHD.xml");
+    system->getDevices()[0]->addJob(system->getJobs()[0]);
+    system->getDevices()[1]->addJob(system->getJobs()[1]);
+    system->getDevices()[2]->addJob(system->getJobs()[2]);
+    system->getDevices()[0]->addJob(system->getJobs()[3]);
+    system->getDevices()[1]->addJob(system->getJobs()[4]);
+    system->getDevices()[2]->addJob(system->getJobs()[5]);
+    system->getDevices()[0]->addJob(system->getJobs()[6]);
+
     std::string filename = system->printReport();
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
-
 }
 
 TEST_F(TestSystem, printEmpty){
@@ -143,11 +150,44 @@ TEST_F(TestSystem, Inconsistency_Job_Num){
 }
 
 
+//////////////////////////////////////////////////////////////////
+/// Manual Processing
+//////////////////////////////////////////////////////////////////
+TEST_F(TestSystem, Manual_Processing_Forget_Device){
+	system->ReadData("xml_tests/ManualProcessing.xml");
+	EXPECT_TRUE(!system->getJobs().empty());
+	EXPECT_TRUE(!system->getDevices().empty());
+	// Oopsie we forgot to add the devices to the system
+	// system->assignAllJobs();
 
+	// throws an assertion error, because we forgot to assign the jobs to the devices first
+	EXPECT_DEATH(system->processFirstJob(), ".*Job is not assigned to a device.*");
+}
+
+TEST_F(TestSystem, Manual_Processing_HappyDay){
+	system->ReadData("xml_tests/ManualProcessing.xml");
+	EXPECT_TRUE(!system->getJobs().empty());
+	EXPECT_TRUE(!system->getDevices().empty());
+
+	// assign the jobs to the devices
+	system->assignAllJobs();
+	// generate the log filename
+	std::string log_file = GenerateFileName("logs/log-", LOG_FILE_EXTENSION);
+	// enable logging
+	system->setLogMessages(true);
+	system->setLogFile(log_file);
+	// process the first job
+	EXPECT_NO_FATAL_FAILURE(system->processFirstJob());
+	// compare the log file with the expected log file
+	EXPECT_TRUE(FileExists(log_file));
+	EXPECT_TRUE(FileCompare(log_file, "log_tests/ManualProcessing.log"));
+}
 
 
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
+	// to allow for threadsafe death tests
+	::testing::FLAGS_gtest_death_test_style = "threadsafe";
     return RUN_ALL_TESTS();
 }

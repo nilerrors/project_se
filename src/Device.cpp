@@ -5,7 +5,13 @@
 #include "DesignByContract.h"
 #include "Device.h"
 #include "utils.h"
+#include "System.h"
 #include <iostream>
+#include <fstream>
+#include <chrono>
+#include <iomanip>
+#include <sstream>
+#include <thread>
 
 Device::Device(const std::string &name, int emission, int speed) : name(name), emission(emission), speed(speed) {}
 
@@ -51,4 +57,70 @@ int Device::getEmission() const {
 
 int Device::getSpeed() const {
     return speed;
+}
+
+void Device::addJob(Job *job)
+{
+	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	jobs.push_back(job);
+	ENSURE(jobs.back() == job, "Job is not added to the device.");
+}
+
+std::string Device::printReport() const
+{
+	/*
+	 Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
+	 return: Filename van de report
+	 */
+	std::stringstream report;
+	report << name << " (CO2: " << emission << "g/page)" << ":" << std::endl;
+	if (jobs.empty()) {
+		report << "\t" << "No jobs" << std::endl;
+
+        return report.str();
+	}
+	report << "\t* Current:" << std::endl;
+	report << "\t\t[#" +  std::to_string(jobs.front()->getJobNumber())+ "|"  << jobs.front()->getUserName() +"]" << std::endl;
+	if (jobs.size() > 1)
+	{
+		report << "\t* Queue:" << std::endl;
+		for(size_t i = 1; i < jobs.size(); i++) {
+			Job *job = jobs[i];
+			report << "\t\t[#" +  std::to_string(job->getJobNumber())+ "|"  << job->getUserName() +"]" << std::endl;
+		}
+	}
+	return report.str();
+}
+
+int Device::getLoad() const
+{
+	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	int load = 0;
+	for (Job *job : jobs)
+	{
+		load += job->getPageCount();
+	}
+	ENSURE(load >= 0, "Load is negative.");
+	return load;
+}
+
+std::string Device::processJob()
+{
+	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(!jobs.empty(), "No jobs to process.");
+	REQUIRE(jobs.front() != NULL, "First job is empty");
+
+	Job *job = jobs.front();
+
+	std::chrono::milliseconds duration(job->getPageCount() / speed * 60 * 1000);
+	std::this_thread::sleep_for(duration);
+
+	job->setInProcess(false);
+	job->setFinished(true);
+	jobs.pop_front();
+
+	ENSURE(jobs.front() != job, "Job is not removed");
+	ENSURE(job->isFinished(), "Job is not finished.");
+
+	return job->finishMessage();
 }

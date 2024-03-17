@@ -12,6 +12,10 @@
 #include "Device.h"
 #include "Job.h"
 
+static const std::string REPORT_FILE_EXTENSION = ".txt";
+static const std::string LOG_FILE_EXTENSION = ".log";
+
+
 class System
 {
 public:
@@ -34,6 +38,8 @@ public:
 
 	Job *getFirstUnfinishedJob() const;
 
+	Job *getFirstUnprocessedJob() const;
+
     const std::vector<Device *> &getDevices() const;
 
     const std::vector<Job *> &getJobs() const;
@@ -44,11 +50,21 @@ public:
 
     void setLogErrors(bool logErrors);
 
+	void setLogMessages(bool log);
+
     std::string printReport() const;
 
     bool VerifyConsistency() const;
 
-    const std::string REPORT_FILE_EXTENSION = ".txt";
+	Device *getDeviceWithLeastLoad() const;
+
+	Device *assignJobToDevice(Job *job) const;
+
+	void assignAllJobs() const;
+
+	void processFirstJob() const;
+
+	void setLogFile(const std::string &log_file_name);
 
 private:
 	static bool CheckNotNegative(int num);
@@ -58,6 +74,8 @@ private:
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
     bool log_errors;
+	std::string log_file_name;
+	bool log = false;
 };
 
 
