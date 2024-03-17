@@ -129,7 +129,7 @@ TEST_F(TestSystem, printEmpty){
 
 
 //////////////////////////////////////////////////////////////////
-///                         INCONSISTENCY TEST                  ///
+///                         INCONSISTENCY TEST                 ///
 //////////////////////////////////////////////////////////////////
 
 TEST_F(TestSystem, Inconsistency_Neg_Num1){
@@ -183,11 +183,32 @@ TEST_F(TestSystem, Manual_Processing_HappyDay){
 	EXPECT_TRUE(FileCompare(log_file, "log_tests/ManualProcessing.log"));
 }
 
+//////////////////////////////////////////////////////////////////
+///                  Automatic Processing                      ///
+//////////////////////////////////////////////////////////////////
+
+
+TEST_F(TestSystem, AP_HappyDay){
+    // generate the log filename
+    std::string log_file = GenerateFileName("logs/log-", LOG_FILE_EXTENSION);
+    // enable logging
+    system->setLogMessages(true);
+    system->setLogFile(log_file);
+
+    system->ReadData("xml_tests/ReportHD.xml");
+    system->processAll();
+
+    EXPECT_TRUE(FileCompare(log_file, "log_tests/AP_HappyDay.txt"));
+}
+
+TEST_F(TestSystem, EmptySys){
+  EXPECT_DEATH(system->processAll(), ".*No jobs were found.*");
+}
 
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
-	// to allow for threadsafe death tests
-	::testing::FLAGS_gtest_death_test_style = "threadsafe";
+    // to allow for threadsafe death tests
+    ::testing::FLAGS_gtest_death_test_style = "threadsafe";
     return RUN_ALL_TESTS();
 }

@@ -66,6 +66,8 @@ public:
 
 	void setLogFile(const std::string &log_file_name);
 
+    void processAll();
+
 private:
 	static bool CheckNotNegative(int num);
 

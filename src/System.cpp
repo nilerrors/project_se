@@ -159,7 +159,6 @@ std::string System::printReport() const {
         if (device != devices.back())
             report << "\n\n";
     }
-    report << "Current:" << std::endl;
     report.close();
     return filename;
 }
@@ -313,3 +312,19 @@ void System::setLogMessages(bool log_messages)
 	log = log_messages;
 	ENSURE(log == log_messages, "Log messages are not set");
 }
+
+void System::processAll() {
+    /*
+    Automatically assigns all jobs to printers and processes all unfinished jobs.
+    Precon: Systems is properly loaded
+    Postcon: All pages have been printed i.e. all jobs are finished
+    */
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+    assignAllJobs();
+    while(getFirstUnprocessedJob() != NULL){
+        processFirstJob();
+    }
+    ENSURE(getFirstUnprocessedJob() == NULL, "Not all pages were printed");
+}
+
+

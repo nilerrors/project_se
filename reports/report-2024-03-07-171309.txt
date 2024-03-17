@@ -1,5 +1,0 @@
-PRINTERS:
-	 *Office_Printer5
-JOBS:
-	 *[89751|SergeDemeyer]
-	 *[2189|anonymous_user]
