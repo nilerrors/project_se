@@ -156,6 +156,7 @@ std::string System::printReport() const {
     for(Device *i : devices) {
         report << "\t *" +  i->getName() + "(CO2: " + std::to_string(i->getEmission()) + "g/page):" << std::endl;
     }
+
     report << "Current:" << std::endl;
 
     report.close();
