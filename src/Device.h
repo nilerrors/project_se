@@ -28,14 +28,36 @@ public:
 	 */
     explicit Device(TiXmlElement *device_element);
 
+	/**
+	 * \brief Constructor for Device
+	 * @param name
+	 * @param emission
+	 * @param speed
+	 */
     Device(const std::string &name, int emission, int speed);
 
+	/**
+	 * \brief Checks if the class is properly
+	 * @return
+	 */
 	bool properlyInitialized() const { return init_ == this; }
 
+	/**
+	 * \brief Gets the name of the device
+	 * @return
+	 */
     const std::string &getName() const;
 
+	/**
+	 * \brief Gets the emission of the device
+	 * @return
+	 */
     int getEmission() const;
 
+	/**
+	 * \brief Gets the speed of the device
+	 * @return
+	 */
     int getSpeed() const;
 
 	/**
