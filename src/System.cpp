@@ -148,8 +148,12 @@ void System::clear() {
 std::string System::printReport() const {
     /*
      Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
+     Precon: System is properly initialised
      return: Filename van de report
      */
+
+    REQUIRE(properlyInitialized(), "System is not properly initialised");
+
 
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
     std::ofstream report;
