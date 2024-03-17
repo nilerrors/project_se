@@ -62,6 +62,7 @@ int Device::getSpeed() const {
 void Device::addJob(Job *job)
 {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(job != NULL, "Job is empty.");
 	jobs.push_back(job);
 	ENSURE(jobs.back() == job, "Job is not added to the device.");
 }
@@ -72,6 +73,10 @@ std::string Device::printReport() const
 	 Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
 	 return: Filename van de report
 	 */
+	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(emission >= 0, "Emission is negative.");
+	REQUIRE(speed >= 0, "Speed is negative.");
+
 	std::stringstream report;
 	report << name << " (CO2: " << emission << "g/page)" << ":" << std::endl;
 	if (jobs.empty()) {
@@ -89,6 +94,8 @@ std::string Device::printReport() const
 			report << "\t\t[#" +  std::to_string(job->getJobNumber())+ "|"  << job->getUserName() +"]" << std::endl;
 		}
 	}
+
+	ENSURE(!report.str().empty(), "Device report is empty");
 	return report.str();
 }
 

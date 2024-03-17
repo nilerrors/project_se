@@ -100,10 +100,12 @@ void System::ReadJob(TiXmlElement *job_element) {
 
 
 Device *System::getFirstDevice() const {
+	REQUIRE(properlyInitialized(), "Class is not properly initialized");
     return devices.empty() ? nullptr : devices.front();
 }
 
 Job *System::getFirstJob() const {
+	REQUIRE(properlyInitialized(), "Class is not properly initialized");
     return jobs.empty() ? nullptr : jobs.front();
 }
 
@@ -151,6 +153,8 @@ std::string System::printReport() const {
      Precon: System is properly initialised
      return: Filename van de report
      */
+	REQUIRE(properlyInitialized(), "Class is not properly initialized");
+	REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
 
     REQUIRE(properlyInitialized(), "System is not properly initialised");
 
@@ -229,6 +233,7 @@ void System::setLogErrors(bool logErrors) {
 
 Device *System::getDeviceWithLeastLoad() const {
 	REQUIRE(properlyInitialized(), "System is not properly initialized.");
+	REQUIRE(!devices.empty(), "No devices were found.");
 	Device *least_loaded_device = devices.front();
 	for(Device *device : devices){
 		if(device->getLoad() < least_loaded_device->getLoad()){

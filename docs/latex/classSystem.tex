@@ -1,0 +1,450 @@
+\hypertarget{classSystem}{}\doxysection{System Class Reference}
+\label{classSystem}\index{System@{System}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSystem_ae317936c9bcf1374d61745572e0f2f8a}{System}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classSystem}{System}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSystem_a3be70bb338e3f062f821173fd15680d0}\label{classSystem_a3be70bb338e3f062f821173fd15680d0}} 
+virtual \mbox{\hyperlink{classSystem_a3be70bb338e3f062f821173fd15680d0}{$\sim$\+System}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classSystem}{System}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSystem_a66bdd137db3fc914bbfe9518b6c71017}\label{classSystem_a66bdd137db3fc914bbfe9518b6c71017}} 
+void \mbox{\hyperlink{classSystem_a66bdd137db3fc914bbfe9518b6c71017}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a9046c539f1a0e3b59e0fb41b8c1f2037}{Read\+Data}} (const std\+::string \&file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Reads the data from the file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_aadfca0b237acf38c23fefed41a36498a}{Read\+Device}} (Ti\+Xml\+Element $\ast$device\+\_\+element)
+\begin{DoxyCompactList}\small\item\em Reads the device from the file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a15de3d7ab06a2c8e745667f0841b3211}{Read\+Job}} (Ti\+Xml\+Element $\ast$job\+\_\+element)
+\begin{DoxyCompactList}\small\item\em Reads the job from the file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the class is properly. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ \mbox{\hyperlink{classSystem_ae62a0578f26ad600b125b63201a8aa83}{get\+First\+Device}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ \mbox{\hyperlink{classSystem_a479ddbb1302e82498cdf30749c9bc6c5}{get\+First\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first job. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ \mbox{\hyperlink{classSystem_a8a9f45ee9c57c5183141edce432cc325}{get\+First\+Unfinished\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first unfinished job. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ \mbox{\hyperlink{classSystem_ae519517a9aa46a90511ddb82fffe38d4}{get\+First\+Unprocessed\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first unprocessed job. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{classDevice}{Device}} $\ast$ $>$ \& \mbox{\hyperlink{classSystem_afb96b2dce0f9b9464bca28096f8a6faa}{get\+Devices}} () const
+\begin{DoxyCompactList}\small\item\em Gets the devices. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \& \mbox{\hyperlink{classSystem_a3feb292902a37834dcc7d3d517404796}{get\+Jobs}} () const
+\begin{DoxyCompactList}\small\item\em Gets the jobs. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \mbox{\hyperlink{classSystem_a8739ca9409ec92fea3d762bbf135569c}{get\+Unfinished\+Jobs}} () const
+\begin{DoxyCompactList}\small\item\em Gets the unfinished jobs. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSystem_a408cb785a64119f8cc73fbaa7425c7a5}{is\+Log\+Errors}} () const
+\begin{DoxyCompactList}\small\item\em Gets the log errors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a87fd12960c1314457f57c6df18231ea6}{set\+Log\+Errors}} (bool log\+Errors)
+\begin{DoxyCompactList}\small\item\em Set if the errors should be logged. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a08632e8306190dd498cc1d0370521e2a}{set\+Log\+Messages}} (bool log)
+\begin{DoxyCompactList}\small\item\em Set if the messages should be logged. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classSystem_a58727360ee80a2251e397a7498b9f1c4}{print\+Report}} () const
+\begin{DoxyCompactList}\small\item\em Prints the report. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}{Verify\+Consistency}} () const
+\begin{DoxyCompactList}\small\item\em Verifies the consistency of the system, prints errors if inconsistent and logs are enabled. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ \mbox{\hyperlink{classSystem_a29bf085c07d63f91a16203f461851c03}{get\+Device\+With\+Least\+Load}} () const
+\begin{DoxyCompactList}\small\item\em Gets the device with the least load. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ \mbox{\hyperlink{classSystem_a4082df5174019276b8750e0a22490a65}{assign\+Job\+To\+Device}} (\mbox{\hyperlink{classJob}{Job}} $\ast$job) const
+\begin{DoxyCompactList}\small\item\em Gets the device with the least load. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a5ade759f0af4b991d08bde7549a558f9}{assign\+All\+Jobs}} () const
+\begin{DoxyCompactList}\small\item\em Assigns all jobs to devices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a254a14ed48bf7fa7913b4aeef0b19c1a}{process\+First\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Processes the first job. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a77a153bc2c78d994cef3315c67becc32}{set\+Log\+File}} (const std\+::string \&log\+\_\+file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Processes all jobs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_ab9898279909e5609a8d10b716f798198}{process\+All}} ()
+\begin{DoxyCompactList}\small\item\em Processes all jobs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSystem_ae317936c9bcf1374d61745572e0f2f8a}\label{classSystem_ae317936c9bcf1374d61745572e0f2f8a}} 
+\index{System@{System}!System@{System}}
+\index{System@{System}!System@{System}}
+\doxysubsubsection{\texorpdfstring{System()}{System()}}
+{\footnotesize\ttfamily System\+::\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classSystem}{System}}. 
+
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{classSystem}{System}} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSystem_a5ade759f0af4b991d08bde7549a558f9}\label{classSystem_a5ade759f0af4b991d08bde7549a558f9}} 
+\index{System@{System}!assignAllJobs@{assignAllJobs}}
+\index{assignAllJobs@{assignAllJobs}!System@{System}}
+\doxysubsubsection{\texorpdfstring{assignAllJobs()}{assignAllJobs()}}
+{\footnotesize\ttfamily void System\+::assign\+All\+Jobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Assigns all jobs to devices. 
+
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+System is not properly initialized.\char`\"{});
+\item REQUIRE(!jobs.empty(), \char`\"{}\+No jobs were found\char`\"{});
+\item REQUIRE(!devices.empty(), \char`\"{}\+No devices were found\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a4082df5174019276b8750e0a22490a65}\label{classSystem_a4082df5174019276b8750e0a22490a65}} 
+\index{System@{System}!assignJobToDevice@{assignJobToDevice}}
+\index{assignJobToDevice@{assignJobToDevice}!System@{System}}
+\doxysubsubsection{\texorpdfstring{assignJobToDevice()}{assignJobToDevice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDevice}{Device}} $\ast$ System\+::assign\+Job\+To\+Device (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJob}{Job}} $\ast$}]{job }\end{DoxyParamCaption}) const}
+
+
+
+Gets the device with the least load. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the device with the least load
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{});
+\item REQUIRE(!devices.empty(), \char`\"{}\+No devices were found.\char`\"{});
+\item REQUIRE(job-\/$>$get\+Assigned\+To() == NULL, \char`\"{}\+Job is already assigned to a device.\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_afb96b2dce0f9b9464bca28096f8a6faa}\label{classSystem_afb96b2dce0f9b9464bca28096f8a6faa}} 
+\index{System@{System}!getDevices@{getDevices}}
+\index{getDevices@{getDevices}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getDevices()}{getDevices()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classDevice}{Device}} $\ast$ $>$ \& System\+::get\+Devices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the devices. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing the devices 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a29bf085c07d63f91a16203f461851c03}\label{classSystem_a29bf085c07d63f91a16203f461851c03}} 
+\index{System@{System}!getDeviceWithLeastLoad@{getDeviceWithLeastLoad}}
+\index{getDeviceWithLeastLoad@{getDeviceWithLeastLoad}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getDeviceWithLeastLoad()}{getDeviceWithLeastLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDevice}{Device}} $\ast$ System\+::get\+Device\+With\+Least\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the device with the least load. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the device with the least load
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{});
+\item REQUIRE(!devices.empty(), \char`\"{}\+No devices were found.\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_ae62a0578f26ad600b125b63201a8aa83}\label{classSystem_ae62a0578f26ad600b125b63201a8aa83}} 
+\index{System@{System}!getFirstDevice@{getFirstDevice}}
+\index{getFirstDevice@{getFirstDevice}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getFirstDevice()}{getFirstDevice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDevice}{Device}} $\ast$ System\+::get\+First\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first device. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a479ddbb1302e82498cdf30749c9bc6c5}\label{classSystem_a479ddbb1302e82498cdf30749c9bc6c5}} 
+\index{System@{System}!getFirstJob@{getFirstJob}}
+\index{getFirstJob@{getFirstJob}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getFirstJob()}{getFirstJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJob}{Job}} $\ast$ System\+::get\+First\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first job. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a8a9f45ee9c57c5183141edce432cc325}\label{classSystem_a8a9f45ee9c57c5183141edce432cc325}} 
+\index{System@{System}!getFirstUnfinishedJob@{getFirstUnfinishedJob}}
+\index{getFirstUnfinishedJob@{getFirstUnfinishedJob}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getFirstUnfinishedJob()}{getFirstUnfinishedJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJob}{Job}} $\ast$ System\+::get\+First\+Unfinished\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first unfinished job. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_ae519517a9aa46a90511ddb82fffe38d4}\label{classSystem_ae519517a9aa46a90511ddb82fffe38d4}} 
+\index{System@{System}!getFirstUnprocessedJob@{getFirstUnprocessedJob}}
+\index{getFirstUnprocessedJob@{getFirstUnprocessedJob}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getFirstUnprocessedJob()}{getFirstUnprocessedJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJob}{Job}} $\ast$ System\+::get\+First\+Unprocessed\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first unprocessed job. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{});
+\item REQUIRE(!jobs.empty(), \char`\"{}\+No jobs were found\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a3feb292902a37834dcc7d3d517404796}\label{classSystem_a3feb292902a37834dcc7d3d517404796}} 
+\index{System@{System}!getJobs@{getJobs}}
+\index{getJobs@{getJobs}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getJobs()}{getJobs()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \& System\+::get\+Jobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the jobs. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing the jobs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a8739ca9409ec92fea3d762bbf135569c}\label{classSystem_a8739ca9409ec92fea3d762bbf135569c}} 
+\index{System@{System}!getUnfinishedJobs@{getUnfinishedJobs}}
+\index{getUnfinishedJobs@{getUnfinishedJobs}!System@{System}}
+\doxysubsubsection{\texorpdfstring{getUnfinishedJobs()}{getUnfinishedJobs()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ System\+::get\+Unfinished\+Jobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the unfinished jobs. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing the unfinished jobs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a408cb785a64119f8cc73fbaa7425c7a5}\label{classSystem_a408cb785a64119f8cc73fbaa7425c7a5}} 
+\index{System@{System}!isLogErrors@{isLogErrors}}
+\index{isLogErrors@{isLogErrors}!System@{System}}
+\doxysubsubsection{\texorpdfstring{isLogErrors()}{isLogErrors()}}
+{\footnotesize\ttfamily bool System\+::is\+Log\+Errors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the log errors. 
+
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the errors are logged 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a58727360ee80a2251e397a7498b9f1c4}\label{classSystem_a58727360ee80a2251e397a7498b9f1c4}} 
+\index{System@{System}!printReport@{printReport}}
+\index{printReport@{printReport}!System@{System}}
+\doxysubsubsection{\texorpdfstring{printReport()}{printReport()}}
+{\footnotesize\ttfamily std\+::string System\+::print\+Report (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the report. 
+
+\begin{DoxyReturn}{Returns}
+A string containing the report
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{});
+\item REQUIRE(\mbox{\hyperlink{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}{Verify\+Consistency()}}, \char`\"{}\+Printing system is inconsistent\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_ab9898279909e5609a8d10b716f798198}\label{classSystem_ab9898279909e5609a8d10b716f798198}} 
+\index{System@{System}!processAll@{processAll}}
+\index{processAll@{processAll}!System@{System}}
+\doxysubsubsection{\texorpdfstring{processAll()}{processAll()}}
+{\footnotesize\ttfamily void System\+::process\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Processes all jobs. 
+
+\begin{DoxyReturn}{Returns}
+A string containing the result of the processing
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+System is not properly initialized\char`\"{});
+\end{DoxyItemize}
+
+@ensure
+\begin{DoxyItemize}
+\item ENSURE(\mbox{\hyperlink{classSystem_ae519517a9aa46a90511ddb82fffe38d4}{get\+First\+Unprocessed\+Job()}} == NULL, \char`\"{}\+Not all pages were printed\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a254a14ed48bf7fa7913b4aeef0b19c1a}\label{classSystem_a254a14ed48bf7fa7913b4aeef0b19c1a}} 
+\index{System@{System}!processFirstJob@{processFirstJob}}
+\index{processFirstJob@{processFirstJob}!System@{System}}
+\doxysubsubsection{\texorpdfstring{processFirstJob()}{processFirstJob()}}
+{\footnotesize\ttfamily void System\+::process\+First\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Processes the first job. 
+
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+System is not properly initialized.\char`\"{});
+\item REQUIRE(!jobs.empty(), \char`\"{}\+No jobs were found\char`\"{});
+\item REQUIRE(!devices.empty(), \char`\"{}\+No devices were found\char`\"{});
+\item REQUIRE(\mbox{\hyperlink{classSystem_ae519517a9aa46a90511ddb82fffe38d4}{get\+First\+Unprocessed\+Job()}} != NULL, \char`\"{}\+All jobs are processed\char`\"{});
+\item REQUIRE(\mbox{\hyperlink{classSystem_ae519517a9aa46a90511ddb82fffe38d4}{get\+First\+Unprocessed\+Job()}}-\/$>$get\+Assigned\+To() != NULL, \char`\"{}\+Job is not assigned to a device\char`\"{});
+\end{DoxyItemize}
+
+@ensure
+\begin{DoxyItemize}
+\item ENSURE(job-\/$>$is\+Finished(), \char`\"{}\+Job is not finished\char`\"{});
+\item ENSURE(job-\/$>$get\+Assigned\+To()-\/$>$get\+Load() != initial\+Load, \char`\"{}\+Device did not process the job\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a5c696eb57e5d3483beef1042462ab465}\label{classSystem_a5c696eb57e5d3483beef1042462ab465}} 
+\index{System@{System}!properlyInitialized@{properlyInitialized}}
+\index{properlyInitialized@{properlyInitialized}!System@{System}}
+\doxysubsubsection{\texorpdfstring{properlyInitialized()}{properlyInitialized()}}
+{\footnotesize\ttfamily bool System\+::properly\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the class is properly. 
+
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the class is properly initialized 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a9046c539f1a0e3b59e0fb41b8c1f2037}\label{classSystem_a9046c539f1a0e3b59e0fb41b8c1f2037}} 
+\index{System@{System}!ReadData@{ReadData}}
+\index{ReadData@{ReadData}!System@{System}}
+\doxysubsubsection{\texorpdfstring{ReadData()}{ReadData()}}
+{\footnotesize\ttfamily void System\+::\+Read\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Reads the data from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & @require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized.\char`\"{});
+\item REQUIRE(File\+Exists(file\+\_\+name), \char`\"{}\+File does not exist.\char`\"{}); 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_aadfca0b237acf38c23fefed41a36498a}\label{classSystem_aadfca0b237acf38c23fefed41a36498a}} 
+\index{System@{System}!ReadDevice@{ReadDevice}}
+\index{ReadDevice@{ReadDevice}!System@{System}}
+\doxysubsubsection{\texorpdfstring{ReadDevice()}{ReadDevice()}}
+{\footnotesize\ttfamily void System\+::\+Read\+Device (\begin{DoxyParamCaption}\item[{Ti\+Xml\+Element $\ast$}]{device\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Reads the device from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+\_\+element} & @require
+\begin{DoxyItemize}
+\item REQUIRE(device\+\_\+element!= NULL, \char`\"{}device\+\_\+element is a NULL pointer\char`\"{});
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+@ensure
+\begin{DoxyItemize}
+\item ENSURE(!devices.empty(), \char`\"{}\+No devices were read after reading xml file\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a15de3d7ab06a2c8e745667f0841b3211}\label{classSystem_a15de3d7ab06a2c8e745667f0841b3211}} 
+\index{System@{System}!ReadJob@{ReadJob}}
+\index{ReadJob@{ReadJob}!System@{System}}
+\doxysubsubsection{\texorpdfstring{ReadJob()}{ReadJob()}}
+{\footnotesize\ttfamily void System\+::\+Read\+Job (\begin{DoxyParamCaption}\item[{Ti\+Xml\+Element $\ast$}]{job\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Reads the job from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em job\+\_\+element} & @require
+\begin{DoxyItemize}
+\item REQUIRE(job\+\_\+element!= NULL, \char`\"{}job\+\_\+element is a NULL pointer\char`\"{});
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+@ensure
+\begin{DoxyItemize}
+\item ENSURE(!jobs.empty(), \char`\"{}\+No jobs were read after reading xml file\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a87fd12960c1314457f57c6df18231ea6}\label{classSystem_a87fd12960c1314457f57c6df18231ea6}} 
+\index{System@{System}!setLogErrors@{setLogErrors}}
+\index{setLogErrors@{setLogErrors}!System@{System}}
+\doxysubsubsection{\texorpdfstring{setLogErrors()}{setLogErrors()}}
+{\footnotesize\ttfamily void System\+::set\+Log\+Errors (\begin{DoxyParamCaption}\item[{bool}]{log\+Errors }\end{DoxyParamCaption})}
+
+
+
+Set if the errors should be logged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Errors} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_a77a153bc2c78d994cef3315c67becc32}\label{classSystem_a77a153bc2c78d994cef3315c67becc32}} 
+\index{System@{System}!setLogFile@{setLogFile}}
+\index{setLogFile@{setLogFile}!System@{System}}
+\doxysubsubsection{\texorpdfstring{setLogFile()}{setLogFile()}}
+{\footnotesize\ttfamily void System\+::set\+Log\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Processes all jobs. 
+
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+System is not properly initialized\char`\"{});
+\end{DoxyItemize}
+
+@ensure
+\begin{DoxyItemize}
+\item ENSURE(log\+\_\+file\+\_\+name == log\+\_\+file, \char`\"{}\+Log file is not set\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystem_a08632e8306190dd498cc1d0370521e2a}\label{classSystem_a08632e8306190dd498cc1d0370521e2a}} 
+\index{System@{System}!setLogMessages@{setLogMessages}}
+\index{setLogMessages@{setLogMessages}!System@{System}}
+\doxysubsubsection{\texorpdfstring{setLogMessages()}{setLogMessages()}}
+{\footnotesize\ttfamily void System\+::set\+Log\+Messages (\begin{DoxyParamCaption}\item[{bool}]{log }\end{DoxyParamCaption})}
+
+
+
+Set if the messages should be logged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}\label{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}} 
+\index{System@{System}!VerifyConsistency@{VerifyConsistency}}
+\index{VerifyConsistency@{VerifyConsistency}!System@{System}}
+\doxysubsubsection{\texorpdfstring{VerifyConsistency()}{VerifyConsistency()}}
+{\footnotesize\ttfamily bool System\+::\+Verify\+Consistency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Verifies the consistency of the system, prints errors if inconsistent and logs are enabled. 
+
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the system is consistent
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystem_a5c696eb57e5d3483beef1042462ab465}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}Check if Page\+Count and Job\+Number are not negative
+
+Check if Emission and Speed are not negative
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/System.\+h\item 
+src/System.\+cpp\end{DoxyCompactItemize}

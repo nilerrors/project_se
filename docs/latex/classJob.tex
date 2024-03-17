@@ -1,0 +1,228 @@
+\hypertarget{classJob}{}\doxysection{Job Class Reference}
+\label{classJob}\index{Job@{Job}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJob_a02b1ae87426e475f5bb982773532b23b}{Job}} (Ti\+Xml\+Element $\ast$job\+\_\+element)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classJob}{Job}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob_a35b685e9c52316510a3caeac02f7b7d6}{Job}} (int job\+Number, int page\+Count, const std\+::string \&user\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classJob}{Job}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJob_a95910d5340aee565a2839d3d3b9a7709}\label{classJob_a95910d5340aee565a2839d3d3b9a7709}} 
+bool {\bfseries properly\+Initialized} () const
+\item 
+int \mbox{\hyperlink{classJob_a5d069e2bb240f3cdb096f3e983bb5ccd}{get\+Job\+Number}} () const
+\begin{DoxyCompactList}\small\item\em Gets the job number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classJob_a576b86cfcbd5fadf9caca6ec9e17b773}{get\+Page\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Gets the page count. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classJob_acde2f69a76b72f550bc85356502850ad}{get\+User\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the user name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classJob_aea34848a4e41d09e1247637151ef0f8f}{is\+Finished}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the job is finished. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classJob_a18fa757395a94b64e5364036f17aa858}{is\+In\+Process}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the job is in process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJob_ac06914aedd7629b3a5984db61cca9c21}{set\+In\+Process}} (bool in\+Process)
+\begin{DoxyCompactList}\small\item\em Sets the job to in process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJob_a96638b2c76aeae061a7d0522aa2d93f3}{set\+Finished}} (bool finished)
+\begin{DoxyCompactList}\small\item\em Sets the job to finished. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ \mbox{\hyperlink{classJob_af9dd68b6d84a5c3097c42d132be461db}{get\+Assigned\+To}} () const
+\begin{DoxyCompactList}\small\item\em Gets the device the job is assigned to. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJob_a44ff6cafb3a8768279e74566a486edde}{set\+Assigned\+To}} (\mbox{\hyperlink{classDevice}{Device}} $\ast$assigned\+To)
+\begin{DoxyCompactList}\small\item\em Sets the device the job is assigned to. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classJob_a6cd48a4c0314748d17dc051812c12110}{finish\+Message}} () const
+\begin{DoxyCompactList}\small\item\em Returns a string containing the finish message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classJob_a02b1ae87426e475f5bb982773532b23b}\label{classJob_a02b1ae87426e475f5bb982773532b23b}} 
+\index{Job@{Job}!Job@{Job}}
+\index{Job@{Job}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{Job()}{Job()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Job\+::\+Job (\begin{DoxyParamCaption}\item[{Ti\+Xml\+Element $\ast$}]{job\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classJob}{Job}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+\_\+element} & Ti\+Xml\+Element containing the device data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{classJob}{Job}} object
+\end{DoxyReturn}
+@expect
+\begin{DoxyItemize}
+\item EXPECT(!temp\+\_\+job\+Number.empty(), \char`\"{}\+No job number is provided\char`\"{});
+\item EXPECT(!temp\+\_\+page\+Count.empty(), \char`\"{}\+No page count is provided\char`\"{});
+\item EXPECT(is\+\_\+number(temp\+\_\+job\+Number) , \char`\"{}\+Job number should be a number\char`\"{});
+\item EXPECT(is\+\_\+number(temp\+\_\+page\+Count) , \char`\"{}\+Page count should be a number\char`\"{});
+\item EXPECT(!temp\+\_\+user\+Name.empty(), \char`\"{}\+No user name is provided\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classJob_a35b685e9c52316510a3caeac02f7b7d6}\label{classJob_a35b685e9c52316510a3caeac02f7b7d6}} 
+\index{Job@{Job}!Job@{Job}}
+\index{Job@{Job}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{Job()}{Job()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Job\+::\+Job (\begin{DoxyParamCaption}\item[{int}]{job\+Number,  }\item[{int}]{page\+Count,  }\item[{const std\+::string \&}]{user\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classJob}{Job}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em job\+Number} & \\
+\hline
+{\em page\+Count} & \\
+\hline
+{\em user\+Name} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classJob_a6cd48a4c0314748d17dc051812c12110}\label{classJob_a6cd48a4c0314748d17dc051812c12110}} 
+\index{Job@{Job}!finishMessage@{finishMessage}}
+\index{finishMessage@{finishMessage}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{finishMessage()}{finishMessage()}}
+{\footnotesize\ttfamily std\+::string Job\+::finish\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns a string containing the finish message. 
+
+\begin{DoxyReturn}{Returns}
+A string containing the finish message
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(properly\+Initialized(), \char`\"{}\+Job is not properly initialized\char`\"{});
+\item REQUIRE(assigned\+To != NULL, \char`\"{}\+Job is not assigned to a device\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classJob_af9dd68b6d84a5c3097c42d132be461db}\label{classJob_af9dd68b6d84a5c3097c42d132be461db}} 
+\index{Job@{Job}!getAssignedTo@{getAssignedTo}}
+\index{getAssignedTo@{getAssignedTo}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{getAssignedTo()}{getAssignedTo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDevice}{Device}} $\ast$ Job\+::get\+Assigned\+To (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the device the job is assigned to. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJob_a5d069e2bb240f3cdb096f3e983bb5ccd}\label{classJob_a5d069e2bb240f3cdb096f3e983bb5ccd}} 
+\index{Job@{Job}!getJobNumber@{getJobNumber}}
+\index{getJobNumber@{getJobNumber}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{getJobNumber()}{getJobNumber()}}
+{\footnotesize\ttfamily int Job\+::get\+Job\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the job number. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJob_a576b86cfcbd5fadf9caca6ec9e17b773}\label{classJob_a576b86cfcbd5fadf9caca6ec9e17b773}} 
+\index{Job@{Job}!getPageCount@{getPageCount}}
+\index{getPageCount@{getPageCount}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{getPageCount()}{getPageCount()}}
+{\footnotesize\ttfamily int Job\+::get\+Page\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the page count. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJob_acde2f69a76b72f550bc85356502850ad}\label{classJob_acde2f69a76b72f550bc85356502850ad}} 
+\index{Job@{Job}!getUserName@{getUserName}}
+\index{getUserName@{getUserName}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{getUserName()}{getUserName()}}
+{\footnotesize\ttfamily const std\+::string \& Job\+::get\+User\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the user name. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJob_aea34848a4e41d09e1247637151ef0f8f}\label{classJob_aea34848a4e41d09e1247637151ef0f8f}} 
+\index{Job@{Job}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily bool Job\+::is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the job is finished. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJob_a18fa757395a94b64e5364036f17aa858}\label{classJob_a18fa757395a94b64e5364036f17aa858}} 
+\index{Job@{Job}!isInProcess@{isInProcess}}
+\index{isInProcess@{isInProcess}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{isInProcess()}{isInProcess()}}
+{\footnotesize\ttfamily bool Job\+::is\+In\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the job is in process. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJob_a44ff6cafb3a8768279e74566a486edde}\label{classJob_a44ff6cafb3a8768279e74566a486edde}} 
+\index{Job@{Job}!setAssignedTo@{setAssignedTo}}
+\index{setAssignedTo@{setAssignedTo}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{setAssignedTo()}{setAssignedTo()}}
+{\footnotesize\ttfamily void Job\+::set\+Assigned\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDevice}{Device}} $\ast$}]{assigned\+To }\end{DoxyParamCaption})}
+
+
+
+Sets the device the job is assigned to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em assigned\+To} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classJob_a96638b2c76aeae061a7d0522aa2d93f3}\label{classJob_a96638b2c76aeae061a7d0522aa2d93f3}} 
+\index{Job@{Job}!setFinished@{setFinished}}
+\index{setFinished@{setFinished}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{setFinished()}{setFinished()}}
+{\footnotesize\ttfamily void Job\+::set\+Finished (\begin{DoxyParamCaption}\item[{bool}]{finished }\end{DoxyParamCaption})}
+
+
+
+Sets the job to finished. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em finished} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classJob_ac06914aedd7629b3a5984db61cca9c21}\label{classJob_ac06914aedd7629b3a5984db61cca9c21}} 
+\index{Job@{Job}!setInProcess@{setInProcess}}
+\index{setInProcess@{setInProcess}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{setInProcess()}{setInProcess()}}
+{\footnotesize\ttfamily void Job\+::set\+In\+Process (\begin{DoxyParamCaption}\item[{bool}]{in\+Process }\end{DoxyParamCaption})}
+
+
+
+Sets the job to in process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+Process} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Job.\+h\item 
+src/Job.\+cpp\end{DoxyCompactItemize}
