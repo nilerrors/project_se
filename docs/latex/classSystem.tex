@@ -1,0 +1,90 @@
+\hypertarget{classSystem}{}\doxysection{System Class Reference}
+\label{classSystem}\index{System@{System}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSystem_a66bdd137db3fc914bbfe9518b6c71017}\label{classSystem_a66bdd137db3fc914bbfe9518b6c71017}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{classSystem_a9046c539f1a0e3b59e0fb41b8c1f2037}\label{classSystem_a9046c539f1a0e3b59e0fb41b8c1f2037}} 
+void {\bfseries Read\+Data} (const std\+::string \&file\+\_\+name)
+\item 
+\mbox{\Hypertarget{classSystem_aadfca0b237acf38c23fefed41a36498a}\label{classSystem_aadfca0b237acf38c23fefed41a36498a}} 
+void {\bfseries Read\+Device} (Ti\+Xml\+Element $\ast$device\+\_\+element)
+\item 
+\mbox{\Hypertarget{classSystem_a15de3d7ab06a2c8e745667f0841b3211}\label{classSystem_a15de3d7ab06a2c8e745667f0841b3211}} 
+void {\bfseries Read\+Job} (Ti\+Xml\+Element $\ast$job\+\_\+element)
+\item 
+\mbox{\Hypertarget{classSystem_a5c696eb57e5d3483beef1042462ab465}\label{classSystem_a5c696eb57e5d3483beef1042462ab465}} 
+bool {\bfseries properly\+Initialized} () const
+\item 
+\mbox{\Hypertarget{classSystem_ae62a0578f26ad600b125b63201a8aa83}\label{classSystem_ae62a0578f26ad600b125b63201a8aa83}} 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ {\bfseries get\+First\+Device} () const
+\item 
+\mbox{\Hypertarget{classSystem_a479ddbb1302e82498cdf30749c9bc6c5}\label{classSystem_a479ddbb1302e82498cdf30749c9bc6c5}} 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ {\bfseries get\+First\+Job} () const
+\item 
+\mbox{\Hypertarget{classSystem_a8a9f45ee9c57c5183141edce432cc325}\label{classSystem_a8a9f45ee9c57c5183141edce432cc325}} 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ {\bfseries get\+First\+Unfinished\+Job} () const
+\item 
+\mbox{\Hypertarget{classSystem_ae519517a9aa46a90511ddb82fffe38d4}\label{classSystem_ae519517a9aa46a90511ddb82fffe38d4}} 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ {\bfseries get\+First\+Unprocessed\+Job} () const
+\item 
+\mbox{\Hypertarget{classSystem_afb96b2dce0f9b9464bca28096f8a6faa}\label{classSystem_afb96b2dce0f9b9464bca28096f8a6faa}} 
+const std\+::vector$<$ \mbox{\hyperlink{classDevice}{Device}} $\ast$ $>$ \& {\bfseries get\+Devices} () const
+\item 
+\mbox{\Hypertarget{classSystem_a3feb292902a37834dcc7d3d517404796}\label{classSystem_a3feb292902a37834dcc7d3d517404796}} 
+const std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \& {\bfseries get\+Jobs} () const
+\item 
+\mbox{\Hypertarget{classSystem_a8739ca9409ec92fea3d762bbf135569c}\label{classSystem_a8739ca9409ec92fea3d762bbf135569c}} 
+std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ {\bfseries get\+Unfinished\+Jobs} () const
+\item 
+\mbox{\Hypertarget{classSystem_a408cb785a64119f8cc73fbaa7425c7a5}\label{classSystem_a408cb785a64119f8cc73fbaa7425c7a5}} 
+bool {\bfseries is\+Log\+Errors} () const
+\item 
+\mbox{\Hypertarget{classSystem_a87fd12960c1314457f57c6df18231ea6}\label{classSystem_a87fd12960c1314457f57c6df18231ea6}} 
+void {\bfseries set\+Log\+Errors} (bool log\+Errors)
+\item 
+\mbox{\Hypertarget{classSystem_a08632e8306190dd498cc1d0370521e2a}\label{classSystem_a08632e8306190dd498cc1d0370521e2a}} 
+void {\bfseries set\+Log\+Messages} (bool log)
+\item 
+\mbox{\Hypertarget{classSystem_a58727360ee80a2251e397a7498b9f1c4}\label{classSystem_a58727360ee80a2251e397a7498b9f1c4}} 
+std\+::string {\bfseries print\+Report} () const
+\item 
+bool \mbox{\hyperlink{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}{Verify\+Consistency}} () const
+\item 
+\mbox{\Hypertarget{classSystem_a29bf085c07d63f91a16203f461851c03}\label{classSystem_a29bf085c07d63f91a16203f461851c03}} 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ {\bfseries get\+Device\+With\+Least\+Load} () const
+\item 
+\mbox{\Hypertarget{classSystem_a4082df5174019276b8750e0a22490a65}\label{classSystem_a4082df5174019276b8750e0a22490a65}} 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ {\bfseries assign\+Job\+To\+Device} (\mbox{\hyperlink{classJob}{Job}} $\ast$job) const
+\item 
+\mbox{\Hypertarget{classSystem_a5ade759f0af4b991d08bde7549a558f9}\label{classSystem_a5ade759f0af4b991d08bde7549a558f9}} 
+void {\bfseries assign\+All\+Jobs} () const
+\item 
+\mbox{\Hypertarget{classSystem_a254a14ed48bf7fa7913b4aeef0b19c1a}\label{classSystem_a254a14ed48bf7fa7913b4aeef0b19c1a}} 
+void {\bfseries process\+First\+Job} () const
+\item 
+\mbox{\Hypertarget{classSystem_a77a153bc2c78d994cef3315c67becc32}\label{classSystem_a77a153bc2c78d994cef3315c67becc32}} 
+void {\bfseries set\+Log\+File} (const std\+::string \&log\+\_\+file\+\_\+name)
+\item 
+\mbox{\Hypertarget{classSystem_ab9898279909e5609a8d10b716f798198}\label{classSystem_ab9898279909e5609a8d10b716f798198}} 
+void {\bfseries process\+All} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}\label{classSystem_a35b25b4d7fb5a6995cc8f71e54efeef3}} 
+\index{System@{System}!VerifyConsistency@{VerifyConsistency}}
+\index{VerifyConsistency@{VerifyConsistency}!System@{System}}
+\doxysubsubsection{\texorpdfstring{VerifyConsistency()}{VerifyConsistency()}}
+{\footnotesize\ttfamily bool System\+::\+Verify\+Consistency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Check if Page\+Count and Job\+Number are not negative
+
+Check if Emission and Speed are not negative
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/System.\+h\item 
+src/System.\+cpp\end{DoxyCompactItemize}
