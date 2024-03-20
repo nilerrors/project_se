@@ -47,30 +47,6 @@ public:
     void ReadData(const std::string &file_name);
 
 	/**
-	 * \brief Reads the device from the file
-	 * @param device_element
-
-	 * @require
-	     - REQUIRE(device_element!= NULL, "device_element is a NULL pointer");
-
-	 * @ensure
-	 	 - ENSURE(!devices.empty(), "No devices were read after reading xml file");
-	 */
-    void ReadDevice(TiXmlElement *device_element);
-
-	/**
-	 * \brief Reads the job from the file
-	 * @param job_element
-
-	 * @require
-	     - REQUIRE(job_element!= NULL, "job_element is a NULL pointer");
-
-	 * @ensure
-	 	 - ENSURE(!jobs.empty(), "No jobs were read after reading xml file");
-	 */
-    void ReadJob(TiXmlElement *job_element);
-
-	/**
 	 * \brief Checks if the class is properly
 	 * @return A boolean indicating if the class is properly initialized
 	 */

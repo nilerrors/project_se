@@ -41,6 +41,8 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/tinyxmlparser.cpp
         src/Logger.cpp
         src/Logger.h
+        src/SystemReader.cpp
+        src/SystemReader.h
 )
 
 # Create RELEASE target
