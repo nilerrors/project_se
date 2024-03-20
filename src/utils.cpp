@@ -81,6 +81,10 @@ bool FileCompare(const std::string leftFileName, const std::string rightFileName
     return result;
 }
 
+bool StringCompare(const std::string &leftString, const std::string &rightString) {
+	return leftString == rightString;
+}
+
 // Source: https://stackoverflow.com/a/4654718
 bool is_number(const std::string& s)
 {

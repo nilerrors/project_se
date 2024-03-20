@@ -14,7 +14,6 @@
 
 System::System() {
     _init = this;
-	log_errors = false;
 }
 
 System::~System() {
@@ -77,9 +76,7 @@ void System::ReadDevice(TiXmlElement *device_element) {
         ENSURE(!devices.empty(), "No devices were read after reading xml file");
     }
     catch (const std::runtime_error& error) {
-        if (!log_errors)
-            return;
-        std::cerr << error.what() << std::endl;
+        logger->error(error.what());
     }
 }
 
@@ -92,10 +89,8 @@ void System::ReadJob(TiXmlElement *job_element) {
         ENSURE(!jobs.empty(), "No Jobs were read after reading xml file");
     }
     catch (const std::runtime_error& error) {
-        if (!log_errors)
-            return;
-        std::cerr << error.what() << std::endl;
-    }
+        logger->error(error.what());
+	}
 }
 
 
@@ -174,21 +169,16 @@ bool System::VerifyConsistency() const {
     ///Check if PageCount and JobNumber are not negative
     for(Job *const& job : jobs){
         if(!CheckNotNegative(job->getPageCount())){
-            if (log_errors){
-                std::cerr << "Inconsistent printing system" <<std::endl;
-            }
+			logger->error("Inconsistent printing system");
             return false;
         }
         else if(!CheckNotNegative(job->getJobNumber())){
-            if (log_errors){
-                std::cerr << "Inconsistent printing system" <<std::endl;
-            }
+            logger->error("Inconsistent printing system");
             return false;
         }
 
         if(std::find(job_nums.begin(), job_nums.end(),job->getJobNumber()) != job_nums.end()){
-            if(log_errors)
-                std::cerr << "Inconsistent printing system" <<std::endl;
+            logger->error("Inconsistent printing system");
             return false;
         }
         else{
@@ -199,14 +189,11 @@ bool System::VerifyConsistency() const {
     ///Check if Emission and Speed are not negative
     for(Device *const &device : devices){
         if(!CheckNotNegative(device->getEmission())){
-            if(log_errors)
-                std::cerr << "Inconsistent printing system" <<std::endl;
-            return false;
+            logger->error("Inconsistent printing system");
+			return false;
         }
         else if(!CheckNotNegative(device->getSpeed())){
-            if(log_errors){
-                std::cerr << "Inconsistent printing system" <<std::endl;
-            }
+            logger->error("Inconsistent printing system");
             return false;
         }
     }
@@ -217,14 +204,6 @@ bool System::VerifyConsistency() const {
 
 bool System::CheckNotNegative(int num) {
     return num*-1 < 0;
-}
-
-bool System::isLogErrors() const {
-    return log_errors;
-}
-
-void System::setLogErrors(bool logErrors) {
-    log_errors = logErrors;
 }
 
 Device *System::getDeviceWithLeastLoad() const {
@@ -289,33 +268,10 @@ void System::processFirstJob() const {
 	job->setInProcess(true);
 	std::string message = device->processJob();
 
-	if (!log_file_name.empty() && log)
-	{
-		std::ofstream log_file(log_file_name, std::ios_base::app);
-		log_file << message << std::endl;
-		log_file.close();
-	}
-	else if (log)
-	{
-		std::cout << message << std::endl;
-	}
+	logger->log(message);
 
 	ENSURE(job->isFinished(), "Job is not finished");
 	ENSURE(job->getAssignedTo()->getLoad() != initialLoad, "Device did not process the job");
-}
-
-void System::setLogFile(const std::string &log_file)
-{
-	REQUIRE(properlyInitialized(), "System is not properly initialized");
-	log_file_name = log_file;
-	ENSURE(log_file_name == log_file, "Log file is not set");
-}
-
-void System::setLogMessages(bool log_messages)
-{
-	REQUIRE(properlyInitialized(), "System is not properly initialized");
-	log = log_messages;
-	ENSURE(log == log_messages, "Log messages are not set");
 }
 
 void System::processAll() {
@@ -332,4 +288,10 @@ void System::processAll() {
     ENSURE(getFirstUnprocessedJob() == NULL, "Not all pages were printed");
 }
 
-
+void System::setLogger(Logger *log)
+{
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
+	REQUIRE(log != NULL, "Logger is a NULL pointer");
+	logger = log;
+	ENSURE(logger == log, "Logger was not set");
+}

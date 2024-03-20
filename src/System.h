@@ -11,6 +11,7 @@
 #include "tinyxml.h"
 #include "Device.h"
 #include "Job.h"
+#include "Logger.h"
 
 static const std::string REPORT_FILE_EXTENSION = ".txt";
 static const std::string LOG_FILE_EXTENSION = ".log";
@@ -131,24 +132,6 @@ public:
 	std::vector<Job *> getUnfinishedJobs() const;
 
 	/**
-	 * \brief Gets the log errors
-	 * @return A boolean indicating if the errors are logged
-	 */
-    bool isLogErrors() const;
-
-	/**
-	 * \brief Set if the errors should be logged
-	 * @param logErrors
-	 */
-    void setLogErrors(bool logErrors);
-
-	/**
-	 * \brief Set if the messages should be logged
-	 * @param log
-	 */
-	void setLogMessages(bool log);
-
-	/**
 	 * \brief Prints the report
 	 * \return A string containing the report
 
@@ -216,17 +199,6 @@ public:
 
 	/**
 	 * \brief Processes all jobs
-
-	 * @require
-		- REQUIRE(properlyInitialized(), "System is not properly initialized");
-
-	 * @ensure
-		- ENSURE(log_file_name == log_file, "Log file is not set");
-	 */
-	void setLogFile(const std::string &log_file_name);
-
-	/**
-	 * \brief Processes all jobs
 	 * @return A string containing the result of the processing
 
 
@@ -237,6 +209,18 @@ public:
     	- ENSURE(getFirstUnprocessedJob() == NULL, "Not all pages were printed");
 	 */
     void processAll();
+
+	/**
+	 * \brief Sets the logger to the given logger
+
+	 * @require
+	 	- REQUIRE(properlyInitialized(), "System is not properly initialized");
+	 	- REQUIRE(logger != NULL, "Logger is a NULL pointer");
+
+	 * @ensure
+	 	- ENSURE(logger == logger, "Logger was not set");
+	 */
+	 void setLogger(Logger *logger);
 
 private:
 	/**
@@ -250,9 +234,7 @@ private:
     System* _init;
     std::vector<Device *> devices;
     std::vector<Job *> jobs;
-    bool log_errors;
-	std::string log_file_name;
-	bool log = false;
+	Logger *logger = new Logger();
 };
 
 

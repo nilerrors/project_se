@@ -46,6 +46,14 @@ bool FileIsEmpty(const std::string filename);
 bool FileCompare(const std::string leftFileName, const std::string rightFileName);
 
 /**
+ * \brief Compares two strings
+ * @param left
+ * @param right
+ * @return true if the strings are the same
+ */
+bool StringCompare(const std::string &left, const std::string &right);
+
+/**
  * \brief Checks if a string is a number
  * @param s
  * @return true if the string is a number
