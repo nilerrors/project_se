@@ -3,7 +3,7 @@
 ## Specification 
 
 | Use-Case                                                    | Priority
---------------------------------------------------------------|---------
+--------------------------------------------------------------|:-------:
 1: Input                                                      |
 Use Case 1.1: Reading printers and jobs                       | REQUIRED
 Use Case 1.2: Reading printers and jobs with different types  | REQUIRED
@@ -31,16 +31,16 @@ Use Case 4.3: GUI with CO2 emissions overview                 | USEFUL
 
 
 ### We gaan de volgende use-cases (op dit moment) implementeren:
-- Use Case 1.1
-- Use Case 1.2
-- Use Case 1.3
-- Use Case 1.4
-- Use Case 2.1
-- Use Case 2.2
-- Use Case 2.3
-- Use Case 3.1
-- Use Case 3.2
-- Use Case 3.3
-- Use Case 3.4
-- Use Case 3.5
-- Use Case 3.7
+- [x] Use Case 1.1
+- [ ] Use Case 1.2
+- [ ] Use Case 1.3
+- [ ] Use Case 1.4
+- [x] Use Case 2.1
+- [ ] Use Case 2.2
+- [ ] Use Case 2.3
+- [x] Use Case 3.1
+- [x] Use Case 3.2
+- [ ] Use Case 3.3
+- [ ] Use Case 3.4
+- [ ] Use Case 3.5
+- [ ] Use Case 3.7
