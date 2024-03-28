@@ -21,11 +21,11 @@ set(RELEASE_SOURCE_FILES src/main.cpp
         src/System.cpp
         src/Device.cpp
         src/Job.cpp
-        src/utils.cpp
-        src/tinystr.cpp
-        src/tinyxml.cpp
-        src/tinyxmlerror.cpp
-        src/tinyxmlparser.cpp
+        src/lib/utils.cpp
+        src/lib/tinystr.cpp
+        src/lib/tinyxml.cpp
+        src/lib/tinyxmlerror.cpp
+        src/lib/tinyxmlparser.cpp
 )
 
 # Set source files for DEBUG target
@@ -34,11 +34,11 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/System.cpp
         src/Device.cpp
         src/Job.cpp
-        src/utils.cpp
-        src/tinystr.cpp
-        src/tinyxml.cpp
-        src/tinyxmlerror.cpp
-        src/tinyxmlparser.cpp
+        src/lib/utils.cpp
+        src/lib/tinystr.cpp
+        src/lib/tinyxml.cpp
+        src/lib/tinyxmlerror.cpp
+        src/lib/tinyxmlparser.cpp
         src/Logger.cpp
         src/Logger.h
         src/SystemReader.cpp

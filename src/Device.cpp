@@ -2,9 +2,9 @@
 // Created by student on 29/02/24.
 //
 
-#include "DesignByContract.h"
+#include "lib/DesignByContract.h"
 #include "Device.h"
-#include "utils.h"
+#include "lib/utils.h"
 #include "System.h"
 #include <iostream>
 #include <fstream>

@@ -2,15 +2,15 @@
 // Created by student on 29/02/24.
 //
 
-#include "DesignByContract.h"
-#include "utils.h"
+#include "lib/DesignByContract.h"
+#include "lib/utils.h"
 #include "System.h"
 #include <iostream>
 #include <fstream>
 #include <chrono>
 #include <iomanip>
 #include <random>
-#include "utils.h"
+#include "lib/utils.h"
 #include "SystemReader.h"
 
 System::System() {

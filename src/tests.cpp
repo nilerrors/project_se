@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "System.h"
-#include "utils.h"
+#include "lib/utils.h"
 
 class TestSystem : public ::testing::Test {
 protected:

@@ -7,7 +7,7 @@
 
 #include <string>
 #include <deque>
-#include "tinyxml.h"
+#include "lib/tinyxml.h"
 
 class Job;
 

@@ -3,8 +3,8 @@
 //
 
 #include "SystemReader.h"
-#include "DesignByContract.h"
-#include "utils.h"
+#include "lib/DesignByContract.h"
+#include "lib/utils.h"
 
 void SystemReader::ReadData(const std::string &file_name) {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");

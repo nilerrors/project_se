@@ -8,7 +8,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include "tinyxml.h"
+#include "lib/tinyxml.h"
 #include "Device.h"
 #include "Job.h"
 #include "Logger.h"

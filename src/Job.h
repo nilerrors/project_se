@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include "tinyxml.h"
+#include "lib/tinyxml.h"
 
 class Device;
 

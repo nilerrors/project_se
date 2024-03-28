@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include <sstream>
-#include "DesignByContract.h"
-#include "utils.h"
+#include "lib/DesignByContract.h"
+#include "lib/utils.h"
 #include "Job.h"
 #include "Device.h"
 
