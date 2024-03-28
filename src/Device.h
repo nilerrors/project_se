@@ -123,6 +123,7 @@ private:
     std::string name;
     int emission;
     int speed;
+    int cost;
     types type;
 	std::deque<Job *> jobs;
 };
