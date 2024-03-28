@@ -48,7 +48,7 @@ Device::Device(TiXmlElement *device_node) {
     EXPECT(!temp_speed.empty(), "No speed is provided");
     EXPECT(is_number(temp_speed) , "Speed should be an integer number");
     EXPECT(!temp_type.empty(), "No type is provided");
-    EXPECT(!isValidDeviceType(temp_type), "Type should be a valid type");
+    EXPECT(isValidDeviceType(temp_type), "Type should be a valid device type");
     EXPECT(!temp_cost.empty(), "No cost is provided");
     EXPECT(is_number(temp_cost), "Cost should be an integer number");
 

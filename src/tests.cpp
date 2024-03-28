@@ -41,7 +41,7 @@ TEST_F(TestUseCase1o1, ReadData_NoName) {
     EXPECT_TRUE(system->getManager()->getFirstJob() == NULL);
 
 	system->ReadData("xml_tests/NoName.xml");
-    std::cout<<output<<std::endl;
+
 	EXPECT_TRUE(StringCompare(output, "ERROR: No name is provided\n"));
     EXPECT_TRUE(system->getManager()->getDevices().empty());
     EXPECT_TRUE(system->getManager()->getJobs().size() == 2);

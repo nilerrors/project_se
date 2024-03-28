@@ -41,7 +41,7 @@ Job::Job(TiXmlElement *job_element) {
 	EXPECT(is_number(temp_pageCount) , "Page count should be a number");
 	EXPECT(!temp_userName.empty(), "No user name is provided");
     EXPECT(!temp_type.empty(), "No type is provided");
-    EXPECT(!isValidDeviceType(temp_type), "Type should be a valid type");
+    EXPECT(isValidDeviceType(temp_type), "Type should be a valid job type");
 
 	jobNumber = std::stoi(temp_jobNumber);
 	pageCount = std::stoi(temp_pageCount);
