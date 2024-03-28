@@ -16,6 +16,7 @@ Job::Job(TiXmlElement *job_element) {
 	std::string temp_jobNumber;
 	std::string temp_pageCount;
 	std::string temp_userName;
+    std::string temp_type;
 
 	for (TiXmlNode *node = job_element->FirstChild(); node != NULL; node = node->NextSibling()) {
 		if (node->FirstChild() == NULL) {
@@ -27,7 +28,9 @@ Job::Job(TiXmlElement *job_element) {
 			temp_pageCount = node->FirstChild()->Value();
 		} else if (std::string(node->Value()) == "userName") {
 			temp_userName = node->FirstChild()->Value();
-		} else {
+		} else if(std::string(node->Value()) == "type") {
+            temp_type = node->FirstChild()->Value();
+        } else {
             EXPECT(false, "Unknown attribute for Device: '" + std::string(node->Value()) + "'");
 		}
 	}
@@ -37,11 +40,14 @@ Job::Job(TiXmlElement *job_element) {
 	EXPECT(is_number(temp_jobNumber) , "Job number should be a number");
 	EXPECT(is_number(temp_pageCount) , "Page count should be a number");
 	EXPECT(!temp_userName.empty(), "No user name is provided");
+    EXPECT(!temp_type.empty(), "No type is provided");
+    EXPECT(!isValidDeviceType(temp_type), "Type should be a valid type");
 
 	jobNumber = std::stoi(temp_jobNumber);
 	pageCount = std::stoi(temp_pageCount);
 	userName = temp_userName;
 	init_ = this;
+    type = stringtoType(temp_type);
 }
 
 int Job::getJobNumber() const {
@@ -99,4 +105,16 @@ std::string Job::finishMessage() const
 	message << "\t" << pageCount << " pages" << std::endl;
 
 	return message.str();
+}
+
+Job::types Job::stringtoType(std::string &typstr) {
+    if(typstr == "bw") {
+        return Job::types::bw;
+    }
+    else if(typstr == "scan"){
+        return Job::types::scan;
+    }
+    else {
+        return Job::types::color;
+    }
 }

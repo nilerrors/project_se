@@ -13,6 +13,8 @@ class Device;
 
 class Job {
 public:
+    enum types {bw, color, scan};
+
 	/**
 	 * \brief Constructor for Job
 	 * \param device_element TiXmlElement containing the device data
@@ -101,12 +103,15 @@ public:
 	 */
 	std::string finishMessage() const;
 
+    static Job::types stringtoType(std::string &typstr);
+
 private:
 	bool finished = false;
 	bool inProcess = false;
 	Device *assignedTo = NULL;
     int jobNumber;
     int pageCount;
+    types type;
     std::string userName;
 	Job *init_;
 };
