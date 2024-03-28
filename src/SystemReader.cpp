@@ -47,9 +47,9 @@ void SystemReader::ReadDevice(TiXmlElement *device_element) {
 	REQUIRE(device_element!= NULL, "device_element is a NULL pointer");
 	try {
 		Device* device = new Device(device_element);
-		devices->push_back(device);
+        manager->addDevice(device);
 
-		ENSURE(!devices->empty(), "No devices were read after reading xml file");
+		ENSURE(!manager->getDevices().empty(), "No devices were read after reading xml file");
 	}
 	catch (const std::runtime_error& error) {
 		logger->error(error.what());
@@ -60,11 +60,18 @@ void SystemReader::ReadJob(TiXmlElement *job_element) {
 	REQUIRE(job_element!= NULL, "job_element is a NULL pointer");
 	try {
 		Job* job = new Job(job_element);
-		jobs->push_back(job);
+        manager->addJob(job);
 
-		ENSURE(!jobs->empty(), "No Jobs were read after reading xml file");
+		ENSURE(!manager->getJobs().empty(), "No Jobs were read after reading xml file");
 	}
 	catch (const std::runtime_error& error) {
 		logger->error(error.what());
 	}
+}
+
+void SystemReader::setLogger(Logger *log) {
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+    REQUIRE(logger != NULL, "Logger is a NULL pointer");
+    logger = log;
+    ENSURE(logger == log, "Logger was not set");
 }
