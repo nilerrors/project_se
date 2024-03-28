@@ -43,6 +43,10 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/Logger.h
         src/SystemReader.cpp
         src/SystemReader.h
+        src/SystemAssigner.cpp
+        src/SystemAssigner.h
+        src/SystemManager.cpp
+        src/SystemManager.h
 )
 
 # Create RELEASE target

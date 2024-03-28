@@ -10,14 +10,14 @@
 #include "Job.h"
 #include "Device.h"
 #include "Logger.h"
+#include "SystemManager.h"
 
 class SystemReader
 {
 public:
-	SystemReader(std::vector<Job *> *jobs,
-				 std::vector<Device *> *devices,
+	SystemReader(SystemManager *manager,
 				 Logger *logger)
-				: _init(this), jobs(jobs), devices(devices), logger(logger) {}
+				: _init(this), manager(manager), logger(logger) {}
 	~SystemReader() = default;
 
 	/**
@@ -60,10 +60,12 @@ public:
 	 */
 	void ReadJob(TiXmlElement *job_element);
 
+
+    void setLogger(Logger *logger);
+
 private:
 	SystemReader *_init = nullptr;
-	std::vector<Job *> *jobs;
-	std::vector<Device *> *devices;
+	SystemManager *manager;
 	Logger *logger;
 };
 
