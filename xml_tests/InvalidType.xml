@@ -4,6 +4,7 @@
         <emission>3</emission>
         <speed>40</speed>
         <type>testtype</type>
+        <cost>50</cost>
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>

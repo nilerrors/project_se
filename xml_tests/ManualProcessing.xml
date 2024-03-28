@@ -3,15 +3,19 @@
         <name>UA printer 23</name>
         <emission>4</emission>
         <speed>37</speed>
+        <type>color</type>
+        <cost>50</cost>
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>
         <pageCount>2</pageCount>
         <userName>SabawoonEnayat</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>8951</jobNumber>
         <pageCount>23</pageCount>
         <userName>Sabawoon</userName>
+        <type>color</type>
     </JOB>
 </SYSTEM>

@@ -3,50 +3,63 @@
         <name>Office_Printer5</name>
         <emission>3</emission>
         <speed>40</speed>
+        <type>scan</type>
+        <cost>50</cost>
     </DEVICE>
     <DEVICE>
         <name>Sabre printer X50</name>
         <emission>6</emission>
         <speed>50</speed>
+        <type>color</type>
+        <cost>100</cost>
     </DEVICE>
     <DEVICE>
         <name>UA printer 23</name>
         <emission>4</emission>
         <speed>37</speed>
+        <type>scan</type>
+        <cost>70</cost>
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>
         <pageCount>2</pageCount>
         <userName>SergeDemeyer</userName>
+        <type>bw</type>
     </JOB>
     <JOB>
         <jobNumber>89481</jobNumber>
         <pageCount>20</pageCount>
         <userName>Tim_Apers</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>3</pageCount>
         <userName>anonymous_user</userName>
+        <type>scan</type>
     </JOB>
     <JOB>
         <jobNumber>325559</jobNumber>
         <pageCount>12</pageCount>
         <userName>Recep_Tayep_Erdogan</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>321859</jobNumber>
         <pageCount>6</pageCount>
         <userName>Donald_Trump</userName>
+        <type>bw</type>
     </JOB>
     <JOB>
         <jobNumber>165984</jobNumber>
         <pageCount>25</pageCount>
         <userName>Joe_Biden</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>651894</jobNumber>
         <pageCount>6</pageCount>
         <userName>Cristiano_Ronaldo</userName>
+        <type>scan</type>
     </JOB>
 </SYSTEM>
