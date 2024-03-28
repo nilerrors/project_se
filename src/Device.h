@@ -14,6 +14,8 @@ class Job;
 class Device
 {
 public:
+    enum types {bw, color, scan};
+
 	/**
 	 * \brief Constructor for Device
 	 * \param device_element TiXmlElement containing the device data
@@ -114,11 +116,14 @@ public:
 	 */
 	std::string processJob();
 
+    static Device::types stringtoType(std::string &typstr);
+
 private:
     Device *init_;
     std::string name;
     int emission;
     int speed;
+    types type;
 	std::deque<Job *> jobs;
 };
 

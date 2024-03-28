@@ -19,6 +19,7 @@ Device::Device(TiXmlElement *device_node) {
     std::string temp_name;
     std::string temp_emission;
     std::string temp_speed;
+    std::string temp_type;
 
     for (TiXmlNode *node = device_node->FirstChild(); node != nullptr; node = node->NextSibling()) {
         if (node->FirstChild() == nullptr) {
@@ -30,7 +31,10 @@ Device::Device(TiXmlElement *device_node) {
             temp_emission = node->FirstChild()->Value();
         } else if (std::string(node->Value()) == "speed") {
             temp_speed = node->FirstChild()->Value();
-        } else {
+        } else if(std::string(node->Value()) == "type") {
+            temp_type = node->FirstChild()->Value();
+        }
+        else {
             EXPECT(false, "Unknown attribute for Device: '" + std::string(node->Value()) + "'");
         }
     }
@@ -40,11 +44,14 @@ Device::Device(TiXmlElement *device_node) {
     EXPECT(is_number(temp_emission) , "Emission should be an integer number");
     EXPECT(!temp_speed.empty(), "No speed is provided");
     EXPECT(is_number(temp_speed) , "Speed should be an integer number");
+    EXPECT(!temp_type.empty(), "No type is provided");
+    EXPECT(!isValidDeviceType(temp_type), "Type should be a valid type");
 
     name = temp_name;
     emission = std::stoi(temp_emission);
     speed = std::stoi(temp_speed);
     init_ = this;
+    type = stringtoType(temp_type);
 }
 
 const std::string &Device::getName() const {
@@ -131,3 +138,17 @@ std::string Device::processJob()
 
 	return job->finishMessage();
 }
+
+Device::types Device::stringtoType(std::string &typstr) {
+    if(typstr == "bw") {
+        return Device::types::bw;
+    }
+    else if(typstr == "scan"){
+        return Device::types::scan;
+    }
+    else {
+        return Device::types::color;
+    }
+}
+
+

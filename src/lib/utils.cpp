@@ -123,3 +123,11 @@ std::string GenerateFileName(const std::string &prefix, const std::string &exten
 	return prefix + ss.str() + extension;
 }
 
+bool isValidDeviceType(const string &typeStr) {
+    if (typeStr == "bw" || typeStr == "color" || typeStr == "scan") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
