@@ -13,7 +13,7 @@ class Device;
 
 class Job {
 public:
-    enum types {bw, color, scan};
+    enum JobTypes {bw, color, scan};
 
 	/**
 	 * \brief Constructor for Job
@@ -103,7 +103,7 @@ public:
 	 */
 	std::string finishMessage() const;
 
-    static Job::types stringtoType(std::string &typstr);
+    static Job::JobTypes stringtoType(std::string &typstr);
 
 private:
 	bool finished = false;
@@ -111,7 +111,7 @@ private:
 	Device *assignedTo = NULL;
     int jobNumber;
     int pageCount;
-    types type;
+    JobTypes type;
     std::string userName;
 	Job *init_;
 };

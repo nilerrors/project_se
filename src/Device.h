@@ -14,7 +14,7 @@ class Job;
 class Device
 {
 public:
-    enum types {bw, color, scan};
+    enum DeviceTypes {bw, color, scan};
 
 	/**
 	 * \brief Constructor for Device
@@ -116,7 +116,7 @@ public:
 	 */
 	std::string processJob();
 
-    static Device::types stringtoType(std::string &typstr);
+    static Device::DeviceTypes stringtoType(std::string &typstr);
 
 private:
     Device *init_;
@@ -124,7 +124,7 @@ private:
     int emission;
     int speed;
     int cost;
-    types type;
+    DeviceTypes type;
 	std::deque<Job *> jobs;
 };
 

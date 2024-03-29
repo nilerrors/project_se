@@ -107,14 +107,14 @@ std::string Job::finishMessage() const
 	return message.str();
 }
 
-Job::types Job::stringtoType(std::string &typstr) {
+Job::JobTypes Job::stringtoType(std::string &typstr) {
     if(typstr == "bw") {
-        return Job::types::bw;
+        return Job::JobTypes::bw;
     }
     else if(typstr == "scan"){
-        return Job::types::scan;
+        return Job::JobTypes::scan;
     }
     else {
-        return Job::types::color;
+        return Job::JobTypes::color;
     }
 }

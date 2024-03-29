@@ -145,15 +145,15 @@ std::string Device::processJob()
 	return job->finishMessage();
 }
 
-Device::types Device::stringtoType(std::string &typstr) {
+Device::DeviceTypes Device::stringtoType(std::string &typstr) {
     if(typstr == "bw") {
-        return Device::types::bw;
+        return Device::DeviceTypes::bw;
     }
     else if(typstr == "scan"){
-        return Device::types::scan;
+        return Device::DeviceTypes::scan;
     }
     else {
-        return Device::types::color;
+        return Device::DeviceTypes::color;
     }
 }
 
