@@ -157,6 +157,7 @@ TEST_F(TestSystem, printReportHD){
     system->getManager()->getDevices()[0]->addJob(system->getManager()->getJobs()[6]);
 
     std::string filename = system->printReport();
+    std::cout << filename << std::endl;
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
 }
 
