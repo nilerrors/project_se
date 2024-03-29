@@ -62,13 +62,23 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classDevice-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Device Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a1890b10a78535e9ab936c5790ff7750e"><td class="memItemLeft" align="right" valign="top"><a id="a1890b10a78535e9ab936c5790ff7750e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>DeviceTypes</b> { <b>bw</b>
+, <b>color</b>
+, <b>scan</b>
+ }</td></tr>
+<tr class="separator:a1890b10a78535e9ab936c5790ff7750e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d2b5b2984b23dd626695a3fc44d3ebf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevice.html#a3d2b5b2984b23dd626695a3fc44d3ebf">Device</a> (TiXmlElement *device_element)</td></tr>
@@ -100,6 +110,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5354a1e24efe5889abc4b1088bf3ecb4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevice.html#a5354a1e24efe5889abc4b1088bf3ecb4">processJob</a> ()</td></tr>
 <tr class="memdesc:a5354a1e24efe5889abc4b1088bf3ecb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a job.  <a href="classDevice.html#a5354a1e24efe5889abc4b1088bf3ecb4">More...</a><br /></td></tr>
 <tr class="separator:a5354a1e24efe5889abc4b1088bf3ecb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a50ffdd4d1165b9fabd7e3391b0292601"><td class="memItemLeft" align="right" valign="top">static Device::DeviceTypes&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevice.html#a50ffdd4d1165b9fabd7e3391b0292601">stringtoType</a> (std::string &amp;typstr)</td></tr>
+<tr class="memdesc:a50ffdd4d1165b9fabd7e3391b0292601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the string representation of the device type to it's enum value.  <a href="classDevice.html#a50ffdd4d1165b9fabd7e3391b0292601">More...</a><br /></td></tr>
+<tr class="separator:a50ffdd4d1165b9fabd7e3391b0292601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3d2b5b2984b23dd626695a3fc44d3ebf"></a>
@@ -388,6 +404,41 @@ Public Member Functions</h2></td></tr>
 
 <p>Checks if the class is properly. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a50ffdd4d1165b9fabd7e3391b0292601"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50ffdd4d1165b9fabd7e3391b0292601">&#9670;&nbsp;</a></span>stringtoType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Device::DeviceTypes Device::stringtoType </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>typstr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts the string representation of the device type to it's enum value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">typstr</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>DeviceType </dd></dl>
 
 </div>
 </div>

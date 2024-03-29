@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['job_73',['Job',['../classJob.html#a02b1ae87426e475f5bb982773532b23b',1,'Job::Job(TiXmlElement *job_element)'],['../classJob.html#a35b685e9c52316510a3caeac02f7b7d6',1,'Job::Job(int jobNumber, int pageCount, const std::string &amp;userName)']]]
+  ['isfinished_108',['isFinished',['../classJob.html#aea34848a4e41d09e1247637151ef0f8f',1,'Job']]],
+  ['isinprocess_109',['isInProcess',['../classJob.html#a18fa757395a94b64e5364036f17aa858',1,'Job']]]
 ];

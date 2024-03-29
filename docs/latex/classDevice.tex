@@ -1,5 +1,14 @@
 \hypertarget{classDevice}{}\doxysection{Device Class Reference}
 \label{classDevice}\index{Device@{Device}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDevice_a1890b10a78535e9ab936c5790ff7750e}\label{classDevice_a1890b10a78535e9ab936c5790ff7750e}} 
+enum {\bfseries Device\+Types} \{ {\bfseries bw}
+, {\bfseries color}
+, {\bfseries scan}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +32,11 @@ int \mbox{\hyperlink{classDevice_aa1e0aa33d75393cac4b6d078f787387f}{get\+Load}} 
 \begin{DoxyCompactList}\small\item\em Gets the load of the device. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classDevice_a5354a1e24efe5889abc4b1088bf3ecb4}{process\+Job}} ()
 \begin{DoxyCompactList}\small\item\em Processes a job. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Device\+::\+Device\+Types \mbox{\hyperlink{classDevice_a50ffdd4d1165b9fabd7e3391b0292601}{stringto\+Type}} (std\+::string \&typstr)
+\begin{DoxyCompactList}\small\item\em Converts the string representation of the device type to it\textquotesingle{}s enum value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -212,6 +226,24 @@ Checks if the class is properly.
 
 \begin{DoxyReturn}{Returns}
 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a50ffdd4d1165b9fabd7e3391b0292601}\label{classDevice_a50ffdd4d1165b9fabd7e3391b0292601}} 
+\index{Device@{Device}!stringtoType@{stringtoType}}
+\index{stringtoType@{stringtoType}!Device@{Device}}
+\doxysubsubsection{\texorpdfstring{stringtoType()}{stringtoType()}}
+{\footnotesize\ttfamily Device\+::\+Device\+Types Device\+::stringto\+Type (\begin{DoxyParamCaption}\item[{std\+::string \&}]{typstr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converts the string representation of the device type to it\textquotesingle{}s enum value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em typstr} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Device\+Type 
 \end{DoxyReturn}
 
 

@@ -62,13 +62,23 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classJob-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Job Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a95b033bdbd4cf369e6d84c0ef1d3a8a4"><td class="memItemLeft" align="right" valign="top"><a id="a95b033bdbd4cf369e6d84c0ef1d3a8a4"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>JobTypes</b> { <b>bw</b>
+, <b>color</b>
+, <b>scan</b>
+ }</td></tr>
+<tr class="separator:a95b033bdbd4cf369e6d84c0ef1d3a8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a02b1ae87426e475f5bb982773532b23b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJob.html#a02b1ae87426e475f5bb982773532b23b">Job</a> (TiXmlElement *job_element)</td></tr>
@@ -77,8 +87,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a35b685e9c52316510a3caeac02f7b7d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJob.html#a35b685e9c52316510a3caeac02f7b7d6">Job</a> (int jobNumber, int pageCount, const std::string &amp;userName)</td></tr>
 <tr class="memdesc:a35b685e9c52316510a3caeac02f7b7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classJob.html">Job</a>.  <a href="classJob.html#a35b685e9c52316510a3caeac02f7b7d6">More...</a><br /></td></tr>
 <tr class="separator:a35b685e9c52316510a3caeac02f7b7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95910d5340aee565a2839d3d3b9a7709"><td class="memItemLeft" align="right" valign="top"><a id="a95910d5340aee565a2839d3d3b9a7709"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>properlyInitialized</b> () const</td></tr>
+<tr class="memitem:a95910d5340aee565a2839d3d3b9a7709"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJob.html#a95910d5340aee565a2839d3d3b9a7709">properlyInitialized</a> () const</td></tr>
+<tr class="memdesc:a95910d5340aee565a2839d3d3b9a7709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the class is properly.  <a href="classJob.html#a95910d5340aee565a2839d3d3b9a7709">More...</a><br /></td></tr>
 <tr class="separator:a95910d5340aee565a2839d3d3b9a7709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d069e2bb240f3cdb096f3e983bb5ccd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJob.html#a5d069e2bb240f3cdb096f3e983bb5ccd">getJobNumber</a> () const</td></tr>
 <tr class="memdesc:a5d069e2bb240f3cdb096f3e983bb5ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the job number.  <a href="classJob.html#a5d069e2bb240f3cdb096f3e983bb5ccd">More...</a><br /></td></tr>
@@ -110,6 +120,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>properlyInitialized</
 <tr class="memitem:a6cd48a4c0314748d17dc051812c12110"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJob.html#a6cd48a4c0314748d17dc051812c12110">finishMessage</a> () const</td></tr>
 <tr class="memdesc:a6cd48a4c0314748d17dc051812c12110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string containing the finish message.  <a href="classJob.html#a6cd48a4c0314748d17dc051812c12110">More...</a><br /></td></tr>
 <tr class="separator:a6cd48a4c0314748d17dc051812c12110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a249e0590760e50df6a5573746dcfcc83"><td class="memItemLeft" align="right" valign="top">static Job::JobTypes&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJob.html#a249e0590760e50df6a5573746dcfcc83">stringtoType</a> (std::string &amp;typstr)</td></tr>
+<tr class="memdesc:a249e0590760e50df6a5573746dcfcc83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the string representation of the job type to it's enum value.  <a href="classJob.html#a249e0590760e50df6a5573746dcfcc83">More...</a><br /></td></tr>
+<tr class="separator:a249e0590760e50df6a5573746dcfcc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a02b1ae87426e475f5bb982773532b23b"></a>
@@ -209,7 +225,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>properlyInitialized</
 <p>Returns a string containing the finish message. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string containing the finish message</dd></dl>
 <p>@require</p><ul>
-<li>REQUIRE(properlyInitialized(), "Job is not properly initialized");</li>
+<li>REQUIRE(<a class="el" href="classJob.html#a95910d5340aee565a2839d3d3b9a7709" title="Checks if the class is properly.">properlyInitialized()</a>, "Job is not properly initialized");</li>
 <li>REQUIRE(assignedTo != NULL, "Job is not assigned to a device"); </li>
 </ul>
 
@@ -335,6 +351,34 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>properlyInitialized</
 
 </div>
 </div>
+<a id="a95910d5340aee565a2839d3d3b9a7709"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95910d5340aee565a2839d3d3b9a7709">&#9670;&nbsp;</a></span>properlyInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Job::properlyInitialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the class is properly. </p>
+<dl class="section return"><dt>Returns</dt><dd>A boolean indicating if the class is properly initialized </dd></dl>
+
+</div>
+</div>
 <a id="a44ff6cafb3a8768279e74566a486edde"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44ff6cafb3a8768279e74566a486edde">&#9670;&nbsp;</a></span>setAssignedTo()</h2>
 
@@ -410,6 +454,41 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>properlyInitialized</
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a249e0590760e50df6a5573746dcfcc83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a249e0590760e50df6a5573746dcfcc83">&#9670;&nbsp;</a></span>stringtoType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Job::JobTypes Job::stringtoType </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>typstr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts the string representation of the job type to it's enum value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">typstr</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

@@ -116,6 +116,11 @@ public:
 	 */
 	std::string processJob();
 
+    /**
+     * \brief Converts the string representation of the device type to it's enum value
+     * @param typstr
+     * @return DeviceType
+     */
     static Device::DeviceTypes stringtoType(std::string &typstr);
 
 private:

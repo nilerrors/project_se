@@ -68,10 +68,12 @@ bool is_number(const std::string& s);
  */
 std::string GenerateFileName(const std::string &prefix, const std::string &extension);
 
+/**
+ * \brief Checks if the given string is a valid device type.
+ * @param typeStr
+ * @return
+ */
 bool isValidDeviceType(const std::string& typeStr);
-
-
-
 
 
 #endif //PROJECTTITLE_UTILS_H

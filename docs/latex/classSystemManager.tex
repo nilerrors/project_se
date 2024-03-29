@@ -1,0 +1,206 @@
+\hypertarget{classSystemManager}{}\doxysection{System\+Manager Class Reference}
+\label{classSystemManager}\index{SystemManager@{SystemManager}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSystemManager_a2f8a3e2e1929be50ef8702629f50bb94}\label{classSystemManager_a2f8a3e2e1929be50ef8702629f50bb94}} 
+\mbox{\hyperlink{classSystemManager_a2f8a3e2e1929be50ef8702629f50bb94}{System\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classSystemManager}{System\+Manager}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSystemManager_a0fa2e3c0906401494f6bf4e482aecc0d}\label{classSystemManager_a0fa2e3c0906401494f6bf4e482aecc0d}} 
+virtual \mbox{\hyperlink{classSystemManager_a0fa2e3c0906401494f6bf4e482aecc0d}{$\sim$\+System\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor of \mbox{\hyperlink{classSystemManager}{System\+Manager}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystemManager_a8f4b71423a8f6823a903cb79ac9821bf}{add\+Device}} (\mbox{\hyperlink{classDevice}{Device}} $\ast$device)
+\begin{DoxyCompactList}\small\item\em Adds a device to the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystemManager_ad686f0176583db686dc5e1f6ff615b0d}{add\+Job}} (\mbox{\hyperlink{classJob}{Job}} $\ast$job)
+\begin{DoxyCompactList}\small\item\em Adds a job to the system. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}{properly\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the class is properly. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ \mbox{\hyperlink{classSystemManager_ada80aa27dd4afb3de7e75d646abcd495}{get\+First\+Device}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ \mbox{\hyperlink{classSystemManager_a055c589de590b67dcd182807c55f3c9c}{get\+First\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first job. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ \mbox{\hyperlink{classSystemManager_a0232b0b0da05ad9c69967441cf1837b7}{get\+First\+Unfinished\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first unfinished job. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJob}{Job}} $\ast$ \mbox{\hyperlink{classSystemManager_a5683f8fc59d40498bdfcf6c9e31ac6e6}{get\+First\+Unprocessed\+Job}} () const
+\begin{DoxyCompactList}\small\item\em Gets the first unprocessed job. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{classDevice}{Device}} $\ast$ $>$ \& \mbox{\hyperlink{classSystemManager_a9b7fe3a6ce4385018851bbc9c3cd2d46}{get\+Devices}} () const
+\begin{DoxyCompactList}\small\item\em Gets the devices. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \& \mbox{\hyperlink{classSystemManager_a43ab3c5d8e2f0088257a70761c9e4a66}{get\+Jobs}} () const
+\begin{DoxyCompactList}\small\item\em Gets the jobs. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \mbox{\hyperlink{classSystemManager_afbdb101a429796ad53398b796c774455}{get\+Unfinished\+Jobs}} () const
+\begin{DoxyCompactList}\small\item\em Gets the unfinished jobs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDevice}{Device}} $\ast$ \mbox{\hyperlink{classSystemManager_a61a1bf270b3374753e9481853f60ad5a}{get\+Device\+With\+Least\+Load}} () const
+\begin{DoxyCompactList}\small\item\em Gets the device with the least load. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSystemManager_a8f4b71423a8f6823a903cb79ac9821bf}\label{classSystemManager_a8f4b71423a8f6823a903cb79ac9821bf}} 
+\index{SystemManager@{SystemManager}!addDevice@{addDevice}}
+\index{addDevice@{addDevice}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{addDevice()}{addDevice()}}
+{\footnotesize\ttfamily void System\+Manager\+::add\+Device (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDevice}{Device}} $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+Adds a device to the system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystemManager_ad686f0176583db686dc5e1f6ff615b0d}\label{classSystemManager_ad686f0176583db686dc5e1f6ff615b0d}} 
+\index{SystemManager@{SystemManager}!addJob@{addJob}}
+\index{addJob@{addJob}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{addJob()}{addJob()}}
+{\footnotesize\ttfamily void System\+Manager\+::add\+Job (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJob}{Job}} $\ast$}]{job }\end{DoxyParamCaption})}
+
+
+
+Adds a job to the system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em job} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystemManager_a9b7fe3a6ce4385018851bbc9c3cd2d46}\label{classSystemManager_a9b7fe3a6ce4385018851bbc9c3cd2d46}} 
+\index{SystemManager@{SystemManager}!getDevices@{getDevices}}
+\index{getDevices@{getDevices}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getDevices()}{getDevices()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classDevice}{Device}} $\ast$ $>$ \& System\+Manager\+::get\+Devices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the devices. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing the devices 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystemManager_a61a1bf270b3374753e9481853f60ad5a}\label{classSystemManager_a61a1bf270b3374753e9481853f60ad5a}} 
+\index{SystemManager@{SystemManager}!getDeviceWithLeastLoad@{getDeviceWithLeastLoad}}
+\index{getDeviceWithLeastLoad@{getDeviceWithLeastLoad}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getDeviceWithLeastLoad()}{getDeviceWithLeastLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDevice}{Device}} $\ast$ System\+Manager\+::get\+Device\+With\+Least\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the device with the least load. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the device with the least load
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{});
+\item REQUIRE(!devices.empty(), \char`\"{}\+No devices were found.\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystemManager_ada80aa27dd4afb3de7e75d646abcd495}\label{classSystemManager_ada80aa27dd4afb3de7e75d646abcd495}} 
+\index{SystemManager@{SystemManager}!getFirstDevice@{getFirstDevice}}
+\index{getFirstDevice@{getFirstDevice}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getFirstDevice()}{getFirstDevice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDevice}{Device}} $\ast$ System\+Manager\+::get\+First\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first device. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystemManager_a055c589de590b67dcd182807c55f3c9c}\label{classSystemManager_a055c589de590b67dcd182807c55f3c9c}} 
+\index{SystemManager@{SystemManager}!getFirstJob@{getFirstJob}}
+\index{getFirstJob@{getFirstJob}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getFirstJob()}{getFirstJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJob}{Job}} $\ast$ System\+Manager\+::get\+First\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first job. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystemManager_a0232b0b0da05ad9c69967441cf1837b7}\label{classSystemManager_a0232b0b0da05ad9c69967441cf1837b7}} 
+\index{SystemManager@{SystemManager}!getFirstUnfinishedJob@{getFirstUnfinishedJob}}
+\index{getFirstUnfinishedJob@{getFirstUnfinishedJob}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getFirstUnfinishedJob()}{getFirstUnfinishedJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJob}{Job}} $\ast$ System\+Manager\+::get\+First\+Unfinished\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first unfinished job. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystemManager_a5683f8fc59d40498bdfcf6c9e31ac6e6}\label{classSystemManager_a5683f8fc59d40498bdfcf6c9e31ac6e6}} 
+\index{SystemManager@{SystemManager}!getFirstUnprocessedJob@{getFirstUnprocessedJob}}
+\index{getFirstUnprocessedJob@{getFirstUnprocessedJob}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getFirstUnprocessedJob()}{getFirstUnprocessedJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classJob}{Job}} $\ast$ System\+Manager\+::get\+First\+Unprocessed\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the first unprocessed job. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+@require
+\begin{DoxyItemize}
+\item REQUIRE(\mbox{\hyperlink{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}{properly\+Initialized()}}, \char`\"{}\+Class is not properly initialized\char`\"{});
+\item REQUIRE(!jobs.empty(), \char`\"{}\+No jobs were found\char`\"{}); 
+\end{DoxyItemize}\mbox{\Hypertarget{classSystemManager_a43ab3c5d8e2f0088257a70761c9e4a66}\label{classSystemManager_a43ab3c5d8e2f0088257a70761c9e4a66}} 
+\index{SystemManager@{SystemManager}!getJobs@{getJobs}}
+\index{getJobs@{getJobs}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getJobs()}{getJobs()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ \& System\+Manager\+::get\+Jobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the jobs. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing the jobs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystemManager_afbdb101a429796ad53398b796c774455}\label{classSystemManager_afbdb101a429796ad53398b796c774455}} 
+\index{SystemManager@{SystemManager}!getUnfinishedJobs@{getUnfinishedJobs}}
+\index{getUnfinishedJobs@{getUnfinishedJobs}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{getUnfinishedJobs()}{getUnfinishedJobs()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classJob}{Job}} $\ast$ $>$ System\+Manager\+::get\+Unfinished\+Jobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the unfinished jobs. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing the unfinished jobs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}\label{classSystemManager_a97f6f4f2ab5f732975ee30e488ce5132}} 
+\index{SystemManager@{SystemManager}!properlyInitialized@{properlyInitialized}}
+\index{properlyInitialized@{properlyInitialized}!SystemManager@{SystemManager}}
+\doxysubsubsection{\texorpdfstring{properlyInitialized()}{properlyInitialized()}}
+{\footnotesize\ttfamily bool System\+Manager\+::properly\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the class is properly. 
+
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the class is properly initialized 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/System\+Manager.\+h\item 
+src/System\+Manager.\+cpp\end{DoxyCompactItemize}

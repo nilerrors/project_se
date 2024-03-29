@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['device_44',['Device',['../classDevice.html',1,'']]]
+  ['consolelogger_66',['ConsoleLogger',['../classConsoleLogger.html',1,'']]]
 ];

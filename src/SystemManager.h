@@ -12,8 +12,14 @@
 
 class SystemManager {
 public:
+    /**
+     * \brief Constructor of SystemManager.
+     */
     SystemManager();
 
+    /**
+     * \brief Destructor of SystemManager.
+     */
     virtual ~SystemManager();
 
     /**

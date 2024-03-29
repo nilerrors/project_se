@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['readdata_79',['ReadData',['../classSystem.html#a9046c539f1a0e3b59e0fb41b8c1f2037',1,'System']]],
-  ['readdevice_80',['ReadDevice',['../classSystem.html#aadfca0b237acf38c23fefed41a36498a',1,'System']]],
-  ['readjob_81',['ReadJob',['../classSystem.html#a15de3d7ab06a2c8e745667f0841b3211',1,'System']]]
+  ['log_111',['log',['../classLogger.html#ae690170c23131eb86523389524333564',1,'Logger::log()'],['../classFileLogger.html#af7693a2294bb726c836290f78b9099a7',1,'FileLogger::log()'],['../classConsoleLogger.html#a18dfab8e262eff668a504c146bc333cf',1,'ConsoleLogger::log()'],['../classStringLogger.html#a876da96447672883bb0532c567486b0c',1,'StringLogger::log()']]],
+  ['logger_112',['Logger',['../classLogger.html#ac45b6ef7069b222c094da3724d1aa8fb',1,'Logger']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['finishmessage_53',['finishMessage',['../classJob.html#a6cd48a4c0314748d17dc051812c12110',1,'Job']]]
+  ['error_85',['error',['../classLogger.html#af5e03a436430858f535de94021536905',1,'Logger::error()'],['../classFileLogger.html#a1aca16007f98a8e712fe798bf3d921d2',1,'FileLogger::error()'],['../classConsoleLogger.html#a9fbc2b1a5f94accb3716dc54d7f860df',1,'ConsoleLogger::error()'],['../classStringLogger.html#ae59050a914554666af623f461ed314b8',1,'StringLogger::error()']]]
 ];

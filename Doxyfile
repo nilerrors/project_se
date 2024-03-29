@@ -952,14 +952,14 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ./src/tinystr.cpp \
-                         ./src/tinystr.h \
-                         ./src/tinyxml.cpp \
-                         ./src/tinyxml.h \
-                         ./src/tinyxmlerror.cpp \
-                         ./src/tinyxmlerror.h \
-                         ./src/tinyxmlparser.cpp \
-                         ./src/tinyxmlparser.h
+EXCLUDE                = ./src/lib/tinystr.cpp \
+                         ./src/lib/tinystr.h \
+                         ./src/lib/tinyxml.cpp \
+                         ./src/lib/tinyxml.h \
+                         ./src/lib/tinyxmlerror.cpp \
+                         ./src/lib/tinyxmlerror.h \
+                         ./src/lib/tinyxmlparser.cpp \
+                         ./src/lib/tinyxmlparser.h
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded

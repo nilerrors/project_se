@@ -37,6 +37,10 @@ public:
 	 */
     Job(int jobNumber, int pageCount, const std::string &userName);
 
+    /**
+     * \brief Checks if the class is properly
+     * @return A boolean indicating if the class is properly initialized
+     */
 	bool properlyInitialized() const { return init_ == this; }
 
 	/**
@@ -103,6 +107,11 @@ public:
 	 */
 	std::string finishMessage() const;
 
+    /**
+     * \brief Converts the string representation of the job type to it's enum value
+     * @param typstr
+     * @return
+     */
     static Job::JobTypes stringtoType(std::string &typstr);
 
 private:

@@ -78,53 +78,60 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;tinyxml.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;lib/tinyxml.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="classJob.html">Job</a>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDevice.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDevice.html">Device</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classDevice.html#a3d2b5b2984b23dd626695a3fc44d3ebf">Device</a>(TiXmlElement *device_element);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classDevice.html#a3d2b5b2984b23dd626695a3fc44d3ebf">Device</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">int</span> emission, <span class="keywordtype">int</span> speed);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classDevice.html#a423853918d537b2d1516c680e41862d4">   43</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classDevice.html#a423853918d537b2d1516c680e41862d4">properlyInitialized</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> init_ == <span class="keyword">this</span>; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">const</span> std::string &amp;<a class="code" href="classDevice.html#a9f305b10cae8deba2acceaf3bd93f397">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classDevice.html#a4f6e5d6b00c21ad48f8821b439071165">getEmission</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classDevice.html#acded5be85a4c7eb65596caa4c2619613">getSpeed</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDevice.html#acd52ee8be788ae1f4d1d0fe03edbef66">addJob</a>(<a class="code" href="classJob.html">Job</a> *job);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::string <a class="code" href="classDevice.html#a519c97f313df028251d77121a427e4d6">printReport</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classDevice.html#aa1e0aa33d75393cac4b6d078f787387f">getLoad</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::string <a class="code" href="classDevice.html#a5354a1e24efe5889abc4b1088bf3ecb4">processJob</a>();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classDevice.html">Device</a> *init_;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">int</span> emission;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">int</span> speed;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::deque&lt;Job *&gt; jobs;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;};</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">enum</span> DeviceTypes {bw, color, scan};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classDevice.html#a3d2b5b2984b23dd626695a3fc44d3ebf">Device</a>(TiXmlElement *device_element);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classDevice.html#a3d2b5b2984b23dd626695a3fc44d3ebf">Device</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">int</span> emission, <span class="keywordtype">int</span> speed);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classDevice.html#a423853918d537b2d1516c680e41862d4">   45</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classDevice.html#a423853918d537b2d1516c680e41862d4">properlyInitialized</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> init_ == <span class="keyword">this</span>; }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">const</span> std::string &amp;<a class="code" href="classDevice.html#a9f305b10cae8deba2acceaf3bd93f397">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classDevice.html#a4f6e5d6b00c21ad48f8821b439071165">getEmission</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classDevice.html#acded5be85a4c7eb65596caa4c2619613">getSpeed</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDevice.html#acd52ee8be788ae1f4d1d0fe03edbef66">addJob</a>(<a class="code" href="classJob.html">Job</a> *job);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::string <a class="code" href="classDevice.html#a519c97f313df028251d77121a427e4d6">printReport</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classDevice.html#aa1e0aa33d75393cac4b6d078f787387f">getLoad</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::string <a class="code" href="classDevice.html#a5354a1e24efe5889abc4b1088bf3ecb4">processJob</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">static</span> Device::DeviceTypes <a class="code" href="classDevice.html#a50ffdd4d1165b9fabd7e3391b0292601">stringtoType</a>(std::string &amp;typstr);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJECTTITLE_DEVICE_H</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="classDevice.html">Device</a> *init_;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    std::string name;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">int</span> emission;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">int</span> speed;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">int</span> cost;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    DeviceTypes type;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    std::deque&lt;Job *&gt; jobs;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJECTTITLE_DEVICE_H</span></div>
 <div class="ttc" id="aclassDevice_html"><div class="ttname"><a href="classDevice.html">Device</a></div><div class="ttdef"><b>Definition:</b> Device.h:15</div></div>
 <div class="ttc" id="aclassDevice_html_a3d2b5b2984b23dd626695a3fc44d3ebf"><div class="ttname"><a href="classDevice.html#a3d2b5b2984b23dd626695a3fc44d3ebf">Device::Device</a></div><div class="ttdeci">Device(TiXmlElement *device_element)</div><div class="ttdoc">Constructor for Device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:18</div></div>
-<div class="ttc" id="aclassDevice_html_a423853918d537b2d1516c680e41862d4"><div class="ttname"><a href="classDevice.html#a423853918d537b2d1516c680e41862d4">Device::properlyInitialized</a></div><div class="ttdeci">bool properlyInitialized() const</div><div class="ttdoc">Checks if the class is properly.</div><div class="ttdef"><b>Definition:</b> Device.h:43</div></div>
-<div class="ttc" id="aclassDevice_html_a4f6e5d6b00c21ad48f8821b439071165"><div class="ttname"><a href="classDevice.html#a4f6e5d6b00c21ad48f8821b439071165">Device::getEmission</a></div><div class="ttdeci">int getEmission() const</div><div class="ttdoc">Gets the emission of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:54</div></div>
-<div class="ttc" id="aclassDevice_html_a519c97f313df028251d77121a427e4d6"><div class="ttname"><a href="classDevice.html#a519c97f313df028251d77121a427e4d6">Device::printReport</a></div><div class="ttdeci">std::string printReport() const</div><div class="ttdoc">Prints a report of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:70</div></div>
-<div class="ttc" id="aclassDevice_html_a5354a1e24efe5889abc4b1088bf3ecb4"><div class="ttname"><a href="classDevice.html#a5354a1e24efe5889abc4b1088bf3ecb4">Device::processJob</a></div><div class="ttdeci">std::string processJob()</div><div class="ttdoc">Processes a job.</div><div class="ttdef"><b>Definition:</b> Device.cpp:114</div></div>
-<div class="ttc" id="aclassDevice_html_a9f305b10cae8deba2acceaf3bd93f397"><div class="ttname"><a href="classDevice.html#a9f305b10cae8deba2acceaf3bd93f397">Device::getName</a></div><div class="ttdeci">const std::string &amp; getName() const</div><div class="ttdoc">Gets the name of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:50</div></div>
-<div class="ttc" id="aclassDevice_html_aa1e0aa33d75393cac4b6d078f787387f"><div class="ttname"><a href="classDevice.html#aa1e0aa33d75393cac4b6d078f787387f">Device::getLoad</a></div><div class="ttdeci">int getLoad() const</div><div class="ttdoc">Gets the load of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:102</div></div>
-<div class="ttc" id="aclassDevice_html_acd52ee8be788ae1f4d1d0fe03edbef66"><div class="ttname"><a href="classDevice.html#acd52ee8be788ae1f4d1d0fe03edbef66">Device::addJob</a></div><div class="ttdeci">void addJob(Job *job)</div><div class="ttdef"><b>Definition:</b> Device.cpp:62</div></div>
-<div class="ttc" id="aclassDevice_html_acded5be85a4c7eb65596caa4c2619613"><div class="ttname"><a href="classDevice.html#acded5be85a4c7eb65596caa4c2619613">Device::getSpeed</a></div><div class="ttdeci">int getSpeed() const</div><div class="ttdoc">Gets the speed of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:58</div></div>
+<div class="ttc" id="aclassDevice_html_a423853918d537b2d1516c680e41862d4"><div class="ttname"><a href="classDevice.html#a423853918d537b2d1516c680e41862d4">Device::properlyInitialized</a></div><div class="ttdeci">bool properlyInitialized() const</div><div class="ttdoc">Checks if the class is properly.</div><div class="ttdef"><b>Definition:</b> Device.h:45</div></div>
+<div class="ttc" id="aclassDevice_html_a4f6e5d6b00c21ad48f8821b439071165"><div class="ttname"><a href="classDevice.html#a4f6e5d6b00c21ad48f8821b439071165">Device::getEmission</a></div><div class="ttdeci">int getEmission() const</div><div class="ttdoc">Gets the emission of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:67</div></div>
+<div class="ttc" id="aclassDevice_html_a50ffdd4d1165b9fabd7e3391b0292601"><div class="ttname"><a href="classDevice.html#a50ffdd4d1165b9fabd7e3391b0292601">Device::stringtoType</a></div><div class="ttdeci">static Device::DeviceTypes stringtoType(std::string &amp;typstr)</div><div class="ttdoc">Converts the string representation of the device type to it's enum value.</div><div class="ttdef"><b>Definition:</b> Device.cpp:148</div></div>
+<div class="ttc" id="aclassDevice_html_a519c97f313df028251d77121a427e4d6"><div class="ttname"><a href="classDevice.html#a519c97f313df028251d77121a427e4d6">Device::printReport</a></div><div class="ttdeci">std::string printReport() const</div><div class="ttdoc">Prints a report of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:83</div></div>
+<div class="ttc" id="aclassDevice_html_a5354a1e24efe5889abc4b1088bf3ecb4"><div class="ttname"><a href="classDevice.html#a5354a1e24efe5889abc4b1088bf3ecb4">Device::processJob</a></div><div class="ttdeci">std::string processJob()</div><div class="ttdoc">Processes a job.</div><div class="ttdef"><b>Definition:</b> Device.cpp:127</div></div>
+<div class="ttc" id="aclassDevice_html_a9f305b10cae8deba2acceaf3bd93f397"><div class="ttname"><a href="classDevice.html#a9f305b10cae8deba2acceaf3bd93f397">Device::getName</a></div><div class="ttdeci">const std::string &amp; getName() const</div><div class="ttdoc">Gets the name of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:63</div></div>
+<div class="ttc" id="aclassDevice_html_aa1e0aa33d75393cac4b6d078f787387f"><div class="ttname"><a href="classDevice.html#aa1e0aa33d75393cac4b6d078f787387f">Device::getLoad</a></div><div class="ttdeci">int getLoad() const</div><div class="ttdoc">Gets the load of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:115</div></div>
+<div class="ttc" id="aclassDevice_html_acd52ee8be788ae1f4d1d0fe03edbef66"><div class="ttname"><a href="classDevice.html#acd52ee8be788ae1f4d1d0fe03edbef66">Device::addJob</a></div><div class="ttdeci">void addJob(Job *job)</div><div class="ttdef"><b>Definition:</b> Device.cpp:75</div></div>
+<div class="ttc" id="aclassDevice_html_acded5be85a4c7eb65596caa4c2619613"><div class="ttname"><a href="classDevice.html#acded5be85a4c7eb65596caa4c2619613">Device::getSpeed</a></div><div class="ttdeci">int getSpeed() const</div><div class="ttdoc">Gets the speed of the device.</div><div class="ttdef"><b>Definition:</b> Device.cpp:71</div></div>
 <div class="ttc" id="aclassJob_html"><div class="ttname"><a href="classJob.html">Job</a></div><div class="ttdef"><b>Definition:</b> Job.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

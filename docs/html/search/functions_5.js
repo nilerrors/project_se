@@ -1,6 +1,23 @@
 var searchData=
 [
-  ['isfinished_70',['isFinished',['../classJob.html#aea34848a4e41d09e1247637151ef0f8f',1,'Job']]],
-  ['isinprocess_71',['isInProcess',['../classJob.html#a18fa757395a94b64e5364036f17aa858',1,'Job']]],
-  ['islogerrors_72',['isLogErrors',['../classSystem.html#a408cb785a64119f8cc73fbaa7425c7a5',1,'System']]]
+  ['getassignedto_88',['getAssignedTo',['../classJob.html#af9dd68b6d84a5c3097c42d132be461db',1,'Job']]],
+  ['getassigner_89',['getAssigner',['../classSystem.html#a8d5eaac418f45e10879122ab68387bfa',1,'System']]],
+  ['getdevices_90',['getDevices',['../classSystemManager.html#a9b7fe3a6ce4385018851bbc9c3cd2d46',1,'SystemManager']]],
+  ['getdevicewithleastload_91',['getDeviceWithLeastLoad',['../classSystemManager.html#a61a1bf270b3374753e9481853f60ad5a',1,'SystemManager']]],
+  ['getemission_92',['getEmission',['../classDevice.html#a4f6e5d6b00c21ad48f8821b439071165',1,'Device']]],
+  ['getfirstdevice_93',['getFirstDevice',['../classSystemManager.html#ada80aa27dd4afb3de7e75d646abcd495',1,'SystemManager']]],
+  ['getfirstjob_94',['getFirstJob',['../classSystemManager.html#a055c589de590b67dcd182807c55f3c9c',1,'SystemManager']]],
+  ['getfirstunfinishedjob_95',['getFirstUnfinishedJob',['../classSystemManager.html#a0232b0b0da05ad9c69967441cf1837b7',1,'SystemManager']]],
+  ['getfirstunprocessedjob_96',['getFirstUnprocessedJob',['../classSystemManager.html#a5683f8fc59d40498bdfcf6c9e31ac6e6',1,'SystemManager']]],
+  ['getjobnumber_97',['getJobNumber',['../classJob.html#a5d069e2bb240f3cdb096f3e983bb5ccd',1,'Job']]],
+  ['getjobs_98',['getJobs',['../classSystemManager.html#a43ab3c5d8e2f0088257a70761c9e4a66',1,'SystemManager']]],
+  ['getload_99',['getLoad',['../classDevice.html#aa1e0aa33d75393cac4b6d078f787387f',1,'Device']]],
+  ['getlogger_100',['getLogger',['../classSystem.html#a10b637f4cb8669b2b6a84a6a8897b345',1,'System']]],
+  ['getmanager_101',['getManager',['../classSystem.html#a4bd578d8d97b06f6969e4620ce3a3693',1,'System']]],
+  ['getname_102',['getName',['../classDevice.html#a9f305b10cae8deba2acceaf3bd93f397',1,'Device']]],
+  ['getpagecount_103',['getPageCount',['../classJob.html#a576b86cfcbd5fadf9caca6ec9e17b773',1,'Job']]],
+  ['getreader_104',['getReader',['../classSystem.html#ae28402607fdfe5275912faf78583fb2d',1,'System']]],
+  ['getspeed_105',['getSpeed',['../classDevice.html#acded5be85a4c7eb65596caa4c2619613',1,'Device']]],
+  ['getunfinishedjobs_106',['getUnfinishedJobs',['../classSystemManager.html#afbdb101a429796ad53398b796c774455',1,'SystemManager']]],
+  ['getusername_107',['getUserName',['../classJob.html#acde2f69a76b72f550bc85356502850ad',1,'Job']]]
 ];

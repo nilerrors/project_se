@@ -55,6 +55,10 @@ public:
      */
     void assignAllJobs() const;
 
+    /**
+     * \brief Sets the logger of the assigner
+     * @param logger
+     */
     void setLogger(Logger *logger);
 
 private:

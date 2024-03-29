@@ -1,0 +1,74 @@
+\hypertarget{classLogger}{}\doxysection{Logger Class Reference}
+\label{classLogger}\index{Logger@{Logger}}
+
+
+Inheritance diagram for Logger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLogger_ac45b6ef7069b222c094da3724d1aa8fb}\label{classLogger_ac45b6ef7069b222c094da3724d1aa8fb}} 
+\mbox{\hyperlink{classLogger_ac45b6ef7069b222c094da3724d1aa8fb}{Logger}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classLogger}{Logger}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLogger_a68cafca721107a954d85043a553dd217}\label{classLogger_a68cafca721107a954d85043a553dd217}} 
+virtual \mbox{\hyperlink{classLogger_a68cafca721107a954d85043a553dd217}{$\sim$\+Logger}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor of \mbox{\hyperlink{classFileLogger}{File\+Logger}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classLogger_ae690170c23131eb86523389524333564}{log}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Logs the given message. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classLogger_af5e03a436430858f535de94021536905}{error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Logs the given error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLogger_af5e03a436430858f535de94021536905}\label{classLogger_af5e03a436430858f535de94021536905}} 
+\index{Logger@{Logger}!error@{error}}
+\index{error@{error}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily virtual void Logger\+::error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Logs the given error message. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classLogger_ae690170c23131eb86523389524333564}{Logger\+::log}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classStringLogger_ae59050a914554666af623f461ed314b8}{String\+Logger}}, \mbox{\hyperlink{classConsoleLogger_a9fbc2b1a5f94accb3716dc54d7f860df}{Console\+Logger}}, and \mbox{\hyperlink{classFileLogger_a1aca16007f98a8e712fe798bf3d921d2}{File\+Logger}}.
+
+\mbox{\Hypertarget{classLogger_ae690170c23131eb86523389524333564}\label{classLogger_ae690170c23131eb86523389524333564}} 
+\index{Logger@{Logger}!log@{log}}
+\index{log@{log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily virtual void Logger\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Logs the given message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classStringLogger_a876da96447672883bb0532c567486b0c}{String\+Logger}}, \mbox{\hyperlink{classConsoleLogger_a18dfab8e262eff668a504c146bc333cf}{Console\+Logger}}, and \mbox{\hyperlink{classFileLogger_af7693a2294bb726c836290f78b9099a7}{File\+Logger}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/Logger.\+h\end{DoxyCompactItemize}

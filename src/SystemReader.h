@@ -15,9 +15,18 @@
 class SystemReader
 {
 public:
+    /**
+     * \brief Constructor of SystemReader
+     * @param manager
+     * @param logger
+     */
 	SystemReader(SystemManager *manager,
 				 Logger *logger)
 				: _init(this), manager(manager), logger(logger) {}
+
+    /**
+     * \brief Destructor of SystemReader
+     */
 	~SystemReader() = default;
 
 	/**
@@ -60,7 +69,10 @@ public:
 	 */
 	void ReadJob(TiXmlElement *job_element);
 
-
+    /**
+     * \brief Sets the logger of SystemReader
+     * @param logger
+     */
     void setLogger(Logger *logger);
 
 private:

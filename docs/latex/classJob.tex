@@ -1,5 +1,14 @@
 \hypertarget{classJob}{}\doxysection{Job Class Reference}
 \label{classJob}\index{Job@{Job}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJob_a95b033bdbd4cf369e6d84c0ef1d3a8a4}\label{classJob_a95b033bdbd4cf369e6d84c0ef1d3a8a4}} 
+enum {\bfseries Job\+Types} \{ {\bfseries bw}
+, {\bfseries color}
+, {\bfseries scan}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -7,9 +16,8 @@
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classJob}{Job}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classJob_a35b685e9c52316510a3caeac02f7b7d6}{Job}} (int job\+Number, int page\+Count, const std\+::string \&user\+Name)
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classJob}{Job}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classJob_a95910d5340aee565a2839d3d3b9a7709}\label{classJob_a95910d5340aee565a2839d3d3b9a7709}} 
-bool {\bfseries properly\+Initialized} () const
-\item 
+bool \mbox{\hyperlink{classJob_a95910d5340aee565a2839d3d3b9a7709}{properly\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the class is properly. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classJob_a5d069e2bb240f3cdb096f3e983bb5ccd}{get\+Job\+Number}} () const
 \begin{DoxyCompactList}\small\item\em Gets the job number. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classJob_a576b86cfcbd5fadf9caca6ec9e17b773}{get\+Page\+Count}} () const
@@ -30,6 +38,11 @@ void \mbox{\hyperlink{classJob_a44ff6cafb3a8768279e74566a486edde}{set\+Assigned\
 \begin{DoxyCompactList}\small\item\em Sets the device the job is assigned to. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classJob_a6cd48a4c0314748d17dc051812c12110}{finish\+Message}} () const
 \begin{DoxyCompactList}\small\item\em Returns a string containing the finish message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Job\+::\+Job\+Types \mbox{\hyperlink{classJob_a249e0590760e50df6a5573746dcfcc83}{stringto\+Type}} (std\+::string \&typstr)
+\begin{DoxyCompactList}\small\item\em Converts the string representation of the job type to it\textquotesingle{}s enum value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -95,7 +108,7 @@ A string containing the finish message
 \end{DoxyReturn}
 @require
 \begin{DoxyItemize}
-\item REQUIRE(properly\+Initialized(), \char`\"{}\+Job is not properly initialized\char`\"{});
+\item REQUIRE(\mbox{\hyperlink{classJob_a95910d5340aee565a2839d3d3b9a7709}{properly\+Initialized()}}, \char`\"{}\+Job is not properly initialized\char`\"{});
 \item REQUIRE(assigned\+To != NULL, \char`\"{}\+Job is not assigned to a device\char`\"{}); 
 \end{DoxyItemize}\mbox{\Hypertarget{classJob_af9dd68b6d84a5c3097c42d132be461db}\label{classJob_af9dd68b6d84a5c3097c42d132be461db}} 
 \index{Job@{Job}!getAssignedTo@{getAssignedTo}}
@@ -175,6 +188,19 @@ Checks if the job is in process.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classJob_a95910d5340aee565a2839d3d3b9a7709}\label{classJob_a95910d5340aee565a2839d3d3b9a7709}} 
+\index{Job@{Job}!properlyInitialized@{properlyInitialized}}
+\index{properlyInitialized@{properlyInitialized}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{properlyInitialized()}{properlyInitialized()}}
+{\footnotesize\ttfamily bool Job\+::properly\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the class is properly. 
+
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the class is properly initialized 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classJob_a44ff6cafb3a8768279e74566a486edde}\label{classJob_a44ff6cafb3a8768279e74566a486edde}} 
 \index{Job@{Job}!setAssignedTo@{setAssignedTo}}
 \index{setAssignedTo@{setAssignedTo}!Job@{Job}}
@@ -220,6 +246,24 @@ Sets the job to in process.
 {\em in\+Process} & \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classJob_a249e0590760e50df6a5573746dcfcc83}\label{classJob_a249e0590760e50df6a5573746dcfcc83}} 
+\index{Job@{Job}!stringtoType@{stringtoType}}
+\index{stringtoType@{stringtoType}!Job@{Job}}
+\doxysubsubsection{\texorpdfstring{stringtoType()}{stringtoType()}}
+{\footnotesize\ttfamily Job\+::\+Job\+Types Job\+::stringto\+Type (\begin{DoxyParamCaption}\item[{std\+::string \&}]{typstr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converts the string representation of the job type to it\textquotesingle{}s enum value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em typstr} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
