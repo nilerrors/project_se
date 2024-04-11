@@ -82,5 +82,9 @@ bool isValidDeviceType(const std::string& typeStr);
  */
 bool isValidDeviceType_2(const string &typeStr);
 
+bool isValidJobType(const string &typeStr);
+
+
+
 
 #endif //PROJECTTITLE_UTILS_H

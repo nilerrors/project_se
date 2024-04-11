@@ -62,6 +62,14 @@ public:
 	 */
     int getSpeed() const;
 
+
+    /**
+     * \brief Gets the cost of the device
+     * @return
+     */
+    int getCost() const;
+
+
 	/**
 	 * brief Adds a job to the device
 	 * \param job Job to be added
@@ -83,6 +91,8 @@ public:
 		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 		- REQUIRE(emission >= 0, "Emission is negative.");
 		- REQUIRE(speed >= 0, "Speed is negative.");
+	    - REQUIRE(cost>=0, "Cost is negative");
+	    - REQUIRE(isValidDeviceType_2(device_type_to_string(type)), "Type is not defined");
 
 	 * @ensure
 		- ENSURE(result != "", "Report is empty.");

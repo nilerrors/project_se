@@ -59,8 +59,7 @@ void System::clear() {
 
 std::string System::printReport() const {
     /*
-     Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
-     return: Filename van de report
+    Prints a report of the system
      */
 	REQUIRE(properlyInitialized(), "Class is not properly initialized");
 	REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
@@ -77,6 +76,17 @@ std::string System::printReport() const {
         if (device != manager->getDevices().back())
             report << "\n\n";
     }
+
+    report << std::endl << "--== Jobs ==--" << std::endl << std::endl;
+    for(Job *job : manager->getJobs()) {
+        report << job->printReport();
+        if (job != manager->getJobs().back())
+            report << "\n\n";
+    }
+
+    report << "\n\n";
+    report<<"# ======================= #"<<std::endl;
+
     report.close();
     return filename;
 }

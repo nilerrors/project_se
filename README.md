@@ -38,7 +38,7 @@
 - [x] Use Case 1.3
 - [x] Use Case 1.4
 - [x] Use Case 2.1
-- [ ] Use Case 2.2 <---- PrintReport Aanpassen
+- [x] Use Case 2.2 <---- (Step 4 niet geïmplementeerd)
 - [ ] Use Case 2.3 <---- Nieuwe Functie
 - [x] Use Case 3.1
 - [x] Use Case 3.2

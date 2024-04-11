@@ -100,7 +100,6 @@ std::string Device::printReport() const
     report << "* " << device_type_to_string(type) << std::endl;
     report << "* " << cost << " cents / page";
 
-    report << std::endl;
 
 	ENSURE(!report.str().empty(), "Device report is empty");
 	return report.str();
@@ -160,6 +159,10 @@ std::string Device::device_type_to_string(Device::DeviceTypes device_type) {
         case DeviceTypes::scan:
             return "Scanner";
     }
+}
+
+int Device::getCost() const {
+    return cost;
 }
 
 

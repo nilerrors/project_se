@@ -111,10 +111,37 @@ Job::JobTypes Job::stringtoType(std::string &typstr) {
 
 std::string Job::printReport() const
 {
-    /*
-	 Description
-	 */
+
     REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-    REQUIRE(emission >= 0, "Emission is negative.");
-    REQUIRE(speed >= 0, "Speed is negative.");
+    REQUIRE(jobNumber >= 0, "JobNumber is negative.");
+    REQUIRE(pageCount >= 0, "PageCount is negative.");
+    REQUIRE(printedPageCount>=0, "PrintedPageCount is negative");
+    REQUIRE(isValidJobType(job_type_to_string(type)), "Type is not defined");
+
+    std::stringstream report;
+
+    report << "[Job #" << jobNumber << "]" << std::endl;
+    report << "* Owner: " << userName << std::endl;
+    report << "* Device: " << assignedTo->getName() << std::endl;
+    report << "* Status: " << printedPageCount << " pages done" << std::endl;
+    report << "* Total pages: " << pageCount << " pages" << std::endl;
+    report << "* Total CO2: " << assignedTo->getEmission() * printedPageCount << "g CO2" << std::endl;
+    report << "* Total cost: " << assignedTo->getCost() * printedPageCount << " cents" << std::endl;
+
+
+    ENSURE(!report.str().empty(), "Job report is empty");
+    return report.str();
+
+
+}
+
+std::string Job::job_type_to_string(Job::JobTypes device_type) {
+    switch (device_type) {
+        case JobTypes::bw:
+            return "Black-and-white";
+        case JobTypes::color:
+            return "Color";
+        case JobTypes::scan:
+            return "Scan";
+    }
 }

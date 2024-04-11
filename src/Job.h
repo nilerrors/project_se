@@ -127,13 +127,17 @@ public:
 
 	 * @require
 		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-		- REQUIRE(emission >= 0, "Emission is negative.");
-		- REQUIRE(speed >= 0, "Speed is negative.");
+        - REQUIRE(jobNumber >= 0, "Job number is negative.");
+        - REQUIRE(pageCount >= 0, "Page count is negative.");
+        - REQUIRE(printedPageCount>=0, "Printed page count is negative");
+        - REQUIRE(isValidJobType(job_type_to_string(type)), "Type is not defined");
 
 	 * @ensure
 		- ENSURE(result != "", "Report is empty.");
 	 */
     std::string printReport() const;
+
+    static std::string job_type_to_string(JobTypes device_type);
 
 private:
     Status status = Status::unassigned;

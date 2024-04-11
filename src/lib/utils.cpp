@@ -131,3 +131,7 @@ bool isValidDeviceType_2(const string &typeStr) {
     return (typeStr == "Black-and-white printer" || typeStr == "Color printer" || typeStr == "Scanner");
 }
 
+bool isValidJobType(const string &typeStr) {
+    return (typeStr == "Black-and-white" || typeStr == "Color" || typeStr == "Scan");
+}
+
