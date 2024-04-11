@@ -66,38 +66,25 @@ public:
      * \brief Get job status
      * @return Status
      */
-     Status getStatus() const;
+    Status getStatus() const;
 
-        /**
-         * \brief Get printed page count
-         * @return printed page count
-         */
+    /**
+    * \brief Sets the job status
+    * @return
+    */
+    void setStatus(Status status);
 
-     int getPrintedPageCount() const;
+    /**
+     * \brief Get printed page count
+     * @return printed page count
+     */
+    int getPrintedPageCount() const;
 
-	/**
-	 * \brief Checks if the job is finished
-	 * @return A boolean indicating if the job is finished
-	 */
-	bool isFinished() const;
-
-	/**
-	 * \brief Checks if the job is in process
-	 * @return A boolean indicating if the job is in process
-	 */
-	bool isInProcess() const;
-
-	/**
-	 * \brief Sets the job to in process
-	 * @param inProcess
-	 */
-	void setInProcess(bool inProcess);
-
-	/**
-	 * \brief Sets the job to finished
-	 * @param finished
-	 */
-	void setFinished(bool finished);
+    /**
+    * \brief Incease printed page count
+    * @return
+    */
+    void increasePrintedPageCount();
 
 	/**
 	 * \brief Gets the device the job is assigned to
@@ -168,7 +155,7 @@ private:
 	Device *assignedTo = NULL;
     int jobNumber;
     int pageCount;
-    int printedPageCount;
+    int printedPageCount = 0;
     JobTypes type;
     std::string userName;
 	Job *init_;

@@ -120,7 +120,7 @@ public:
 	int getLoad() const;
 
 	/**
-	 * \brief Processes a job
+	 * \brief Prints a single page of a job
 	 * \return A string containing the result of the processing
 
 	 * @require

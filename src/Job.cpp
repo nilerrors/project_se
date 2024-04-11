@@ -58,6 +58,15 @@ int Job::getPageCount() const {
     return pageCount;
 }
 
+int Job::getPrintedPageCount() const {
+    return printedPageCount;
+}
+
+void Job::increasePrintedPageCount() {
+    REQUIRE(printedPageCount < pageCount, "Printed page count should be less than total page count");
+    printedPageCount++;
+}
+
 const std::string &Job::getUserName() const {
     return userName;
 }
@@ -67,9 +76,8 @@ Job::Status Job::getStatus() const
     return status;
 }
 
-void setStatus()
-{
-
+void Job::setStatus(Job::Status stat) {
+    status = stat;
 }
 
 Device *Job::getAssignedTo() const
@@ -111,12 +119,12 @@ Job::JobTypes Job::stringtoType(std::string &typstr) {
 
 std::string Job::printReport() const
 {
-
     REQUIRE(properlyInitialized(), "Class is not properly initialized.");
     REQUIRE(jobNumber >= 0, "JobNumber is negative.");
     REQUIRE(pageCount >= 0, "PageCount is negative.");
     REQUIRE(printedPageCount>=0, "PrintedPageCount is negative");
     REQUIRE(isValidJobType(job_type_to_string(type)), "Type is not defined");
+    REQUIRE(assignedTo != NULL, "Device should be assigned");
 
     std::stringstream report;
 
@@ -154,16 +162,16 @@ std::string Job::job_type_to_string(Job::JobTypes device_type) {
         case JobTypes::scan:
             return "scanning job";
     }
+    return "unknown";
 }
 
 int Job::getQueueNumber() const {
-    for(int i = 1; i < assignedTo->getJobs().size(); i++) {
+    for(uint i = 1; i < assignedTo->getJobs().size(); i++) {
         if(assignedTo->getJobs()[i-1]->userName == userName) {
             return i;
         }
     }
+
+    return -1;
 }
 
-int Job::getPrintedPageCount() const {
-    return printedPageCount;
-}

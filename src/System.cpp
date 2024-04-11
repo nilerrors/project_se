@@ -132,12 +132,17 @@ void System::processFirstJob() const {
 	Job *job = manager->getFirstUnprocessedJob();
 	Device *device = job->getAssignedTo();
 	int initialLoad = device->getLoad();
-	job->setInProcess(true);
-	std::string message = device->processJob();
+    job->setStatus(Job::waiting);
+    std::string message;
+
+    // print all pages
+    do {
+        message = device->processJob();
+    } while (job->getStatus() != Job::done);
 
 	logger->log(message);
 
-	ENSURE(job->isFinished(), "Job is not finished");
+	ENSURE(job->getStatus() == Job::done, "Job is not finished");
 	ENSURE(job->getAssignedTo()->getLoad() != initialLoad, "Device did not process the job");
 }
 

@@ -76,6 +76,7 @@ void Device::addJob(Job *job)
 {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 	REQUIRE(job != NULL, "Job is empty.");
+    job->setAssignedTo(this);
 	jobs.push_back(job);
 	ENSURE(jobs.back() == job, "Job is not added to the device.");
 }
@@ -125,15 +126,16 @@ std::string Device::processJob()
 
 	Job *job = jobs.front();
 
-	std::chrono::milliseconds duration(job->getPageCount() / speed * 60 * 1000);
-	std::this_thread::sleep_for(duration);
+    assert(job->getStatus() != Job::done);  // cannot process finished job
 
-	job->setInProcess(false);
-	job->setFinished(true);
-	jobs.pop_front();
-
-	ENSURE(jobs.front() != job, "Job is not removed");
-	ENSURE(job->isFinished(), "Job is not finished.");
+    job->increasePrintedPageCount();
+    if (job->getPrintedPageCount() == job->getPageCount())
+    {
+        job->setStatus(Job::done);
+        jobs.pop_front();
+        ENSURE(jobs.front() != job, "Job is not removed");
+        ENSURE(job->getStatus() == Job::done, "Job is not finished.");
+    }
 
 	return job->finishMessage();
 }
@@ -159,6 +161,7 @@ std::string Device::device_type_to_string(Device::DeviceTypes device_type) {
         case DeviceTypes::scan:
             return "Scanner";
     }
+    return "unknown";
 }
 
 int Device::getCost() const {
@@ -181,7 +184,7 @@ std::string Device::AdvancePrintReport() {
         return report.str();
     }
     report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t |\t" << std::endl;
-    for(int i = 1; i < jobs.size(); i++){
+    for(uint i = 1; i < jobs.size(); i++){
         report << "[" << jobs[i]->getPageCount()<<"]" << std::endl;
     }
 

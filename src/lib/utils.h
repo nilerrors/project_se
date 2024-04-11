@@ -80,9 +80,9 @@ bool isValidDeviceType(const std::string& typeStr);
  * @param typeStr
  * @return
  */
-bool isValidDeviceType_2(const string &typeStr);
+bool isValidDeviceType_2(const std::string &typeStr);
 
-bool isValidJobType(const string &typeStr);
+bool isValidJobType(const std::string &typeStr);
 
 
 

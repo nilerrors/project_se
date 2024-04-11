@@ -34,7 +34,7 @@ Job *SystemManager::getFirstJob() const {
 
 Job *SystemManager::getFirstUnfinishedJob() const {
     for(Job *job : jobs){
-        if(!job->isFinished()) {
+        if(job->getStatus() != Job::done) {
             return job;
         }
     }
@@ -45,7 +45,7 @@ Job *SystemManager::getFirstUnprocessedJob() const {
     REQUIRE(properlyInitialized(), "System is not properly initialized");
     REQUIRE(!jobs.empty(), "No jobs were found");
     for(Job *job : jobs){
-        if(!job->isFinished() && !job->isInProcess()) {
+        if(job->getStatus() == Job::unassigned) {
             return job;
         }
     }
@@ -63,7 +63,7 @@ const std::vector<Job *> &SystemManager::getJobs() const {
 std::vector<Job *> SystemManager::getUnfinishedJobs() const {
     std::vector<Job *> unfinished_jobs;
     for(Job *job : jobs){
-        if(!job->isFinished()) {
+        if(job->getStatus() != Job::done) {
             unfinished_jobs.push_back(job);
         }
     }
