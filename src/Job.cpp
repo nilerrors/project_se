@@ -163,3 +163,7 @@ int Job::getQueueNumber() const {
         }
     }
 }
+
+int Job::getPrintedPageCount() const {
+    return printedPageCount;
+}

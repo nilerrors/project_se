@@ -1,5 +1,5 @@
 # Print System
-# TODO: Test Use Case 1.2, 1.3,1.4, 2.2
+# TODO: Test Use Case 1.2, 1.3,1.4, 2.2, 2.3
         
 
 ## Specification 
@@ -39,7 +39,7 @@
 - [x] Use Case 1.4
 - [x] Use Case 2.1
 - [x] Use Case 2.2 <---- (Step 4 niet geïmplementeerd)
-- [ ] Use Case 2.3 <---- Nieuwe Functie
+- [x] Use Case 2.3 <---- Nieuwe Functie
 - [x] Use Case 3.1
 - [x] Use Case 3.2
 - [ ] Use Case 3.3 <---- Assigner Aanpassen

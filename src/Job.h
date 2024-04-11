@@ -68,6 +68,8 @@ public:
      */
      Status getStatus() const;
 
+     int getPrintedPageCount() const;
+
 	/**
 	 * \brief Checks if the job is finished
 	 * @return

@@ -165,3 +165,18 @@ void System::setLogger(Logger *log)
     reader->setLogger(logger);
 	ENSURE(logger == log, "Logger was not set");
 }
+
+std::string System::AdvancePrintReport() {
+    REQUIRE(properlyInitialized(), "Class is not properly initialized");
+    REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
+
+    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
+    std::ofstream report;
+    report.open(filename);
+
+    for(Device *device : manager->getDevices()){
+        report << device->AdvancePrintReport();
+    }
+    report.close();
+    return filename;
+}

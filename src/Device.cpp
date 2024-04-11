@@ -169,4 +169,25 @@ std::deque<Job *> Device::getJobs() const {
     return jobs;
 }
 
+std::string Device::AdvancePrintReport() {
+    REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+
+    std::stringstream report;
+
+    report << name << std::endl;
+    if(jobs.empty()){
+        report << "\t" << "|"<< std::endl;
+        report<<std::endl;
+        return report.str();
+    }
+    report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t |\t" << std::endl;
+    for(int i = 1; i < jobs.size(); i++){
+        report << "[" << jobs[i]->getPageCount()<<"]" << std::endl;
+    }
+
+    report<<std::endl;
+    ENSURE(!report.str().empty(), "Advance Device report is empty");
+    return report.str();
+}
+
 

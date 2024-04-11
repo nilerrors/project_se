@@ -142,6 +142,8 @@ public:
      */
     static std::string device_type_to_string(DeviceTypes device_type);
 
+    std::string AdvancePrintReport();
+
 private:
     Device *init_;
     std::string name;

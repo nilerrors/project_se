@@ -139,6 +139,8 @@ public:
 	 */
 	 void setLogger(Logger *logger);
 
+     std::string AdvancePrintReport();
+
 private:
     System* _init;
 
