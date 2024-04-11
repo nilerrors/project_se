@@ -137,7 +137,10 @@ public:
 	 */
     std::string printReport() const;
 
+
     static std::string job_type_to_string(JobTypes device_type);
+
+    int getQueueNumber() const;
 
 private:
     Status status = Status::unassigned;

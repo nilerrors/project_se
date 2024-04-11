@@ -123,7 +123,17 @@ std::string Job::printReport() const
     report << "[Job #" << jobNumber << "]" << std::endl;
     report << "* Owner: " << userName << std::endl;
     report << "* Device: " << assignedTo->getName() << std::endl;
-    report << "* Status: " << printedPageCount << " pages done" << std::endl;
+    if(status == printing){
+        report << "* Status: " << printedPageCount << " pages done" << std::endl;
+    }
+    else if(status == waiting){
+        int queueNumber = getQueueNumber();
+        report << "* Status: WAITING #" << queueNumber << std::endl;
+    }
+    else{
+        report << "* Status: FINISHED" << std::endl;
+    }
+
     report << "* Total pages: " << pageCount << " pages" << std::endl;
     report << "* Total CO2: " << assignedTo->getEmission() * printedPageCount << "g CO2" << std::endl;
     report << "* Total cost: " << assignedTo->getCost() * printedPageCount << " cents" << std::endl;
@@ -143,5 +153,13 @@ std::string Job::job_type_to_string(Job::JobTypes device_type) {
             return "Color";
         case JobTypes::scan:
             return "Scan";
+    }
+}
+
+int Job::getQueueNumber() const {
+    for(int i = 1; i < assignedTo->getJobs().size(); i++) {
+        if(assignedTo->getJobs()[i-1]->userName == userName) {
+            return i;
+        }
     }
 }

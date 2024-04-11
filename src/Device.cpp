@@ -165,4 +165,8 @@ int Device::getCost() const {
     return cost;
 }
 
+std::deque<Job *> Device::getJobs() const {
+    return jobs;
+}
+
 

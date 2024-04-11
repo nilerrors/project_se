@@ -70,6 +70,8 @@ public:
     int getCost() const;
 
 
+    std::deque<Job *> getJobs() const;
+
 	/**
 	 * brief Adds a job to the device
 	 * \param job Job to be added
