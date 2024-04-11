@@ -46,19 +46,19 @@ public:
 
 	/**
 	 * \brief Gets the job number
-	 * @return
+	 * @return job number
 	 */
     int getJobNumber() const;
 
 	/**
 	 * \brief Gets the page count
-	 * @return
+	 * @return page count
 	 */
     int getPageCount() const;
 
 	/**
 	 * \brief Gets the user name
-	 * @return
+	 * @return userName
 	 */
     const std::string &getUserName() const;
 
@@ -68,17 +68,22 @@ public:
      */
      Status getStatus() const;
 
+        /**
+         * \brief Get printed page count
+         * @return printed page count
+         */
+
      int getPrintedPageCount() const;
 
 	/**
 	 * \brief Checks if the job is finished
-	 * @return
+	 * @return A boolean indicating if the job is finished
 	 */
 	bool isFinished() const;
 
 	/**
 	 * \brief Checks if the job is in process
-	 * @return
+	 * @return A boolean indicating if the job is in process
 	 */
 	bool isInProcess() const;
 
@@ -96,7 +101,7 @@ public:
 
 	/**
 	 * \brief Gets the device the job is assigned to
-	 * @return
+	 * @return assignedTo
 	 */
 	Device *getAssignedTo() const;
 
@@ -119,7 +124,7 @@ public:
     /**
      * \brief Converts the string representation of the job type to it's enum value
      * @param typstr
-     * @return
+     * @return JobTypes
      */
     static Job::JobTypes stringtoType(std::string &typstr);
 
@@ -140,7 +145,21 @@ public:
     std::string printReport() const;
 
 
-    static std::string job_type_to_string(JobTypes device_type);
+
+    /**
+     * \brief Converts the given job type to string representation
+     * @param job_type
+     * @return string
+     */
+
+    static std::string job_type_to_string(JobTypes job_type);
+
+
+
+    /**
+     * \brief Get position in queue
+     * @return queue number
+     */
 
     int getQueueNumber() const;
 

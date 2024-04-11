@@ -40,35 +40,41 @@ public:
 
 	/**
 	 * \brief Checks if the class is properly
-	 * @return
+	 * @return A boolean indicating if the class is properly
 	 */
 	bool properlyInitialized() const { return init_ == this; }
 
 	/**
 	 * \brief Gets the name of the device
-	 * @return
+	 * @return name
 	 */
     const std::string &getName() const;
 
 	/**
 	 * \brief Gets the emission of the device
-	 * @return
+	 * @return emmission
 	 */
     int getEmission() const;
 
 	/**
 	 * \brief Gets the speed of the device
-	 * @return
-	 */
+	 * @return speed
+     */
+
     int getSpeed() const;
 
 
     /**
      * \brief Gets the cost of the device
-     * @return
+     * @return cost
      */
     int getCost() const;
 
+
+    /**
+     * \brief Gets the jobs of the device
+     * @return A deque containing the jobs
+     */
 
     std::deque<Job *> getJobs() const;
 
@@ -141,6 +147,19 @@ public:
      * @return string
      */
     static std::string device_type_to_string(DeviceTypes device_type);
+
+
+
+    /**
+     * \brief Prints the current state of the system graphically
+     * @return A string containing the state of the system
+     *
+     * @require
+     * - REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+     *
+     * @ensure
+     * - ENSURE(!report.str().empty(), "Advance Device report is empty");
+     */
 
     std::string AdvancePrintReport();
 

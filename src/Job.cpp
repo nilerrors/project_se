@@ -89,7 +89,7 @@ std::string Job::finishMessage() const
 
 	std::stringstream message;
 
-	message << "Printer " << '"' << assignedTo->getName() << '"' << " finished job:" << std::endl;
+	message << "Printer " << '"' << assignedTo->getName() << '"' << " finished " <<job_type_to_string(type)<<":" << std::endl;
 	message << "\tNumber: " << jobNumber << std::endl;
 	message << "\tSubmitted by " << '"' << userName << '"' << std::endl;
 	message << "\t" << pageCount << " pages" << std::endl;
@@ -148,11 +148,11 @@ std::string Job::printReport() const
 std::string Job::job_type_to_string(Job::JobTypes device_type) {
     switch (device_type) {
         case JobTypes::bw:
-            return "Black-and-white";
+            return "black-and-white job";
         case JobTypes::color:
-            return "Color";
+            return "color-printing job";
         case JobTypes::scan:
-            return "Scan";
+            return "scanning job";
     }
 }
 
