@@ -14,6 +14,7 @@ class Device;
 class Job {
 public:
     enum JobTypes {bw, color, scan};
+    enum Status {unassigned, waiting, printing, done};
 
 	/**
 	 * \brief Constructor for Job
@@ -60,6 +61,12 @@ public:
 	 * @return
 	 */
     const std::string &getUserName() const;
+
+    /**
+     * \brief Get job status
+     * @return Status
+     */
+     Status getStatus() const;
 
 	/**
 	 * \brief Checks if the job is finished
@@ -114,12 +121,26 @@ public:
      */
     static Job::JobTypes stringtoType(std::string &typstr);
 
+    /**
+	 * \brief Prints a report of the job
+	 * \return A string containing the report
+
+	 * @require
+		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+		- REQUIRE(emission >= 0, "Emission is negative.");
+		- REQUIRE(speed >= 0, "Speed is negative.");
+
+	 * @ensure
+		- ENSURE(result != "", "Report is empty.");
+	 */
+    std::string printReport() const;
+
 private:
-	bool finished = false;
-	bool inProcess = false;
+    Status status = Status::unassigned;
 	Device *assignedTo = NULL;
     int jobNumber;
     int pageCount;
+    int printedPageCount;
     JobTypes type;
     std::string userName;
 	Job *init_;

@@ -34,15 +34,15 @@
 
 ### We gaan de volgende use-cases (op dit moment) implementeren:
 - [x] Use Case 1.1
-- [ ] Use Case 1.2
-- [ ] Use Case 1.3
-- [ ] Use Case 1.4
+- [x] Use Case 1.2
+- [x] Use Case 1.3
+- [x] Use Case 1.4
 - [x] Use Case 2.1
-- [ ] Use Case 2.2
-- [ ] Use Case 2.3
+- [ ] Use Case 2.2 <---- PrintReport Aanpassen
+- [ ] Use Case 2.3 <---- Nieuwe Functie
 - [x] Use Case 3.1
 - [x] Use Case 3.2
-- [ ] Use Case 3.3
-- [ ] Use Case 3.4
+- [ ] Use Case 3.3 <---- Assigner Aanpassen
+- [ ] Use Case 3.4 <---- Assigner Aanpassen
 - [ ] Use Case 3.5
 - [ ] Use Case 3.7

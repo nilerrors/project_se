@@ -123,6 +123,13 @@ public:
      */
     static Device::DeviceTypes stringtoType(std::string &typstr);
 
+    /**
+     * \brief Converts the given device type to string representation
+     * @param device_type
+     * @return string
+     */
+    static std::string device_type_to_string(DeviceTypes device_type);
+
 private:
     Device *init_;
     std::string name;

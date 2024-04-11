@@ -68,6 +68,10 @@ std::string System::printReport() const {
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
     std::ofstream report;
     report.open(filename);
+
+    report << "# === [System Status] === #" << std::endl << std::endl;
+    report << "--== Devices ==--" << std::endl << std::endl;
+
     for(Device *device : manager->getDevices()) {
         report << device->printReport();
         if (device != manager->getDevices().back())

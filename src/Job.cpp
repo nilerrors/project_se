@@ -62,24 +62,14 @@ const std::string &Job::getUserName() const {
     return userName;
 }
 
-bool Job::isFinished() const
+Job::Status Job::getStatus() const
 {
-	return finished;
+    return status;
 }
 
-void Job::setFinished(bool finish)
+void setStatus()
 {
-	finished = finish;
-}
 
-bool Job::isInProcess() const
-{
-	return inProcess;
-}
-
-void Job::setInProcess(bool process)
-{
-	inProcess = process;
 }
 
 Device *Job::getAssignedTo() const
@@ -117,4 +107,14 @@ Job::JobTypes Job::stringtoType(std::string &typstr) {
     else {
         return Job::JobTypes::color;
     }
+}
+
+std::string Job::printReport() const
+{
+    /*
+	 Description
+	 */
+    REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+    REQUIRE(emission >= 0, "Emission is negative.");
+    REQUIRE(speed >= 0, "Speed is negative.");
 }

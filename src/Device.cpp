@@ -89,24 +89,18 @@ std::string Device::printReport() const
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 	REQUIRE(emission >= 0, "Emission is negative.");
 	REQUIRE(speed >= 0, "Speed is negative.");
+    REQUIRE(cost>=0, "Cost is negative");
+    REQUIRE(isValidDeviceType_2(device_type_to_string(type)), "Type is not defined");
+
 
 	std::stringstream report;
-	report << name << " (CO2: " << emission << "g/page)" << ":" << std::endl;
-	if (jobs.empty()) {
-		report << "\t" << "No jobs" << std::endl;
+    report << name << ":" << std::endl;
+    report << "* CO2: " << emission << "g/page"<<std::endl;
+    report << "* " << speed << " pages / minute"<<std::endl;
+    report << "* " << device_type_to_string(type) << std::endl;
+    report << "* " << cost << " cents / page";
 
-        return report.str();
-	}
-	report << "\t* Current:" << std::endl;
-	report << "\t\t[#" +  std::to_string(jobs.front()->getJobNumber())+ "|"  << jobs.front()->getUserName() +"]" << std::endl;
-	if (jobs.size() > 1)
-	{
-		report << "\t* Queue:" << std::endl;
-		for(size_t i = 1; i < jobs.size(); i++) {
-			Job *job = jobs[i];
-			report << "\t\t[#" +  std::to_string(job->getJobNumber())+ "|"  << job->getUserName() +"]" << std::endl;
-		}
-	}
+    report << std::endl;
 
 	ENSURE(!report.str().empty(), "Device report is empty");
 	return report.str();
@@ -154,6 +148,17 @@ Device::DeviceTypes Device::stringtoType(std::string &typstr) {
     }
     else {
         return Device::DeviceTypes::color;
+    }
+}
+
+std::string Device::device_type_to_string(Device::DeviceTypes device_type) {
+    switch (device_type) {
+        case DeviceTypes::bw:
+            return "Black-and-white printer";
+        case DeviceTypes::color:
+            return "Color printer";
+        case DeviceTypes::scan:
+            return "Scanner";
     }
 }
 

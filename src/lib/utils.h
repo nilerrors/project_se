@@ -75,5 +75,12 @@ std::string GenerateFileName(const std::string &prefix, const std::string &exten
  */
 bool isValidDeviceType(const std::string& typeStr);
 
+/**
+ * \brief Checks if the given string is a valid device type. This function is called when print report is getting called and is used to check if the type is valid.
+ * @param typeStr
+ * @return
+ */
+bool isValidDeviceType_2(const string &typeStr);
+
 
 #endif //PROJECTTITLE_UTILS_H
