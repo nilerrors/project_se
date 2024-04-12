@@ -79,6 +79,7 @@ std::string System::printReport() const {
 
     report << "--== Jobs ==--" << std::endl << std::endl;
     for(Job *job : manager->getJobs()) {
+        if (job->getAssignedTo() == NULL) continue;
         report << job->printReport() << std::endl;
     }
 
@@ -126,7 +127,6 @@ void System::processFirstJob() const {
 	REQUIRE(manager->getFirstUnprocessedJob() != NULL, "All jobs are processed");
 	REQUIRE(manager->getFirstUnprocessedJob()->getAssignedTo() != NULL, "Job is not assigned to a device");
 
-    //If this function gets called before processalljobs is called, wont Device *device = job->getAssignedTo(); return a nullptr?
 	Job *job = manager->getFirstUnprocessedJob();
 	Device *device = job->getAssignedTo();
 	int initialLoad = device->getLoad();

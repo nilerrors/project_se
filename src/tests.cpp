@@ -151,6 +151,7 @@ TEST_F(TestSystem, printReportHD){
     system->processAll();
 
     std::string filename = system->printReport();
+    std::cout << filename << std::endl;
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
 }
 

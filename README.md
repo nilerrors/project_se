@@ -44,5 +44,9 @@
 - [x] Use Case 3.2
 - [x] Use Case 3.3 <---- Assigner Aanpassen
 - [ ] Use Case 3.4 <---- Assigner Aanpassen
+    > Hier moeten we de reports aanpassen. Een aantal beslissingen die nog gemaakt moeten
+      worden in het maken van de report.
+  1. Jobs die niet assigned kunnen worden, laten zien of weghalen?
+  2. Als laten zien, welke representatie?
 - [ ] Use Case 3.5
 - [ ] Use Case 3.7

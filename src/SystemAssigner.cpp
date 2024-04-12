@@ -21,6 +21,12 @@ Device *SystemAssigner::assignJobToDevice(Job *job) const {
     //Add exception here:  [No device exists for the specified job type] Print an error message that the job could not be
     //printed.
     Device *device = manager->getDeviceWithLeastLoadOfType(job->getType());
+    if (device == NULL)
+    {
+        manager->setJobUnassignable(job);
+        logger->error("No device found for the specifed job type: " + PrintingTypeToJobString(job->getType()));
+        return NULL;
+    }
     device->addJob(job);
     job->setAssignedTo(device);
     return device;

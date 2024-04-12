@@ -105,12 +105,20 @@ public:
      */
     Device *getDeviceWithLeastLoadOfType(PrintingType deviceTypes) const;
 
+    /**
+     * \brief Moves the job to unassignable jobs
+     */
+    void setJobUnassignable(Job *job);
+
 private:
     SystemManager *_init;
 
     std::vector<Device *> devices;
     //Add three more vectors bw_devices, color_devices, scan_devices? Also change devices to all_devices?
     std::vector<Job *> jobs;
+
+    // Jobs for which there are no compatible devices (devices of the same type).
+    std::vector<Job *> unassignable_jobs;
 };
 
 

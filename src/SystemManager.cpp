@@ -2,6 +2,7 @@
 // Created by nilerrors on 3/28/24.
 //
 
+#include <algorithm>
 #include "SystemManager.h"
 #include "lib/DesignByContract.h"
 
@@ -74,9 +75,11 @@ Device *SystemManager::getDeviceWithLeastLoadOfType(PrintingType deviceType) con
     REQUIRE(properlyInitialized(), "System is not properly initialized.");
     REQUIRE(!devices.empty(), "No devices were found.");
 
-    Device *least_loaded_device = devices.front();
-    for(Device *device : devices){
-        if(device->getLoad() < least_loaded_device->getLoad() && device->getType() == deviceType){
+    Device *least_loaded_device = NULL;
+    for(Device *device : devices) {
+        if(device->getType() == deviceType
+            && (least_loaded_device == NULL
+                || device->getLoad() < least_loaded_device->getLoad())) {
             least_loaded_device = device;
         }
     }
@@ -89,4 +92,16 @@ void SystemManager::addDevice(Device *device) {
 
 void SystemManager::addJob(Job *job) {
     jobs.push_back(job);
+}
+
+void SystemManager::setJobUnassignable(Job *job) {
+    auto job_at = std::find(jobs.begin(), jobs.end(), job);
+    REQUIRE(job_at != jobs.end(), "Job was not found in the jobs");
+
+    jobs.erase(job_at);
+
+    unassignable_jobs.push_back(job);
+
+    ENSURE(std::find(unassignable_jobs.begin(), unassignable_jobs.end(), job) != unassignable_jobs.end(),
+           "Job must be present in the unassignable jobs");
 }
