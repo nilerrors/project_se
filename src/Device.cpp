@@ -129,6 +129,7 @@ std::string Device::processJob()
 
     assert(job->getStatus() != Job::done);  // cannot process finished job
 
+    job->setStatus(Job::printing);
     job->increasePrintedPageCount();
     if (job->getPrintedPageCount() == job->getPageCount())
     {
@@ -136,9 +137,10 @@ std::string Device::processJob()
         jobs.pop_front();
         ENSURE(jobs.front() != job, "Job is not removed");
         ENSURE(job->getStatus() == Job::done, "Job is not finished.");
+        return job->finishMessage();
     }
 
-	return job->finishMessage();
+	return "";
 }
 
 Device::DeviceTypes Device::stringtoType(std::string &typstr) {

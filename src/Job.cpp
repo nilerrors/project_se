@@ -134,9 +134,9 @@ std::string Job::printReport() const
     if(status == printing){
         report << "* Status: " << printedPageCount << " pages done" << std::endl;
     }
-    else if(status == waiting){
+    else if(status == waiting || status == assigned){
         int queueNumber = getQueueNumber();
-        report << "* Status: WAITING #" << queueNumber << std::endl;
+        report << "* Status: WAITING #" << queueNumber + 1 << std::endl;
     }
     else if (status == done) {
         report << "* Status: FINISHED" << std::endl;
@@ -169,12 +169,19 @@ std::string Job::job_type_to_string(Job::JobTypes device_type) {
 }
 
 int Job::getQueueNumber() const {
-    for(uint i = 1; i < assignedTo->getJobs().size(); i++) {
-        if(assignedTo->getJobs()[i-1]->userName == userName) {
-            return i;
+    if (status != assigned) return -1;
+    int current_waiting = -1;
+    for(uint i = 0; i < assignedTo->getJobs().size(); i++) {
+        Job *current_job = assignedTo->getJobs()[i];
+        if (current_job->status == waiting || current_job->status == assigned)
+        {
+            current_waiting++;
+        }
+        if(current_job->getJobNumber() == jobNumber) {
+            return current_waiting;
         }
     }
 
-    return -1;
+    return current_waiting;
 }
 

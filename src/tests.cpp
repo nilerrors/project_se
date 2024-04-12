@@ -159,6 +159,15 @@ TEST_F(TestSystem, printEmpty){
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportEMPTY.txt"));
 }
 
+TEST_F(TestSystem, PartialProcessing) {
+    system->ReadData("xml_tests/ReportHD.xml");
+    system->getAssigner()->assignAllJobs();
+    system->getManager()->getDevices()[0]->processJob();
+
+    std::string filename = system->printReport();
+    EXPECT_TRUE(FileCompare(filename, "report_tests/PartialProcessing.txt"));
+}
+
 
 //////////////////////////////////////////////////////////////////
 ///                         INCONSISTENCY TEST                 ///
