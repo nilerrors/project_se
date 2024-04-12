@@ -8,14 +8,13 @@
 #include <string>
 #include <deque>
 #include "lib/tinyxml.h"
+#include "Consts.h"
 
 class Job;
 
 class Device
 {
 public:
-    enum DeviceTypes {bw, color, scan};
-
 	/**
 	 * \brief Constructor for Device
 	 * \param device_element TiXmlElement containing the device data
@@ -44,10 +43,12 @@ public:
 	 */
 	bool properlyInitialized() const { return init_ == this; }
 
-	/**
-	 * \brief Gets the name of the device
-	 * @return name
-	 */
+    PrintingType getType() const;
+
+    /**
+     * \brief Gets the name of the device
+     * @return name
+     */
     const std::string &getName() const;
 
 	/**
@@ -135,22 +136,6 @@ public:
 	std::string processJob();
 
     /**
-     * \brief Converts the string representation of the device type to it's enum value
-     * @param typstr
-     * @return DeviceType
-     */
-    static Device::DeviceTypes stringtoType(std::string &typstr);
-
-    /**
-     * \brief Converts the given device type to string representation
-     * @param device_type
-     * @return string
-     */
-    static std::string device_type_to_string(DeviceTypes device_type);
-
-
-
-    /**
      * \brief Prints the current state of the system graphically
      * @return A string containing the state of the system
      *
@@ -169,7 +154,7 @@ private:
     int emission;
     int speed;
     int cost;
-    DeviceTypes type;
+    PrintingType type;
 	std::deque<Job *> jobs;
 };
 

@@ -103,7 +103,7 @@ public:
          - REQUIRE(properlyInitialized(), "Class is not properly initialized");
          - REQUIRE(!devices.empty(), "No devices were found.");
      */
-    Device *getDeviceWithLeastLoad() const;
+    Device *getDeviceWithLeastLoadOfType(PrintingType deviceTypes) const;
 
 private:
     SystemManager *_init;

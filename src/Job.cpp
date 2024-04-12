@@ -47,7 +47,7 @@ Job::Job(TiXmlElement *job_element) {
 	pageCount = std::stoi(temp_pageCount);
 	userName = temp_userName;
 	init_ = this;
-    type = stringtoType(temp_type);
+    type = StringToPrintingType(temp_type);
 }
 
 int Job::getJobNumber() const {
@@ -97,24 +97,12 @@ std::string Job::finishMessage() const
 
 	std::stringstream message;
 
-	message << "Printer " << '"' << assignedTo->getName() << '"' << " finished " <<job_type_to_string(type)<<":" << std::endl;
+	message << "Printer " << '"' << assignedTo->getName() << '"' << " finished " <<PrintingTypeToJobString(type)<<":" << std::endl;
 	message << "\tNumber: " << jobNumber << std::endl;
 	message << "\tSubmitted by " << '"' << userName << '"' << std::endl;
 	message << "\t" << pageCount << " pages" << std::endl;
 
 	return message.str();
-}
-
-Job::JobTypes Job::stringtoType(std::string &typstr) {
-    if(typstr == "bw") {
-        return Job::JobTypes::bw;
-    }
-    else if(typstr == "scan"){
-        return Job::JobTypes::scan;
-    }
-    else {
-        return Job::JobTypes::color;
-    }
 }
 
 std::string Job::printReport() const
@@ -123,7 +111,7 @@ std::string Job::printReport() const
     REQUIRE(jobNumber >= 0, "JobNumber is negative.");
     REQUIRE(pageCount >= 0, "PageCount is negative.");
     REQUIRE(printedPageCount>=0, "PrintedPageCount is negative");
-    REQUIRE(isValidJobType(job_type_to_string(type)), "Type is not defined");
+    REQUIRE(isValidJobType(PrintingTypeToJobString(type)), "Type is not defined");
     REQUIRE(assignedTo != NULL, "Device should be assigned");
 
     std::stringstream report;
@@ -152,20 +140,6 @@ std::string Job::printReport() const
 
     ENSURE(!report.str().empty(), "Job report is empty");
     return report.str();
-
-
-}
-
-std::string Job::job_type_to_string(Job::JobTypes device_type) {
-    switch (device_type) {
-        case JobTypes::bw:
-            return "black-and-white job";
-        case JobTypes::color:
-            return "color-printing job";
-        case JobTypes::scan:
-            return "scanning job";
-    }
-    return "unknown";
 }
 
 int Job::getQueueNumber() const {
@@ -185,3 +159,6 @@ int Job::getQueueNumber() const {
     return current_waiting;
 }
 
+PrintingType Job::getType() const {
+    return type;
+}

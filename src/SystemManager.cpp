@@ -70,13 +70,13 @@ std::vector<Job *> SystemManager::getUnfinishedJobs() const {
     return unfinished_jobs;
 }
 
-Device *SystemManager::getDeviceWithLeastLoad() const {
+Device *SystemManager::getDeviceWithLeastLoadOfType(PrintingType deviceType) const {
     REQUIRE(properlyInitialized(), "System is not properly initialized.");
     REQUIRE(!devices.empty(), "No devices were found.");
-    //Don't loop through devices but loop through vector of right device type?
+
     Device *least_loaded_device = devices.front();
     for(Device *device : devices){
-        if(device->getLoad() < least_loaded_device->getLoad()){
+        if(device->getLoad() < least_loaded_device->getLoad() && device->getType() == deviceType){
             least_loaded_device = device;
         }
     }

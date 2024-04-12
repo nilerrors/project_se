@@ -7,11 +7,7 @@
 #include "lib/utils.h"
 #include "System.h"
 #include <iostream>
-#include <fstream>
-#include <chrono>
-#include <iomanip>
 #include <sstream>
-#include <thread>
 
 Device::Device(const std::string &name, int emission, int speed) : name(name), emission(emission), speed(speed) {}
 
@@ -56,7 +52,7 @@ Device::Device(TiXmlElement *device_node) {
     emission = std::stoi(temp_emission);
     speed = std::stoi(temp_speed);
     init_ = this;
-    type = stringtoType(temp_type);
+    type = StringToPrintingType(temp_type);
     cost = std::stoi(temp_cost);
 }
 
@@ -91,14 +87,14 @@ std::string Device::printReport() const
 	REQUIRE(emission >= 0, "Emission is negative.");
 	REQUIRE(speed >= 0, "Speed is negative.");
     REQUIRE(cost>=0, "Cost is negative");
-    REQUIRE(isValidDeviceType_2(device_type_to_string(type)), "Type is not defined");
+    REQUIRE(isValidDeviceType_2(PrintingTypeToDeviceString(type)), "Type is not defined");
 
 
 	std::stringstream report;
     report << name << ":" << std::endl;
     report << "* CO2: " << emission << "g/page"<<std::endl;
     report << "* " << speed << " pages / minute"<<std::endl;
-    report << "* " << device_type_to_string(type) << std::endl;
+    report << "* " << PrintingTypeToDeviceString(type) << std::endl;
     report << "* " << cost << " cents / page";
     report << std::endl;
 
@@ -143,30 +139,6 @@ std::string Device::processJob()
 	return "";
 }
 
-Device::DeviceTypes Device::stringtoType(std::string &typstr) {
-    if(typstr == "bw") {
-        return Device::DeviceTypes::bw;
-    }
-    else if(typstr == "scan"){
-        return Device::DeviceTypes::scan;
-    }
-    else {
-        return Device::DeviceTypes::color;
-    }
-}
-
-std::string Device::device_type_to_string(Device::DeviceTypes device_type) {
-    switch (device_type) {
-        case DeviceTypes::bw:
-            return "Black-and-white printer";
-        case DeviceTypes::color:
-            return "Color printer";
-        case DeviceTypes::scan:
-            return "Scanner";
-    }
-    return "unknown";
-}
-
 int Device::getCost() const {
     return cost;
 }
@@ -193,6 +165,10 @@ std::string Device::AdvancePrintReport() {
     report<<std::endl;
     ENSURE(!report.str().empty(), "Advance Device report is empty");
     return report.str();
+}
+
+PrintingType Device::getType() const {
+    return type;
 }
 
 

@@ -8,12 +8,12 @@
 #include <string>
 
 #include "lib/tinyxml.h"
+#include "Consts.h"
 
 class Device;
 
 class Job {
 public:
-    enum JobTypes {bw, color, scan};
     enum Status {unassigned, assigned, waiting, printing, done};
 
 	/**
@@ -109,13 +109,6 @@ public:
 	std::string finishMessage() const;
 
     /**
-     * \brief Converts the string representation of the job type to it's enum value
-     * @param typstr
-     * @return JobTypes
-     */
-    static Job::JobTypes stringtoType(std::string &typstr);
-
-    /**
 	 * \brief Prints a report of the job
 	 * \return A string containing the report
 
@@ -131,23 +124,16 @@ public:
 	 */
     std::string printReport() const;
 
-
-
     /**
-     * \brief Converts the given job type to string representation
-     * @param job_type
-     * @return string
+     * \brief Get type of job
+     * @return
      */
-
-    static std::string job_type_to_string(JobTypes job_type);
-
-
+    PrintingType getType() const;
 
     /**
      * \brief Get position in queue
      * @return queue number
      */
-
     int getQueueNumber() const;
 
 private:
@@ -156,7 +142,7 @@ private:
     int jobNumber;
     int pageCount;
     int printedPageCount = 0;
-    JobTypes type;
+    PrintingType type;
     std::string userName;
 	Job *init_;
 };
