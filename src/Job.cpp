@@ -138,8 +138,11 @@ std::string Job::printReport() const
         int queueNumber = getQueueNumber();
         report << "* Status: WAITING #" << queueNumber << std::endl;
     }
-    else{
+    else if (status == done) {
         report << "* Status: FINISHED" << std::endl;
+    }
+    else {
+        report << "* Status: " << status << std::endl;
     }
 
     report << "* Total pages: " << pageCount << " pages" << std::endl;

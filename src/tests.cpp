@@ -148,16 +148,9 @@ TEST_F(TestUseCase1o1, ReadData_PageCount_NaN) {
 //////////////////////////////////////////////////////////////////
 TEST_F(TestSystem, printReportHD){
     system->ReadData("xml_tests/ReportHD.xml");
-    system->getManager()->getDevices()[0]->addJob(system->getManager()->getJobs()[0]);
-    system->getManager()->getDevices()[1]->addJob(system->getManager()->getJobs()[1]);
-    system->getManager()->getDevices()[2]->addJob(system->getManager()->getJobs()[2]);
-    system->getManager()->getDevices()[0]->addJob(system->getManager()->getJobs()[3]);
-    system->getManager()->getDevices()[1]->addJob(system->getManager()->getJobs()[4]);
-    system->getManager()->getDevices()[2]->addJob(system->getManager()->getJobs()[5]);
-    system->getManager()->getDevices()[0]->addJob(system->getManager()->getJobs()[6]);
+    system->processAll();
 
     std::string filename = system->printReport();
-    std::cout << filename << std::endl;
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
 }
 
@@ -200,7 +193,7 @@ TEST_F(TestSystem, Manual_Processing_Forget_Device){
 	// system->assignAllJobs();
 
 	// throws an assertion error, because we forgot to assign the jobs to the devices first
-	EXPECT_DEATH(system->processFirstJob(), ".*Job is not assigned to a device.*");
+	EXPECT_DEATH(system->processFirstJob(), ".*All jobs are processed.*");
 }
 
 TEST_F(TestSystem, Manual_Processing_HappyDay){

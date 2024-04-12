@@ -74,19 +74,14 @@ std::string System::printReport() const {
     report << "--== Devices ==--" << std::endl << std::endl;
 
     for(Device *device : manager->getDevices()) {
-        report << device->printReport();
-        if (device != manager->getDevices().back())
-            report << "\n\n";
+        report << device->printReport() << std::endl;
     }
 
-    report << std::endl << "--== Jobs ==--" << std::endl << std::endl;
+    report << "--== Jobs ==--" << std::endl << std::endl;
     for(Job *job : manager->getJobs()) {
-        report << job->printReport();
-        if (job != manager->getJobs().back())
-            report << "\n\n";
+        report << job->printReport() << std::endl;
     }
 
-    report << "\n\n";
     report<<"# ======================= #"<<std::endl;
 
     report.close();
@@ -141,8 +136,10 @@ void System::processFirstJob() const {
     // print all pages
     do {
         message = device->processJob();
-        std::chrono::milliseconds duration(60 / device->getSpeed() * 1000);
-        std::this_thread::sleep_for(duration);
+        if (wait_for_print) {
+            std::chrono::milliseconds duration(60 / device->getSpeed() * 1000);
+            std::this_thread::sleep_for(duration);
+        }
     } while (job->getStatus() != Job::done);
 
 	logger->log(message);

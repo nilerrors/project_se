@@ -100,6 +100,7 @@ std::string Device::printReport() const
     report << "* " << speed << " pages / minute"<<std::endl;
     report << "* " << device_type_to_string(type) << std::endl;
     report << "* " << cost << " cents / page";
+    report << std::endl;
 
 
 	ENSURE(!report.str().empty(), "Device report is empty");

@@ -36,6 +36,7 @@ void SystemAssigner::assignAllJobs() const {
         if (job->getAssignedTo() == NULL)
         {
             assignJobToDevice(job);
+            job->setStatus(Job::assigned);
         }
     }
 }

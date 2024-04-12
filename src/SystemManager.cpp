@@ -45,7 +45,7 @@ Job *SystemManager::getFirstUnprocessedJob() const {
     REQUIRE(properlyInitialized(), "System is not properly initialized");
     REQUIRE(!jobs.empty(), "No jobs were found");
     for(Job *job : jobs){
-        if(job->getStatus() == Job::unassigned) {
+        if(job->getStatus() == Job::assigned) {
             return job;
         }
     }

@@ -143,6 +143,7 @@ public:
 
 private:
     System* _init;
+    bool wait_for_print = false;
 
     SystemManager *manager;
 	Logger *logger;

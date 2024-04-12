@@ -14,7 +14,7 @@ class Device;
 class Job {
 public:
     enum JobTypes {bw, color, scan};
-    enum Status {unassigned, waiting, printing, done};
+    enum Status {unassigned, assigned, waiting, printing, done};
 
 	/**
 	 * \brief Constructor for Job
