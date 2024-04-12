@@ -182,13 +182,12 @@ std::string Device::AdvancePrintReport() {
 
     report << name << std::endl;
     if(jobs.empty()){
-        report << "\t" << "|"<< std::endl;
-        report<<std::endl;
+        report << "\t" << "|" << std::endl;
         return report.str();
     }
-    report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t |\t" << std::endl;
+    report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t|";
     for(uint i = 1; i < jobs.size(); i++){
-        report << "[" << jobs[i]->getPageCount()<<"]" << std::endl;
+        report << " " << "[" << jobs[i]->getPageCount()<<"]";
     }
 
     report<<std::endl;

@@ -168,6 +168,15 @@ TEST_F(TestSystem, PartialProcessing) {
     EXPECT_TRUE(FileCompare(filename, "report_tests/PartialProcessing.txt"));
 }
 
+TEST_F(TestSystem, AdvancedTextualOutput) {
+    system->ReadData("xml_tests/ReportHD.xml");
+    system->getAssigner()->assignAllJobs();
+
+    std::string filename = system->AdvancePrintReport();
+
+    EXPECT_TRUE(FileCompare(filename, "report_tests/AdvancedReport.txt"));
+}
+
 
 //////////////////////////////////////////////////////////////////
 ///                         INCONSISTENCY TEST                 ///
