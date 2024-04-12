@@ -6,6 +6,8 @@
 #include "System.h"
 #include <iostream>
 #include <fstream>
+#include <chrono>
+#include <thread>
 #include "SystemReader.h"
 
 System::System() {
@@ -129,6 +131,7 @@ void System::processFirstJob() const {
 	REQUIRE(manager->getFirstUnprocessedJob() != NULL, "All jobs are processed");
 	REQUIRE(manager->getFirstUnprocessedJob()->getAssignedTo() != NULL, "Job is not assigned to a device");
 
+    //If this function gets called before processalljobs is called, wont Device *device = job->getAssignedTo(); return a nullptr?
 	Job *job = manager->getFirstUnprocessedJob();
 	Device *device = job->getAssignedTo();
 	int initialLoad = device->getLoad();
@@ -138,6 +141,8 @@ void System::processFirstJob() const {
     // print all pages
     do {
         message = device->processJob();
+        std::chrono::milliseconds duration(60 / device->getSpeed() * 1000);
+        std::this_thread::sleep_for(duration);
     } while (job->getStatus() != Job::done);
 
 	logger->log(message);

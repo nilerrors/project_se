@@ -109,6 +109,7 @@ private:
     SystemManager *_init;
 
     std::vector<Device *> devices;
+    //Add three more vectors bw_devices, color_devices, scan_devices? Also change devices to all_devices?
     std::vector<Job *> jobs;
 };
 
