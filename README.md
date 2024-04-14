@@ -47,6 +47,6 @@
     > Hier moeten we de reports aanpassen. Een aantal beslissingen die nog gemaakt moeten
       worden in het maken van de report.
   1. Jobs die niet assigned kunnen worden, laten zien of weghalen?
-  2. Als laten zien, welke representatie?
+     1. gekozen om die weg te halen, want er wordt een message laten zien.
 - [ ] Use Case 3.5
 - [ ] Use Case 3.7

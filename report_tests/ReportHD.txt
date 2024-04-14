@@ -22,60 +22,28 @@ UA printer 23:
 
 --== Jobs ==--
 
-[Job #89751]
-* Owner: SergeDemeyer
-* Device: Office_Printer5
-* Status: FINISHED
-* Total pages: 2 pages
-* Total CO2: 6g CO2
-* Total cost: 100 cents
-
-[Job #89481]
-* Owner: Tim_Apers
-* Device: Sabre printer X50
-* Status: FINISHED
-* Total pages: 20 pages
-* Total CO2: 120g CO2
-* Total cost: 2000 cents
-
 [Job #2189]
 * Owner: anonymous_user
-* Device: UA printer 23
+* Device: Office_Printer5
 * Status: FINISHED
 * Total pages: 3 pages
-* Total CO2: 12g CO2
-* Total cost: 210 cents
+* Total CO2: 9g CO2
+* Total cost: 150 cents
 
 [Job #325559]
 * Owner: Recep_Tayep_Erdogan
-* Device: Office_Printer5
+* Device: Sabre printer X50
 * Status: FINISHED
 * Total pages: 12 pages
-* Total CO2: 36g CO2
-* Total cost: 600 cents
+* Total CO2: 72g CO2
+* Total cost: 1200 cents
 
-[Job #321859]
-* Owner: Donald_Trump
+[Job #651894]
+* Owner: Cristiano_Ronaldo
 * Device: UA printer 23
 * Status: FINISHED
 * Total pages: 6 pages
 * Total CO2: 24g CO2
 * Total cost: 420 cents
-
-[Job #165984]
-* Owner: Joe_Biden
-* Device: UA printer 23
-* Status: FINISHED
-* Total pages: 25 pages
-* Total CO2: 100g CO2
-* Total cost: 1750 cents
-
-[Job #651894]
-* Owner: Cristiano_Ronaldo
-* Device: Office_Printer5
-* Status: FINISHED
-* Total pages: 6 pages
-* Total CO2: 18g CO2
-* Total cost: 300 cents
 
 # ======================= #

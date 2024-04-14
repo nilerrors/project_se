@@ -151,7 +151,6 @@ TEST_F(TestSystem, printReportHD){
     system->processAll();
 
     std::string filename = system->printReport();
-    std::cout << filename << std::endl;
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
 }
 
@@ -174,7 +173,6 @@ TEST_F(TestSystem, AdvancedTextualOutput) {
     system->getAssigner()->assignAllJobs();
 
     std::string filename = system->AdvancePrintReport();
-
     EXPECT_TRUE(FileCompare(filename, "report_tests/AdvancedReport.txt"));
 }
 
