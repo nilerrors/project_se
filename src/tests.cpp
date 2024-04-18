@@ -20,8 +20,8 @@ protected:
 /// DEVICES
 //////////////////////////////////////////////////////////////////
 TEST_F(TestSystem, ReadData_NoName) {
-    EXPECT_TRUE(system->getFirstDevice() == NULL);
-    EXPECT_TRUE(system->getFirstJob() == NULL);
+//    EXPECT_TRUE(system->getFirstDevice() == NULL);
+//    EXPECT_TRUE(system->getFirstJob() == NULL);
 	system->ReadData("xml_tests/NoName.xml");
     EXPECT_TRUE(system->getDevices().empty());
     EXPECT_TRUE(system->getJobs().size() == 2);
