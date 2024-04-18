@@ -16,6 +16,7 @@ System::System() {
     logger = new Logger();
     reader = new SystemReader(manager, logger);
     assigner = new SystemAssigner(manager, logger);
+    tracker = new SystemTracker();
 }
 
 System::~System() {
@@ -153,6 +154,10 @@ void System::processFirstJob() const {
 
 	ENSURE(job->getStatus() == Job::done, "Job is not finished");
 	ENSURE(job->getAssignedTo()->getLoad() != initialLoad, "Device did not process the job");
+
+    tracker->addPages(job->getPageCount());
+    tracker->addCo2Emission(job->getPageCount() * device->getEmission());
+
 }
 
 void System::processAll() {

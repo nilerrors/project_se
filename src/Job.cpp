@@ -145,7 +145,7 @@ std::string Job::printReport() const
 int Job::getQueueNumber() const {
     if (status != assigned) return -1;
     int current_waiting = -1;
-    for(uint i = 0; i < assignedTo->getJobs().size(); i++) {
+    for(size_t i = 0; i < assignedTo->getJobs().size(); i++) {
         Job *current_job = assignedTo->getJobs()[i];
         if (current_job->status == waiting || current_job->status == assigned)
         {

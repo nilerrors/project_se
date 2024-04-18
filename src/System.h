@@ -15,6 +15,7 @@
 #include "SystemReader.h"
 #include "SystemAssigner.h"
 #include "SystemManager.h"
+#include "SystemTracker.h"
 
 static const std::string REPORT_FILE_EXTENSION = ".txt";
 static const std::string LOG_FILE_EXTENSION = ".log";
@@ -146,6 +147,7 @@ private:
     bool wait_for_print = false;
 
     SystemManager *manager;
+    SystemTracker *tracker;
 	Logger *logger;
     SystemReader *reader;
     SystemAssigner *assigner;

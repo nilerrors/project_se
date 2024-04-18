@@ -158,7 +158,7 @@ std::string Device::AdvancePrintReport() {
         return report.str();
     }
     report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t|";
-    for(uint i = 1; i < jobs.size(); i++){
+    for(size_t i = 1; i < jobs.size(); i++){
         report << " " << "[" << jobs[i]->getPageCount()<<"]";
     }
 

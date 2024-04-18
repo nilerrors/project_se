@@ -26,6 +26,8 @@ set(RELEASE_SOURCE_FILES src/main.cpp
         src/lib/tinyxml.cpp
         src/lib/tinyxmlerror.cpp
         src/lib/tinyxmlparser.cpp
+        src/SystemTracker.cpp
+        src/SystemTracker.h
 )
 
 # Set source files for DEBUG target
@@ -49,6 +51,8 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/SystemManager.h
         src/Consts.h
         src/Consts.cpp
+        src/SystemTracker.cpp
+        src/SystemTracker.h
 )
 
 # Create RELEASE target
