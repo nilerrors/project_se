@@ -2,16 +2,12 @@
 // Created by student on 29/02/24.
 //
 
-#include "DesignByContract.h"
+#include "lib/DesignByContract.h"
 #include "Device.h"
-#include "utils.h"
+#include "lib/utils.h"
 #include "System.h"
 #include <iostream>
-#include <fstream>
-#include <chrono>
-#include <iomanip>
 #include <sstream>
-#include <thread>
 
 Device::Device(const std::string &name, int emission, int speed) : name(name), emission(emission), speed(speed) {}
 
@@ -19,6 +15,8 @@ Device::Device(TiXmlElement *device_node) {
     std::string temp_name;
     std::string temp_emission;
     std::string temp_speed;
+    std::string temp_type;
+    std::string temp_cost;
 
     for (TiXmlNode *node = device_node->FirstChild(); node != nullptr; node = node->NextSibling()) {
         if (node->FirstChild() == nullptr) {
@@ -30,7 +28,12 @@ Device::Device(TiXmlElement *device_node) {
             temp_emission = node->FirstChild()->Value();
         } else if (std::string(node->Value()) == "speed") {
             temp_speed = node->FirstChild()->Value();
-        } else {
+        } else if(std::string(node->Value()) == "type") {
+            temp_type = node->FirstChild()->Value();
+        } else if(std::string(node->Value()) == "cost") {
+            temp_cost = node->FirstChild()->Value();
+        }
+        else {
             EXPECT(false, "Unknown attribute for Device: '" + std::string(node->Value()) + "'");
         }
     }
@@ -40,11 +43,17 @@ Device::Device(TiXmlElement *device_node) {
     EXPECT(is_number(temp_emission) , "Emission should be an integer number");
     EXPECT(!temp_speed.empty(), "No speed is provided");
     EXPECT(is_number(temp_speed) , "Speed should be an integer number");
+    EXPECT(!temp_type.empty(), "No type is provided");
+    EXPECT(isValidDeviceType(temp_type), "Type should be a valid device type");
+    EXPECT(!temp_cost.empty(), "No cost is provided");
+    EXPECT(is_number(temp_cost), "Cost should be an integer number");
 
     name = temp_name;
     emission = std::stoi(temp_emission);
     speed = std::stoi(temp_speed);
     init_ = this;
+    type = StringToPrintingType(temp_type);
+    cost = std::stoi(temp_cost);
 }
 
 const std::string &Device::getName() const {
@@ -63,6 +72,7 @@ void Device::addJob(Job *job)
 {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 	REQUIRE(job != NULL, "Job is empty.");
+    job->setAssignedTo(this);
 	jobs.push_back(job);
 	ENSURE(jobs.back() == job, "Job is not added to the device.");
 }
@@ -76,24 +86,18 @@ std::string Device::printReport() const
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 	REQUIRE(emission >= 0, "Emission is negative.");
 	REQUIRE(speed >= 0, "Speed is negative.");
+    REQUIRE(cost>=0, "Cost is negative");
+    REQUIRE(isValidDeviceType_2(PrintingTypeToDeviceString(type)), "Type is not defined");
+
 
 	std::stringstream report;
-	report << name << " (CO2: " << emission << "g/page)" << ":" << std::endl;
-	if (jobs.empty()) {
-		report << "\t" << "No jobs" << std::endl;
+    report << name << ":" << std::endl;
+    report << "* CO2: " << emission << "g/page"<<std::endl;
+    report << "* " << speed << " pages / minute"<<std::endl;
+    report << "* " << PrintingTypeToDeviceString(type) << std::endl;
+    report << "* " << cost << " cents / page";
+    report << std::endl;
 
-        return report.str();
-	}
-	report << "\t* Current:" << std::endl;
-	report << "\t\t[#" +  std::to_string(jobs.front()->getJobNumber())+ "|"  << jobs.front()->getUserName() +"]" << std::endl;
-	if (jobs.size() > 1)
-	{
-		report << "\t* Queue:" << std::endl;
-		for(size_t i = 1; i < jobs.size(); i++) {
-			Job *job = jobs[i];
-			report << "\t\t[#" +  std::to_string(job->getJobNumber())+ "|"  << job->getUserName() +"]" << std::endl;
-		}
-	}
 
 	ENSURE(!report.str().empty(), "Device report is empty");
 	return report.str();
@@ -119,15 +123,52 @@ std::string Device::processJob()
 
 	Job *job = jobs.front();
 
-	std::chrono::milliseconds duration(job->getPageCount() / speed * 60 * 1000);
-	std::this_thread::sleep_for(duration);
+    assert(job->getStatus() != Job::done);  // cannot process finished job
 
-	job->setInProcess(false);
-	job->setFinished(true);
-	jobs.pop_front();
+    job->setStatus(Job::printing);
+    job->increasePrintedPageCount();
+    if (job->getPrintedPageCount() == job->getPageCount())
+    {
+        job->setStatus(Job::done);
+        jobs.pop_front();
+        ENSURE(jobs.front() != job, "Job is not removed");
+        ENSURE(job->getStatus() == Job::done, "Job is not finished.");
+        return job->finishMessage();
+    }
 
-	ENSURE(jobs.front() != job, "Job is not removed");
-	ENSURE(job->isFinished(), "Job is not finished.");
-
-	return job->finishMessage();
+	return "";
 }
+
+int Device::getCost() const {
+    return cost;
+}
+
+std::deque<Job *> Device::getJobs() const {
+    return jobs;
+}
+
+std::string Device::AdvancePrintReport() {
+    REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+
+    std::stringstream report;
+
+    report << name << std::endl;
+    if(jobs.empty()){
+        report << "\t" << "|" << std::endl;
+        return report.str();
+    }
+    report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t|";
+    for(uint i = 1; i < jobs.size(); i++){
+        report << " " << "[" << jobs[i]->getPageCount()<<"]";
+    }
+
+    report<<std::endl;
+    ENSURE(!report.str().empty(), "Advance Device report is empty");
+    return report.str();
+}
+
+PrintingType Device::getType() const {
+    return type;
+}
+
+

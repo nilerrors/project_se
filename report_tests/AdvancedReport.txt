@@ -1,0 +1,6 @@
+Office_Printer5
+	[3/3]	|
+Sabre printer X50
+	[12/12]	|
+UA printer 23
+	[6/6]	|

@@ -3,30 +3,37 @@
         <name>Office_Printer5</name>
         <emission>3</emission>
         <speed>40</speed>
+        <type>color</type>
+        <cost>50</cost>
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>
         <pageCount>2</pageCount>
         <userName>SergeDemeyer</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>89751</jobNumber>
         <pageCount>3</pageCount>
         <userName>anonymous_user</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>751</jobNumber>
         <pageCount>3</pageCount>
         <userName>anonymous_user</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>51</jobNumber>
         <pageCount>3</pageCount>
         <userName>anonymous_user</userName>
+        <type>color</type>
     </JOB>
     <JOB>
         <jobNumber>751</jobNumber>
         <pageCount>3</pageCount>
         <userName>anonymous_user</userName>
+        <type>color</type>
     </JOB>
 </SYSTEM>

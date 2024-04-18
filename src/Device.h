@@ -7,7 +7,8 @@
 
 #include <string>
 #include <deque>
-#include "tinyxml.h"
+#include "lib/tinyxml.h"
+#include "Consts.h"
 
 class Job;
 
@@ -38,27 +39,45 @@ public:
 
 	/**
 	 * \brief Checks if the class is properly
-	 * @return
+	 * @return A boolean indicating if the class is properly
 	 */
 	bool properlyInitialized() const { return init_ == this; }
 
-	/**
-	 * \brief Gets the name of the device
-	 * @return
-	 */
+    PrintingType getType() const;
+
+    /**
+     * \brief Gets the name of the device
+     * @return name
+     */
     const std::string &getName() const;
 
 	/**
 	 * \brief Gets the emission of the device
-	 * @return
+	 * @return emmission
 	 */
     int getEmission() const;
 
 	/**
 	 * \brief Gets the speed of the device
-	 * @return
-	 */
+	 * @return speed
+     */
+
     int getSpeed() const;
+
+
+    /**
+     * \brief Gets the cost of the device
+     * @return cost
+     */
+    int getCost() const;
+
+
+    /**
+     * \brief Gets the jobs of the device
+     * @return A deque containing the jobs
+     */
+
+    std::deque<Job *> getJobs() const;
 
 	/**
 	 * brief Adds a job to the device
@@ -81,6 +100,8 @@ public:
 		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
 		- REQUIRE(emission >= 0, "Emission is negative.");
 		- REQUIRE(speed >= 0, "Speed is negative.");
+	    - REQUIRE(cost>=0, "Cost is negative");
+	    - REQUIRE(isValidDeviceType_2(device_type_to_string(type)), "Type is not defined");
 
 	 * @ensure
 		- ENSURE(result != "", "Report is empty.");
@@ -100,7 +121,7 @@ public:
 	int getLoad() const;
 
 	/**
-	 * \brief Processes a job
+	 * \brief Prints a single page of a job
 	 * \return A string containing the result of the processing
 
 	 * @require
@@ -114,11 +135,26 @@ public:
 	 */
 	std::string processJob();
 
+    /**
+     * \brief Prints the current state of the system graphically
+     * @return A string containing the state of the system
+     *
+     * @require
+     * - REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+     *
+     * @ensure
+     * - ENSURE(!report.str().empty(), "Advance Device report is empty");
+     */
+
+    std::string AdvancePrintReport();
+
 private:
     Device *init_;
     std::string name;
     int emission;
     int speed;
+    int cost;
+    PrintingType type;
 	std::deque<Job *> jobs;
 };
 

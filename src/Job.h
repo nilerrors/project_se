@@ -7,12 +7,15 @@
 
 #include <string>
 
-#include "tinyxml.h"
+#include "lib/tinyxml.h"
+#include "Consts.h"
 
 class Device;
 
 class Job {
 public:
+    enum Status {unassigned, assigned, waiting, printing, done};
+
 	/**
 	 * \brief Constructor for Job
 	 * \param device_element TiXmlElement containing the device data
@@ -35,53 +38,57 @@ public:
 	 */
     Job(int jobNumber, int pageCount, const std::string &userName);
 
+    /**
+     * \brief Checks if the class is properly
+     * @return A boolean indicating if the class is properly initialized
+     */
 	bool properlyInitialized() const { return init_ == this; }
 
 	/**
 	 * \brief Gets the job number
-	 * @return
+	 * @return job number
 	 */
     int getJobNumber() const;
 
 	/**
 	 * \brief Gets the page count
-	 * @return
+	 * @return page count
 	 */
     int getPageCount() const;
 
 	/**
 	 * \brief Gets the user name
-	 * @return
+	 * @return userName
 	 */
     const std::string &getUserName() const;
 
-	/**
-	 * \brief Checks if the job is finished
-	 * @return
-	 */
-	bool isFinished() const;
+    /**
+     * \brief Get job status
+     * @return Status
+     */
+    Status getStatus() const;
 
-	/**
-	 * \brief Checks if the job is in process
-	 * @return
-	 */
-	bool isInProcess() const;
+    /**
+    * \brief Sets the job status
+    * @return
+    */
+    void setStatus(Status status);
 
-	/**
-	 * \brief Sets the job to in process
-	 * @param inProcess
-	 */
-	void setInProcess(bool inProcess);
+    /**
+     * \brief Get printed page count
+     * @return printed page count
+     */
+    int getPrintedPageCount() const;
 
-	/**
-	 * \brief Sets the job to finished
-	 * @param finished
-	 */
-	void setFinished(bool finished);
+    /**
+    * \brief Incease printed page count
+    * @return
+    */
+    void increasePrintedPageCount();
 
 	/**
 	 * \brief Gets the device the job is assigned to
-	 * @return
+	 * @return assignedTo
 	 */
 	Device *getAssignedTo() const;
 
@@ -101,12 +108,41 @@ public:
 	 */
 	std::string finishMessage() const;
 
+    /**
+	 * \brief Prints a report of the job
+	 * \return A string containing the report
+
+	 * @require
+		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+        - REQUIRE(jobNumber >= 0, "Job number is negative.");
+        - REQUIRE(pageCount >= 0, "Page count is negative.");
+        - REQUIRE(printedPageCount>=0, "Printed page count is negative");
+        - REQUIRE(isValidJobType(job_type_to_string(type)), "Type is not defined");
+
+	 * @ensure
+		- ENSURE(result != "", "Report is empty.");
+	 */
+    std::string printReport() const;
+
+    /**
+     * \brief Get type of job
+     * @return
+     */
+    PrintingType getType() const;
+
+    /**
+     * \brief Get position in queue
+     * @return queue number
+     */
+    int getQueueNumber() const;
+
 private:
-	bool finished = false;
-	bool inProcess = false;
+    Status status = Status::unassigned;
 	Device *assignedTo = NULL;
     int jobNumber;
     int pageCount;
+    int printedPageCount = 0;
+    PrintingType type;
     std::string userName;
 	Job *init_;
 };
