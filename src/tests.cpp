@@ -261,6 +261,29 @@ TEST_F(TestSystem, EmptySys){
 }
 
 
+//////////////////////////////////////////////////////////////////
+///                  Tracking CO2 emissions                    ///
+//////////////////////////////////////////////////////////////////
+
+TEST_F(TestSystem, CO2_HappyDay){
+    system->ReadData("xml_tests/Track_CO2.xml");
+    system->processAll();
+    SystemTracker* tracker = system->getTracker();
+
+    EXPECT_EQ(tracker->getCo2Emission(), 105);
+
+}
+
+TEST_F(TestSystem, CO2_Empty){
+    system->ReadData("xml_tests/Track_CO2_MT.xml");
+    system->processAll();
+    SystemTracker* tracker = system->getTracker();
+
+    EXPECT_EQ(tracker->getCo2Emission(), 0);
+
+}
+
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     // to allow for threadsafe death tests

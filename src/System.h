@@ -65,6 +65,13 @@ public:
      */
     SystemAssigner *getAssigner() const;
 
+
+    /**
+     * \brief Get System Tracker
+     * @return A pointer to the System Tracker
+     */
+    SystemTracker*getTracker() const;
+
 	/**
 	 * \brief Clears the system
 	 */

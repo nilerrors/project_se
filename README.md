@@ -1,5 +1,5 @@
 # Print System
-# TODO: Test Use Case 1.2, 1.3,1.4, 2.2, 2.3, 3.3
+# TODO: Test Use Case 1.2, 1.3,1.4, 2.2, 2.3, 3.3, 3.4, 3.5, 3.7
         
 
 ## Specification 
@@ -49,4 +49,4 @@
   1. Jobs die niet assigned kunnen worden, laten zien of weghalen?
      1. gekozen om die weg te halen, want er wordt een message laten zien.
 - [x] Use Case 3.5
-- [ ] Use Case 3.7
+- [x] Use Case 3.7

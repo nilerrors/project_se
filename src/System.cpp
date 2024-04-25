@@ -46,6 +46,10 @@ SystemAssigner *System::getAssigner() const {
     return assigner;
 }
 
+SystemTracker *System::getTracker() const {
+    return tracker;
+}
+
 void System::ReadData(const std::string &file_name) {
     REQUIRE(properlyInitialized(), "Class is not properly initialized.");
     REQUIRE(FileExists(file_name), "File does not exist.");
