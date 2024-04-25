@@ -1,6 +1,4 @@
-#include <filesystem>
 #include <gtest/gtest.h>
-#include <fstream>
 #include "System.h"
 #include "lib/utils.h"
 
@@ -330,12 +328,12 @@ TEST_F(TestSystemTracker, CO2_Add_Neg) {
     EXPECT_DEATH(tracker->addCo2Emission(-10), ".*CO2 emission cannot be negative.*");
 }
 
-TEST_F(TestSystemTracker, CO2_Avg) {
+TEST_F(TestSystemTracker, CO2_Neg_Page) {
     EXPECT_DEATH(tracker->addPages(-10), ".*Total pages cannot be negative.*");
 }
 
 //////////////////////////////////////////////////////////////////
-///                  Testing System Tracker                    ///
+///                  Testing System FileLogger                    ///
 //////////////////////////////////////////////////////////////////
 
 TEST_F(TestLogger, TestFileLogger) {
