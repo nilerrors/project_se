@@ -15,6 +15,20 @@ protected:
 	}
 };
 
+class TestSystemTracker: public ::testing::Test {
+protected:
+    SystemTracker *tracker{};
+
+    void SetUp() {
+        tracker = new SystemTracker();
+    }
+
+    void TearDown(){
+        delete tracker;
+        tracker = nullptr;
+    }
+};
+
 class TestUseCase1o1 : public TestSystem {
 protected:
 	std::string output;
@@ -281,6 +295,28 @@ TEST_F(TestSystem, CO2_Empty){
     EXPECT_EQ(tracker->getCo2Emission(), 0);
 
 }
+
+//////////////////////////////////////////////////////////////////
+///                  Testing System Tracker                    ///
+//////////////////////////////////////////////////////////////////
+
+TEST_F(TestSystemTracker, CO2_Emptyy){
+    EXPECT_EQ(tracker->getCo2Emission(), 0);
+}
+
+TEST_F(TestSystemTracker, CO2_Add){
+    tracker->addCo2Emission(10);
+    EXPECT_EQ(tracker->getCo2Emission(), 10);
+}
+
+TEST_F(TestSystemTracker, CO2_Add_Neg){
+    EXPECT_DEATH(tracker->addCo2Emission(-10), ".*CO2 emission cannot be negative.*");
+}
+
+TEST_F(TestSystemTracker, CO2_Avg){
+    EXPECT_DEATH(tracker->addPages(-10), ".*Total pages cannot be negative.*");
+}
+
 
 
 int main(int argc, char **argv) {
