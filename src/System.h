@@ -147,6 +147,10 @@ public:
 	 */
 	 void setLogger(Logger *logger);
 
+     /**
+      * \brief Prints the current state of the system in an advanced way
+      * @return string
+      */
      std::string AdvancePrintReport();
 
 private:

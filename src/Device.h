@@ -145,7 +145,6 @@ public:
      * @ensure
      * - ENSURE(!report.str().empty(), "Advance Device report is empty");
      */
-
     std::string AdvancePrintReport();
 
 private:
