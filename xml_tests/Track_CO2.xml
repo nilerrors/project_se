@@ -10,12 +10,12 @@
         <jobNumber>89751</jobNumber>
         <pageCount>12</pageCount>
         <userName>SergeDemeyer</userName>
-        <type>scan</type>
+        <type>bw</type>
     </JOB>
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>23</pageCount>
         <userName>anonymous_user</userName>
-        <type>scan</type>
+        <type>bw</type>
     </JOB>
 </SYSTEM>

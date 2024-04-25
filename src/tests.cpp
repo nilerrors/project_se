@@ -276,7 +276,6 @@ TEST_F(TestSystem, CO2_HappyDay){
 
 TEST_F(TestSystem, CO2_Empty){
     system->ReadData("xml_tests/Track_CO2_MT.xml");
-    system->processAll();
     SystemTracker* tracker = system->getTracker();
 
     EXPECT_EQ(tracker->getCo2Emission(), 0);
