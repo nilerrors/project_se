@@ -346,7 +346,7 @@ TEST_F(TestLogger, TestFileLogger) {
                         "Et veritatis earum et inventore enim a corrupti consectetur At incidunt dolore est pariatur omnis. Vel fugit ipsa est atque ipsa ea impedit iste in modi mollitia. Est quidem esse a voluptas dolorum a laborum quisquam et exercitationem tempora et dolor internos non quibusdam culpa et quidem sint. Sed repellendus voluptatem ut reiciendis voluptates rem ratione dolorum?";
 
     logger->log(lorem);
-    EXPECT_TRUE(FileCompare(log_file, "log_tests/FileLoggerTest.txt"));
+    EXPECT_TRUE(FileCompare(log_file, "log_tests/FileLoggerTest.log"));
 }
 
 TEST_F(TestLogger, TestStringLogger) {
