@@ -95,7 +95,7 @@ void SystemManager::addJob(Job *job) {
 }
 
 void SystemManager::setJobUnassignable(Job *job) {
-    auto job_at = std::find(jobs.begin(), jobs.end(), job);
+    std::vector<Job *>::const_iterator job_at = std::find(jobs.begin(), jobs.end(), job);
     REQUIRE(job_at != jobs.end(), "Job was not found in the jobs");
 
     jobs.erase(job_at);
