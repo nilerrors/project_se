@@ -349,6 +349,19 @@ TEST_F(TestLogger, TestFileLogger) {
     EXPECT_TRUE(FileCompare(log_file, "log_tests/FileLoggerTest.log"));
 }
 
+TEST_F(TestLogger, TestFileErrorLogger) {
+    std::string log_file = GenerateFileName("logs/log-", LOG_FILE_EXTENSION);
+    delete logger;
+    logger = nullptr;
+    logger = new FileLogger(log_file);
+    std::string lorem = "Lorem ipsum dolor sit amet. At dignissimos iure in alias culpa ab corrupti rerum vel nulla tempore est mollitia voluptate vel inventore galisum. Sed autem voluptatem et dicta nobis sit velit officia qui dolore similique.\n"
+                        "Eos dignissimos cupiditate sed sequi molestias ab aperiam voluptatem ut consequatur fugiat vel galisum porro et maiores eligendi. Id vero consequatur ea inventore dicta aut nemo consequatur vel sint nulla aut possimus omnis.\n"
+                        "Et veritatis earum et inventore enim a corrupti consectetur At incidunt dolore est pariatur omnis. Vel fugit ipsa est atque ipsa ea impedit iste in modi mollitia. Est quidem esse a voluptas dolorum a laborum quisquam et exercitationem tempora et dolor internos non quibusdam culpa et quidem sint. Sed repellendus voluptatem ut reiciendis voluptates rem ratione dolorum?";
+
+    logger->error(lorem);
+    EXPECT_TRUE(FileCompare(log_file, "log_tests/FileErrorLoggerTest.log"));
+}
+
 TEST_F(TestLogger, TestStringLogger) {
     delete logger;
     logger = nullptr;
@@ -360,6 +373,21 @@ TEST_F(TestLogger, TestStringLogger) {
 
     logger->log(lorem);
     lorem += "\n";
+    EXPECT_TRUE(output == lorem);
+}
+
+TEST_F(TestLogger, TestStringErrorLogger) {
+    delete logger;
+    logger = nullptr;
+    logger = new StringLogger(&output);
+
+    std::string lorem = "lorem ipsum dolor sit amet. at dignissimos iure in alias culpa ab corrupti rerum vel nulla tempore est mollitia voluptate vel inventore galisum. sed autem voluptatem et dicta nobis sit velit officia qui dolore similique.\n"
+                        "eos dignissimos cupiditate sed sequi molestias ab aperiam voluptatem ut consequatur fugiat vel galisum porro et maiores eligendi. id vero consequatur ea inventore dicta aut nemo consequatur vel sint nulla aut possimus omnis.\n"
+                        "et veritatis earum et inventore enim a corrupti consectetur at incidunt dolore est pariatur omnis. vel fugit ipsa est atque ipsa ea impedit iste in modi mollitia. est quidem esse a voluptas dolorum a laborum quisquam et exercitationem tempora et dolor internos non quibusdam culpa et quidem sint. sed repellendus voluptatem ut reiciendis voluptates rem ratione dolorum?";
+
+    logger->error(lorem);
+    lorem += "\n";
+    lorem = "ERROR: " + lorem;
     EXPECT_TRUE(output == lorem);
 }
 
