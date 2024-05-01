@@ -216,14 +216,13 @@ TEST_F(TestSystem, AdvancedTextualOutput) {
 ///                         INCONSISTENCY TEST                 ///
 //////////////////////////////////////////////////////////////////
 
-TEST_F(TestSystem, Inconsistency_Neg_Num1) {
-    system->ReadData("xml_tests/Neg_Num.xml");
-    EXPECT_FALSE(system->VerifyConsistency());
-}
 
-TEST_F(TestSystem, Inconsistency_Neg_Num2) {
+TEST_F(TestSystem, Inconsistency_Neg_Num_Job) {
+    std::string log_file = GenerateFileName("logs/log-", LOG_FILE_EXTENSION);
+    FileLogger *logger = new FileLogger(log_file);
+    system->setLogger(logger);
     system->ReadData("xml_tests/Neg_Num.xml");
-    EXPECT_FALSE(system->VerifyConsistency());
+    EXPECT_TRUE(FileCompare(log_file, "consistency_tests/Neg_Num.txt"));
 }
 
 
