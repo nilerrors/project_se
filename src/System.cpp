@@ -9,6 +9,7 @@
 #include <chrono>
 #include <thread>
 #include "SystemReader.h"
+#include "Reporter.h"
 
 System::System() {
     _init = this;
@@ -80,19 +81,24 @@ std::string System::printReport() const {
 
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
     std::ofstream report;
+    Reporter reporter;
     report.open(filename);
 
     report << "# === [System Status] === #" << std::endl << std::endl;
     report << "--== Devices ==--" << std::endl << std::endl;
 
     for(Device *device : manager->getDevices()) {
-        report << device->printReport() << std::endl;
+        reporter.generateDeviceReport(device);
+        report << reporter.getReport() << std::endl;
+        reporter.clearReport();
     }
 
     report << "--== Jobs ==--" << std::endl << std::endl;
     for(Job *job : manager->getJobs()) {
         if (job->getAssignedTo() == NULL) continue;
-        report << job->printReport() << std::endl;
+        reporter.generateJobReport(job);
+        report << reporter.getReport() << std::endl;
+        reporter.clearReport();
     }
 
     report<<"# ======================= #"<<std::endl;
@@ -204,9 +210,12 @@ std::string System::AdvancePrintReport() {
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
     std::ofstream report;
     report.open(filename);
+    Reporter reporter;
 
     for(Device *device : manager->getDevices()){
-        report << device->AdvancePrintReport();
+        reporter.generateDeviceAdvancedReport(device);
+        report << reporter.getReport();
+        reporter.clearReport();
     }
     report.close();
     return filename;

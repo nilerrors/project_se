@@ -93,22 +93,6 @@ public:
 	void addJob(Job *job);
 
 	/**
-	 * \brief Prints a report of the device
-	 * \return A string containing the report
-
-	 * @require
-		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-		- REQUIRE(emission >= 0, "Emission is negative.");
-		- REQUIRE(speed >= 0, "Speed is negative.");
-	    - REQUIRE(cost>=0, "Cost is negative");
-	    - REQUIRE(isValidDeviceType_2(device_type_to_string(type)), "Type is not defined");
-
-	 * @ensure
-		- ENSURE(result != "", "Report is empty.");
-	 */
-	std::string printReport() const;
-
-	/**
 	 * \brief Gets the load of the device
 	 * \return The load of the device
 
@@ -134,18 +118,6 @@ public:
 		- ENSURE(job->isFinished(), "Job is not finished.");
 	 */
 	std::string processJob();
-
-    /**
-     * \brief Prints the current state of the system graphically
-     * @return A string containing the state of the system
-     *
-     * @require
-     * - REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-     *
-     * @ensure
-     * - ENSURE(!report.str().empty(), "Advance Device report is empty");
-     */
-    std::string AdvancePrintReport();
 
 private:
     Device *init_;

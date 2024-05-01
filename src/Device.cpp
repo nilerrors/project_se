@@ -6,6 +6,7 @@
 #include "Device.h"
 #include "lib/utils.h"
 #include "System.h"
+#include "Reporter.h"
 #include <iostream>
 #include <sstream>
 
@@ -77,32 +78,6 @@ void Device::addJob(Job *job)
 	ENSURE(jobs.back() == job, "Job is not added to the device.");
 }
 
-std::string Device::printReport() const
-{
-	/*
-	 Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
-	 return: Filename van de report
-	 */
-	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-	REQUIRE(emission >= 0, "Emission is negative.");
-	REQUIRE(speed >= 0, "Speed is negative.");
-    REQUIRE(cost>=0, "Cost is negative");
-    REQUIRE(isValidDeviceType_2(PrintingTypeToDeviceString(type)), "Type is not defined");
-
-
-	std::stringstream report;
-    report << name << ":" << std::endl;
-    report << "* CO2: " << emission << "g/page"<<std::endl;
-    report << "* " << speed << " pages / minute"<<std::endl;
-    report << "* " << PrintingTypeToDeviceString(type) << std::endl;
-    report << "* " << cost << " cents / page";
-    report << std::endl;
-
-
-	ENSURE(!report.str().empty(), "Device report is empty");
-	return report.str();
-}
-
 int Device::getLoad() const
 {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
@@ -121,6 +96,7 @@ std::string Device::processJob()
 	REQUIRE(!jobs.empty(), "No jobs to process.");
 	REQUIRE(jobs.front() != NULL, "First job is empty");
 
+    Reporter reporter;
 	Job *job = jobs.front();
 
     assert(job->getStatus() != Job::done);  // cannot process finished job
@@ -133,10 +109,10 @@ std::string Device::processJob()
         jobs.pop_front();
         ENSURE(jobs.front() != job, "Job is not removed");
         ENSURE(job->getStatus() == Job::done, "Job is not finished.");
-        return job->finishMessage();
+        reporter.generateJobFinishReport(job);
     }
 
-	return "";
+	return reporter.getReport();
 }
 
 int Device::getCost() const {
@@ -145,26 +121,6 @@ int Device::getCost() const {
 
 std::deque<Job *> Device::getJobs() const {
     return jobs;
-}
-
-std::string Device::AdvancePrintReport() {
-    REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-
-    std::stringstream report;
-
-    report << name << std::endl;
-    if(jobs.empty()){
-        report << "\t" << "|" << std::endl;
-        return report.str();
-    }
-    report << "\t" << "[" <<jobs.front()->getPageCount() - jobs.front()->getPrintedPageCount() <<"/" <<jobs.front()->getPageCount() << "]\t|";
-    for(size_t i = 1; i < jobs.size(); i++){
-        report << " " << "[" << jobs[i]->getPageCount()<<"]";
-    }
-
-    report<<std::endl;
-    ENSURE(!report.str().empty(), "Advance Device report is empty");
-    return report.str();
 }
 
 PrintingType Device::getType() const {

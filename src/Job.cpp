@@ -100,58 +100,6 @@ void Job::setAssignedTo(Device *assigned)
     ENSURE(assignedTo == assigned, "Device is not assigned correctly");
 }
 
-std::string Job::finishMessage() const
-{
-	REQUIRE(properlyInitialized(), "Job is not properly initialized");
-	REQUIRE(assignedTo != NULL, "Job is not assigned to a device");
-
-	std::stringstream message;
-
-	message << "Printer " << '"' << assignedTo->getName() << '"' << " finished " <<PrintingTypeToJobString(type)<<":" << std::endl;
-	message << "\tNumber: " << jobNumber << std::endl;
-	message << "\tSubmitted by " << '"' << userName << '"' << std::endl;
-	message << "\t" << pageCount << " pages" << std::endl;
-
-	return message.str();
-}
-
-std::string Job::printReport() const
-{
-    REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-    REQUIRE(jobNumber >= 0, "JobNumber is negative.");
-    REQUIRE(pageCount >= 0, "PageCount is negative.");
-    REQUIRE(printedPageCount>=0, "PrintedPageCount is negative");
-    REQUIRE(isValidJobType(PrintingTypeToJobString(type)), "Type is not defined");
-    REQUIRE(assignedTo != NULL, "Device should be assigned");
-
-    std::stringstream report;
-
-    report << "[Job #" << jobNumber << "]" << std::endl;
-    report << "* Owner: " << userName << std::endl;
-    report << "* Device: " << assignedTo->getName() << std::endl;
-    if(status == printing){
-        report << "* Status: " << printedPageCount << " pages done" << std::endl;
-    }
-    else if(status == waiting || status == assigned){
-        int queueNumber = getQueueNumber();
-        report << "* Status: WAITING #" << queueNumber + 1 << std::endl;
-    }
-    else if (status == done) {
-        report << "* Status: FINISHED" << std::endl;
-    }
-    else {
-        report << "* Status: " << status << std::endl;
-    }
-
-    report << "* Total pages: " << pageCount << " pages" << std::endl;
-    report << "* Total CO2: " << assignedTo->getEmission() * printedPageCount << "g CO2" << std::endl;
-    report << "* Total cost: " << assignedTo->getCost() * printedPageCount << " cents" << std::endl;
-
-
-    ENSURE(!report.str().empty(), "Job report is empty");
-    return report.str();
-}
-
 int Job::getQueueNumber() const {
     if (status != assigned) return -1;
     int current_waiting = -1;

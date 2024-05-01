@@ -112,32 +112,6 @@ public:
 	 */
 	void setAssignedTo(Device *assignedTo);
 
-	/**
-	 * \brief Returns a string containing the finish message
-	 * \return A string containing the finish message
-
-	 * @require
-		- REQUIRE(properlyInitialized(), "Job is not properly initialized");
-		- REQUIRE(assignedTo != NULL, "Job is not assigned to a device");
-	 */
-	std::string finishMessage() const;
-
-    /**
-	 * \brief Prints a report of the job
-	 * \return A string containing the report
-
-	 * @require
-		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
-        - REQUIRE(jobNumber >= 0, "Job number is negative.");
-        - REQUIRE(pageCount >= 0, "Page count is negative.");
-        - REQUIRE(printedPageCount>=0, "Printed page count is negative");
-        - REQUIRE(isValidJobType(job_type_to_string(type)), "Type is not defined");
-
-	 * @ensure
-		- ENSURE(result != "", "Report is empty.");
-	 */
-    std::string printReport() const;
-
     /**
      * \brief Get type of job
      * @return
