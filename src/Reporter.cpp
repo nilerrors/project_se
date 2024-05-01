@@ -2,14 +2,17 @@
 // Created by nilerrors on 5/1/24.
 //
 
-#include <sstream>
 #include "lib/DesignByContract.h"
 #include "lib/utils.h"
 #include "Device.h"
 #include "Job.h"
 #include "Reporter.h"
 
+Reporter::Reporter() : _init(this) {}
+
 void Reporter::generateDeviceReport(Device *const device) {
+    REQUIRE(properlyInitialized(), "Reporter should be properlyInitialized");
+    REQUIRE(device != NULL, "Device should not be NULL");
     REQUIRE(report.empty(), "Report should be empty");
     REQUIRE(device->getEmission() >= 0, "Emission is negative.");
     REQUIRE(device->getSpeed() >= 0, "Speed is negative.");
@@ -27,6 +30,7 @@ void Reporter::generateDeviceReport(Device *const device) {
 }
 
 void Reporter::generateJobReport(Job *const job) {
+    REQUIRE(properlyInitialized(), "Reporter should be properlyInitialized");
     REQUIRE(report.empty(), "Report should be empty");
     REQUIRE(job->getJobNumber() >= 0, "JobNumber is negative.");
     REQUIRE(job->getPageCount() >= 0, "PageCount is negative.");
@@ -55,11 +59,12 @@ void Reporter::generateJobReport(Job *const job) {
     report += "* Total CO2: " + std::to_string(job->getAssignedTo()->getEmission() * job->getPrintedPageCount()) + "g CO2\n";
     report += "* Total cost: " + std::to_string(job->getAssignedTo()->getCost() * job->getPrintedPageCount()) + " cents\n";
 
-
     ENSURE(!report.empty(), "Job report is empty");
 }
 
 void Reporter::generateJobFinishReport(Job *const job) {
+    REQUIRE(properlyInitialized(), "Reporter should be properlyInitialized");
+    REQUIRE(job != NULL, "Job should not be NULL");
     REQUIRE(report.empty(), "Report should be empty");
     REQUIRE(job->getAssignedTo() != NULL, "Job is not assigned to a device");
 
@@ -68,9 +73,13 @@ void Reporter::generateJobFinishReport(Job *const job) {
     report += "\tNumber: " + std::to_string(job->getJobNumber()) + "\n";
     report += "\tSubmitted by \"" + job->getUserName() + "\"\n";
     report += "\t" + std::to_string(job->getPageCount()) + " pages\n";
+
+    ENSURE(!report.empty(), "Job report is empty");
 }
 
 void Reporter::generateDeviceAdvancedReport(Device *const device) {
+    REQUIRE(properlyInitialized(), "Reporter should be properlyInitialized");
+    REQUIRE(device != NULL, "Device should not be NULL");
     REQUIRE(report.empty(), "Report should be empty");
     report += device->getName() + "\n";
     if(device->getJobs().empty()){
@@ -89,9 +98,12 @@ void Reporter::generateDeviceAdvancedReport(Device *const device) {
 }
 
 std::string Reporter::getReport() const {
+    REQUIRE(properlyInitialized(), "Reporter should be properlyInitialized");
     return report;
 }
 
 void Reporter::clearReport() {
+    REQUIRE(properlyInitialized(), "Reporter should be properlyInitialized");
     report = "";
+    ENSURE(report == "", "Report should be empty");
 }
