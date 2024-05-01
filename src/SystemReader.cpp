@@ -12,19 +12,19 @@ void SystemReader::ReadData(const std::string &file_name) {
 
 	TiXmlDocument doc;
 	if (!doc.LoadFile(file_name.c_str())) {
-		std::cerr << doc.ErrorDesc() << std::endl;
+		logger->error(doc.ErrorDesc());
 		return;
 	}
 
 	TiXmlElement* root = doc.FirstChildElement();
 	if (root == NULL) {
-		std::cerr << "Failed to read the file: No SYSTEM root." << std::endl;
+        logger->error("Failed to read the file: No SYSTEM root.");
 		return;
 	}
 	if (std::string(root->Value()) != "SYSTEM")
 	{
-		std::cerr << "Failed to read the file: Unexpected root '"
-		          << root->Value() << "', Expected 'SYSTEM'." << std::endl;
+        logger->error(
+                "Failed to read the file: Unexpected root '" + std::string(root->Value()) + "', Expected 'SYSTEM'.");
 	}
 
 	for (TiXmlElement *elm = root->FirstChildElement(); elm != NULL; elm = elm->NextSiblingElement())
@@ -35,7 +35,7 @@ void SystemReader::ReadData(const std::string &file_name) {
 			ReadJob(elm);
 		}
 		else{
-			std::cerr << "Unrecognizable element"<<std::endl;
+			logger->error("Unrecognizable element");
 			continue;
 		}
 	}
