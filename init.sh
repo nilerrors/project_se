@@ -13,4 +13,8 @@ if [ ! -d "logs" ]; then
   mkdir logs
 fi
 
+if [ ! -d "consistency_tests" ]; then
+  mkdir consistency_tests
+fi
+
 ./testify.sh
