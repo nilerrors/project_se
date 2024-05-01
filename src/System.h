@@ -103,6 +103,7 @@ public:
 
 	 * @require
 	 	- REQUIRE(properlyInitialized(), "Class is not properly initialized");
+
 	 */
     bool VerifyConsistency() const;
 

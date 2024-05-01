@@ -71,8 +71,12 @@ public:
     /**
     * \brief Sets the job status
     * @return
+     * @require
+     * - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+     * @ensure
+     * - ENSURE(status == stat, "Status is not set correctly")
     */
-    void setStatus(Status status);
+    void setStatus(Status stat);
 
     /**
      * \brief Get printed page count
@@ -82,7 +86,12 @@ public:
 
     /**
     * \brief Incease printed page count
-    * @return
+     * @return
+    * @require
+     * - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+     * - REQUIRE(printedPageCount < pageCount, "Printed page count should be less than total page count");
+     * @ensure
+     * - ENSURE(printedPageCount <= pageCount, "Printed page count should be less than total page count");
     */
     void increasePrintedPageCount();
 
@@ -95,6 +104,11 @@ public:
 	/**
 	 * \brief Sets the device the job is assigned to
 	 * @param assignedTo
+	 * @require
+	 * - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+	 * - REQUIRE(assigned != NULL, "Job is not assigned to a device");
+	 * @ensure
+	 * - ENSURE(assignedTo == assigned, "Device is not assigned correctly");
 	 */
 	void setAssignedTo(Device *assignedTo);
 

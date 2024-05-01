@@ -63,8 +63,11 @@ int Job::getPrintedPageCount() const {
 }
 
 void Job::increasePrintedPageCount() {
+    REQUIRE(properlyInitialized(), "Job is not properly initialized");
     REQUIRE(printedPageCount < pageCount, "Printed page count should be less than total page count");
     printedPageCount++;
+
+    ENSURE(printedPageCount <= pageCount, "Printed page count should be less than total page count");
 }
 
 const std::string &Job::getUserName() const {
@@ -77,7 +80,10 @@ Job::Status Job::getStatus() const
 }
 
 void Job::setStatus(Job::Status stat) {
+    REQUIRE(properlyInitialized(), "Job is not properly initialized");
     status = stat;
+
+    ENSURE(status == stat, "Status is not set correctly");
 }
 
 Device *Job::getAssignedTo() const
@@ -87,7 +93,11 @@ Device *Job::getAssignedTo() const
 
 void Job::setAssignedTo(Device *assigned)
 {
+    REQUIRE(properlyInitialized(), "Job is not properly initialized");
+    REQUIRE(assigned != NULL, "Job is not assigned to a device");
 	assignedTo = assigned;
+
+    ENSURE(assignedTo == assigned, "Device is not assigned correctly");
 }
 
 std::string Job::finishMessage() const

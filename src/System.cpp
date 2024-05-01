@@ -107,13 +107,17 @@ bool System::VerifyConsistency() const {
     std::vector<int> job_nums{};
     ///Check if PageCount and JobNumber are not negative
     for(Job *const& job : manager->getJobs()){
-        if(job->getPageCount() < 0 || job->getJobNumber() < 0) {
-			logger->error("Inconsistent printing system");
+        if(job->getPageCount() < 0){
+            logger->error("Page count is negative");
+            return false;
+        }
+        else if(job->getJobNumber() < 0) {
+			logger->error("Job number is negative");
             return false;
         }
 
         if(std::find(job_nums.begin(), job_nums.end(),job->getJobNumber()) != job_nums.end()){
-            logger->error("Inconsistent printing system");
+            logger->error("Duplicate job number found");
             return false;
         }
         else{
@@ -123,9 +127,13 @@ bool System::VerifyConsistency() const {
 
     ///Check if Emission and Speed are not negative
     for (Device *const &device : manager->getDevices()){
-        if(device->getEmission() < 0 || device->getSpeed() < 0) {
-            logger->error("Inconsistent printing system");
-			return false;
+        if(device->getEmission() < 0){
+            logger->error("Emission is negative");
+            return false;
+        }
+        else if(device->getSpeed() < 0){
+            logger->error("Speed is negative");
+            return false;
         }
     }
 
