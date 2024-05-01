@@ -66,11 +66,6 @@ protected:
 /// DEVICES
 //////////////////////////////////////////////////////////////////
 
-TEST_F(TestSystem, ReadData_NoName) {
-//    EXPECT_TRUE(system->getFirstDevice() == NULL);
-//    EXPECT_TRUE(system->getFirstJob() == NULL);
-}
-
 TEST_F(TestUseCase1o1, ReadData_NoName) {
     EXPECT_TRUE(system->getManager()->getFirstDevice() == NULL);
     EXPECT_TRUE(system->getManager()->getFirstJob() == NULL);
