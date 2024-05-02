@@ -17,12 +17,12 @@ void Reporter::generateDeviceReport(Device *const device) {
     REQUIRE(device->getEmission() >= 0, "Emission is negative.");
     REQUIRE(device->getSpeed() >= 0, "Speed is negative.");
     REQUIRE(device->getCost() >=0, "Cost is negative");
-    REQUIRE(isValidDeviceType_2(PrintingTypeToDeviceString(device->getType())), "Type is not defined");
+    REQUIRE(isValidDeviceType_2(device->getType()), "Type is not defined");
 
     report += device->getName() + ":\n";
     report += "* CO2: " + std::to_string(device->getEmission()) + "g/page\n";
     report += "* " + std::to_string(device->getSpeed()) + " pages / minute\n";
-    report += "* " + PrintingTypeToDeviceString(device->getType()) + "\n";
+    report += "* " + device->getType() + "\n";
     report += "* " + std::to_string(device->getCost()) + " cents / page";
     report += "\n";
 
@@ -35,7 +35,7 @@ void Reporter::generateJobReport(Job *const job) {
     REQUIRE(job->getJobNumber() >= 0, "JobNumber is negative.");
     REQUIRE(job->getPageCount() >= 0, "PageCount is negative.");
     REQUIRE(job->getPrintedPageCount() >=0, "PrintedPageCount is negative");
-    REQUIRE(isValidJobType(PrintingTypeToJobString(job->getType())), "Type is not defined");
+    REQUIRE(isValidJobType(job->getType()), "Type is not defined");
     REQUIRE(job->getAssignedTo() != NULL, "Device should be assigned");
 
     report += "[Job #" + std::to_string(job->getJobNumber()) + "]\n";
@@ -69,7 +69,7 @@ void Reporter::generateJobFinishReport(Job *const job) {
     REQUIRE(job->getAssignedTo() != NULL, "Job is not assigned to a device");
 
     report += "Printer \"" + job->getAssignedTo()->getName() + "\" finished "
-            + PrintingTypeToJobString(job->getType()) + ":\n";
+            + job->getType() + ":\n";
     report += "\tNumber: " + std::to_string(job->getJobNumber()) + "\n";
     report += "\tSubmitted by \"" + job->getUserName() + "\"\n";
     report += "\t" + std::to_string(job->getPageCount()) + " pages\n";

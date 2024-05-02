@@ -67,6 +67,16 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/Scanner.h
         src/DeviceFactory.cpp
         src/DeviceFactory.h
+        src/JobScan.cpp
+        src/JobScan.h
+        src/JobBlackWhite.cpp
+        src/JobBlackWhite.h
+        src/JobPrint.cpp
+        src/JobPrint.h
+        src/JobColor.cpp
+        src/JobColor.h
+        src/JobFactory.cpp
+        src/JobFactory.h
 )
 
 # Create RELEASE target

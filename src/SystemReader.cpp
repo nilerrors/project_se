@@ -6,6 +6,7 @@
 #include "lib/DesignByContract.h"
 #include "lib/utils.h"
 #include "DeviceFactory.h"
+#include "JobFactory.h"
 
 void SystemReader::ReadData(const std::string &file_name) {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
@@ -60,7 +61,7 @@ void SystemReader::ReadDevice(TiXmlElement *device_element) {
 void SystemReader::ReadJob(TiXmlElement *job_element) {
 	REQUIRE(job_element!= NULL, "job_element is a NULL pointer");
 	try {
-		Job* job = new Job(job_element);
+		Job* job = JobFactory(job_element).getJob();
         manager->addJob(job);
 
 		ENSURE(!manager->getJobs().empty(), "No Jobs were read after reading xml file");

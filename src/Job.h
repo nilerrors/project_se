@@ -39,6 +39,11 @@ public:
     Job(int jobNumber, int pageCount, const std::string &userName);
 
     /**
+     * \brief Destructor for Job
+     */
+     virtual ~Job() = default;
+
+    /**
      * \brief Checks if the class is properly
      * @return A boolean indicating if the class is properly initialized
      */
@@ -116,7 +121,7 @@ public:
      * \brief Get type of job
      * @return
      */
-    PrintingType getType() const;
+    virtual std::string getType() = 0;
 
     /**
      * \brief Get position in queue
@@ -125,6 +130,7 @@ public:
     int getQueueNumber() const;
 
 private:
+    Job *init_;
     Status status = Status::unassigned;
 	Device *assignedTo = NULL;
     int jobNumber;
@@ -132,7 +138,6 @@ private:
     int printedPageCount = 0;
     PrintingType type;
     std::string userName;
-	Job *init_;
 };
 
 
