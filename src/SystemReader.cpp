@@ -5,6 +5,7 @@
 #include "SystemReader.h"
 #include "lib/DesignByContract.h"
 #include "lib/utils.h"
+#include "DeviceFactory.h"
 
 void SystemReader::ReadData(const std::string &file_name) {
 	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
@@ -46,7 +47,7 @@ void SystemReader::ReadData(const std::string &file_name) {
 void SystemReader::ReadDevice(TiXmlElement *device_element) {
 	REQUIRE(device_element!= NULL, "device_element is a NULL pointer");
 	try {
-		Device* device = new Device(device_element);
+		Device* device = DeviceFactory(device_element).getDevice();
         manager->addDevice(device);
 
 		ENSURE(!manager->getDevices().empty(), "No devices were read after reading xml file");

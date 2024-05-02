@@ -8,6 +8,7 @@
 
 #include <assert.h>
 #include <exception>
+#include <stdexcept>
 
 #ifdef __MINGW32__
 #define REQUIRE(assertion, what) \

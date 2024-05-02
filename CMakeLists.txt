@@ -57,6 +57,16 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/SystemTracker.h
         src/Reporter.h
         src/Reporter.cpp
+        src/Printer.cpp
+        src/Printer.h
+        src/PrinterBlackWhite.cpp
+        src/PrinterBlackWhite.h
+        src/PrinterColor.cpp
+        src/PrinterColor.h
+        src/Scanner.cpp
+        src/Scanner.h
+        src/DeviceFactory.cpp
+        src/DeviceFactory.h
 )
 
 # Create RELEASE target

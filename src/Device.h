@@ -35,7 +35,12 @@ public:
 	 * @param emission
 	 * @param speed
 	 */
-    Device(const std::string &name, int emission, int speed);
+    Device(const std::string &name, int emission, int speed, int cost);
+
+    /**
+     * \brief Destructor for Device
+     */
+    virtual ~Device() = default;
 
 	/**
 	 * \brief Checks if the class is properly
@@ -43,7 +48,11 @@ public:
 	 */
 	bool properlyInitialized() const { return init_ == this; }
 
-    PrintingType getType() const;
+    /**
+     * \brief Get type of device
+     * @return
+     */
+    virtual std::string getType() = 0;
 
     /**
      * \brief Gets the name of the device
@@ -125,7 +134,6 @@ private:
     int emission;
     int speed;
     int cost;
-    PrintingType type;
 	std::deque<Job *> jobs;
 };
 

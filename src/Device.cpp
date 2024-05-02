@@ -10,7 +10,8 @@
 #include <iostream>
 #include <sstream>
 
-Device::Device(const std::string &name, int emission, int speed) : name(name), emission(emission), speed(speed) {}
+Device::Device(const std::string &name, int emission, int speed, int cost)
+        : init_(this), name(name), emission(emission), speed(speed), cost(cost) {}
 
 Device::Device(TiXmlElement *device_node) {
     std::string temp_name;
@@ -53,7 +54,7 @@ Device::Device(TiXmlElement *device_node) {
     emission = std::stoi(temp_emission);
     speed = std::stoi(temp_speed);
     init_ = this;
-    type = StringToPrintingType(temp_type);
+//    type = StringToPrintingType(temp_type);
     cost = std::stoi(temp_cost);
 }
 
@@ -123,8 +124,8 @@ std::deque<Job *> Device::getJobs() const {
     return jobs;
 }
 
-PrintingType Device::getType() const {
-    return type;
-}
+//PrintingType Device::getType() const {
+//    return type;
+//}
 
 
