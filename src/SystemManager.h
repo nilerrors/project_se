@@ -25,12 +25,26 @@ public:
     /**
      * \brief Adds a device to the system
      * @param device
+     * @require
+         - REQUIRE(device->properlyInitialized(), "Device is not properly initialized");
+         - REQUIRE(device!= NULL, "Device is NULL");
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
+      * @ensure
+         - ENSURE(std::find(devices.begin(), devices.end(), device) != devices.end(), "Device was not added to devices");
      */
     void addDevice(Device *device);
 
     /**
      * \brief Adds a job to the system
      * @param job
+     * @require
+         - REQUIRE(job->properlyInitialized(), "Job is not properly initialized");
+         - REQUIRE(job!= NULL, "Job is NULL");
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
+      * @ensure
+         - ENSURE(std::find(jobs.begin(), jobs.end(), job) != jobs.end(), "Job was not added to jobs");
      */
     void addJob(Job *job);
 
@@ -103,10 +117,17 @@ public:
          - REQUIRE(properlyInitialized(), "Class is not properly initialized");
          - REQUIRE(!devices.empty(), "No devices were found.");
      */
-    Device *getDeviceWithLeastLoadOfType(PrintingType deviceTypes) const;
+    Device *getDeviceWithLeastLoadOfType(std::string deviceType) const;
 
     /**
      * \brief Moves the job to unassignable jobs
+     * @param job
+     * @require
+         - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+         - REQUIRE(job_at != jobs.end(), "Job was not found in the jobs");
+
+    * @ensure
+        - ENSURE(std::find(unassignable_jobs.begin(), unassignable_jobs.end(), job) != unassignable_jobs.end(), "Job was not moved to unassignable jobs");
      */
     void setJobUnassignable(Job *job);
 
