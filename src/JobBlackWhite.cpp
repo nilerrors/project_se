@@ -4,10 +4,6 @@
 
 #include "JobBlackWhite.h"
 
-JobBlackWhite::JobBlackWhite(TiXmlElement *job_element) : JobPrint(job_element) {
-
-}
-
 JobBlackWhite::JobBlackWhite(int jobNumber, int pageCount, const std::string &userName) : JobPrint(jobNumber, pageCount,
                                                                                               userName) {
 

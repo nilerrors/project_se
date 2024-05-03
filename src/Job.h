@@ -6,29 +6,13 @@
 #define PROJECTTITLE_JOB_H
 
 #include <string>
-
 #include "lib/tinyxml.h"
-#include "Consts.h"
 
 class Device;
 
 class Job {
 public:
     enum Status {unassigned, assigned, waiting, printing, done};
-
-	/**
-	 * \brief Constructor for Job
-	 * \param device_element TiXmlElement containing the device data
-	 * \return A new Job object
-
-	 * @expect
-		- EXPECT(!temp_jobNumber.empty(), "No job number is provided");
-		- EXPECT(!temp_pageCount.empty(), "No page count is provided");
-		- EXPECT(is_number(temp_jobNumber) , "Job number should be a number");
-		- EXPECT(is_number(temp_pageCount) , "Page count should be a number");
-		- EXPECT(!temp_userName.empty(), "No user name is provided");
-	 */
-    Job(TiXmlElement *job_element);
 
 	/**
 	 * \brief Constructor for Job
@@ -124,6 +108,12 @@ public:
     virtual std::string getType() = 0;
 
     /**
+     * \brief Get the compatible device type
+     * @return compatible device
+     */
+     virtual std::string getCompatiblDeviceType() = 0;
+
+    /**
      * \brief Get position in queue
      * @return queue number
      */
@@ -136,7 +126,6 @@ private:
     int jobNumber;
     int pageCount;
     int printedPageCount = 0;
-    PrintingType type;
     std::string userName;
 };
 

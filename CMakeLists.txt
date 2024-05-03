@@ -51,8 +51,6 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/SystemAssigner.h
         src/SystemManager.cpp
         src/SystemManager.h
-        src/Consts.h
-        src/Consts.cpp
         src/SystemTracker.cpp
         src/SystemTracker.h
         src/Reporter.h

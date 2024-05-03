@@ -4,8 +4,6 @@
 
 #include "PrinterBlackWhite.h"
 
-PrinterBlackWhite::PrinterBlackWhite(TiXmlElement *device_element) : Printer(device_element) {}
-
 PrinterBlackWhite::PrinterBlackWhite(
         const std::string &name, int emission, int speed, int cost) : Printer(name, emission, speed, cost) {}
 

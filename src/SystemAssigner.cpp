@@ -20,7 +20,7 @@ Device *SystemAssigner::assignJobToDevice(Job *job) const {
 
     //Add exception here:  [No device exists for the specified job type] Print an error message that the job could not be
     //printed.
-    Device *device = manager->getDeviceWithLeastLoadOfType(job->getType());
+    Device *device = manager->getDeviceWithLeastLoadOfType(job->getCompatiblDeviceType());
     if (device == NULL)
     {
         manager->setJobUnassignable(job);

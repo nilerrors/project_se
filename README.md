@@ -1,5 +1,9 @@
 # Print System
-# TODO: Try and add more tests
+
+# TODO
+
+- [ ] Add contracts to Factory and Job and Device subclasses
+- [ ] Add more tests for the Factory
         
 
 ## Specification 

@@ -4,10 +4,6 @@
 
 #include "JobColor.h"
 
-JobColor::JobColor(TiXmlElement *job_element) : JobPrint(job_element) {
-
-}
-
 JobColor::JobColor(int jobNumber, int pageCount, const std::string &userName) : JobPrint(jobNumber, pageCount, userName) {
 
 }

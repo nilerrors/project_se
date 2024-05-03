@@ -11,20 +11,6 @@ class JobBlackWhite : public JobPrint {
 public:
     /**
      * \brief Constructor for Job
-     * \param device_element TiXmlElement containing the device data
-     * \return A new Job object
-
-     * @expect
-        - EXPECT(!temp_jobNumber.empty(), "No job number is provided");
-        - EXPECT(!temp_pageCount.empty(), "No page count is provided");
-        - EXPECT(is_number(temp_jobNumber) , "Job number should be a number");
-        - EXPECT(is_number(temp_pageCount) , "Page count should be a number");
-        - EXPECT(!temp_userName.empty(), "No user name is provided");
-     */
-    explicit JobBlackWhite(TiXmlElement *job_element);
-
-    /**
-     * \brief Constructor for Job
      * @param jobNumber
      * @param pageCount
      * @param userName
@@ -37,6 +23,10 @@ public:
     ~JobBlackWhite() override;
 
     std::string getType() override;
+
+    std::string getCompatiblDeviceType() override {
+        return "Black-and-white printer";
+    }
 };
 
 

@@ -4,8 +4,6 @@
 
 #include "PrinterColor.h"
 
-PrinterColor::PrinterColor(TiXmlElement *device_element) : Printer(device_element) {}
-
 PrinterColor::PrinterColor(const std::string &name, int emission, int speed, int cost) : Printer(name, emission, speed, cost) {}
 
 PrinterColor::~PrinterColor() {}
