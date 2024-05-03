@@ -13,5 +13,6 @@ JobColor::~JobColor() {
 }
 
 std::string JobColor::getType() {
+    REQUIRE(properlyInitialized(), "JobBlackWhite is not properly initialized");
     return "color-printing job";
 }

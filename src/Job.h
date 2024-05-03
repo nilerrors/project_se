@@ -19,6 +19,13 @@ public:
 	 * @param jobNumber
 	 * @param pageCount
 	 * @param userName
+
+	 * @ensure
+        - ENSURE(getJobNumber() == jobNumber, "Job number is not set correctly");
+        - ENSURE(getPageCount() == pageCount, "Page count is not set correctly");
+        - ENSURE(getUserName() == userName, "User name is not set correctly");
+        - ENSURE(getStatus() == Status::unassigned, "Status is not set correctly");
+        - ENSURE(getPrintedPageCount() == 0, "Printed page count is not set correctly");
 	 */
     Job(int jobNumber, int pageCount, const std::string &userName);
 
@@ -36,57 +43,79 @@ public:
 	/**
 	 * \brief Gets the job number
 	 * @return job number
+
+	 * @ensure
+	    - REQUIRE(properlyInitialized(), "Job is not properly initialized");
 	 */
     int getJobNumber() const;
 
 	/**
 	 * \brief Gets the page count
 	 * @return page count
+
+	 * @ensure
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
 	 */
     int getPageCount() const;
 
 	/**
 	 * \brief Gets the user name
 	 * @return userName
+
+	 * @ensure
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
 	 */
     const std::string &getUserName() const;
 
     /**
      * \brief Get job status
      * @return Status
+
+     * @ensure
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
      */
     Status getStatus() const;
 
     /**
     * \brief Sets the job status
     * @return
-     * @require
-     * - REQUIRE(properlyInitialized(), "Job is not properly initialized");
-     * @ensure
-     * - ENSURE(status == stat, "Status is not set correctly")
+
+    * @require
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+
+    * @ensure
+        - ENSURE(status == stat, "Status is not set correctly")
     */
     void setStatus(Status stat);
 
     /**
      * \brief Get printed page count
      * @return printed page count
+
+    * @ensure
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
      */
     int getPrintedPageCount() const;
 
     /**
     * \brief Incease printed page count
-     * @return
+    * @return
+
     * @require
-     * - REQUIRE(properlyInitialized(), "Job is not properly initialized");
-     * - REQUIRE(printedPageCount < pageCount, "Printed page count should be less than total page count");
-     * @ensure
-     * - ENSURE(printedPageCount <= pageCount, "Printed page count should be less than total page count");
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+        - REQUIRE(printedPageCount < pageCount, "Printed page count should be less than total page count");
+
+    * @ensure
+        - ENSURE(printedPageCount <= pageCount, "Printed page count should be less than total page count");
     */
     void increasePrintedPageCount();
 
 	/**
 	 * \brief Gets the device the job is assigned to
 	 * @return assignedTo
+
+	 * @require
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
 	 */
 	Device *getAssignedTo() const;
 
@@ -94,10 +123,10 @@ public:
 	 * \brief Sets the device the job is assigned to
 	 * @param assignedTo
 	 * @require
-	 * - REQUIRE(properlyInitialized(), "Job is not properly initialized");
-	 * - REQUIRE(assigned != NULL, "Job is not assigned to a device");
+	   - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+	   - REQUIRE(assigned != NULL, "Job is not assigned to a device");
 	 * @ensure
-	 * - ENSURE(assignedTo == assigned, "Device is not assigned correctly");
+	   - ENSURE(assignedTo == assigned, "Device is not assigned correctly");
 	 */
 	void setAssignedTo(Device *assignedTo);
 
@@ -110,12 +139,19 @@ public:
     /**
      * \brief Get the compatible device type
      * @return compatible device
+
+     * @require
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
      */
      virtual std::string getCompatiblDeviceType() = 0;
 
     /**
      * \brief Get position in queue
      * @return queue number
+
+     * @require
+        - REQUIRE(properlyInitialized(), "Job is not properly initialized");
+        - REQUIRE(getAssignedTo() != NULL, "Job is not assigned to a device");
      */
     int getQueueNumber() const;
 

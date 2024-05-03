@@ -20,13 +20,31 @@ public:
         - EXPECT(is_number(temp_jobNumber) , "Job number should be a number");
         - EXPECT(is_number(temp_pageCount) , "Page count should be a number");
         - EXPECT(!temp_userName.empty(), "No user name is provided");
+
+     * @ensure
+        - ENSURE(properlyInitialized(), "constructor must end in properlyInitialized state");
      */
     explicit JobFactory(TiXmlElement *job_element);
 
+    /**
+     * \brief Get the job
+     * @return
+
+     * @require
+        - REQUIRE(properlyInitialized(), "JobFactory is not properly initialized");
+     */
     Job *getJob() const;
 
 private:
+    /**
+     * \brief Checks if the class is properly
+     * @return A boolean indicating if the class is properly initialized
+     */
+    bool properlyInitialized() const { return init_ == this; }
+
+private:
     Job *job = nullptr;
+    JobFactory *init_ = nullptr;
 };
 
 
