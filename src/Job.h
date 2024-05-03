@@ -78,6 +78,7 @@ public:
 
     /**
     * \brief Sets the job status
+    * @param stat: Status
     * @return
 
     * @require
@@ -121,7 +122,7 @@ public:
 
 	/**
 	 * \brief Sets the device the job is assigned to
-	 * @param assignedTo
+	 * @param assignedTo: *Device
 	 * @require
 	   - REQUIRE(properlyInitialized(), "Job is not properly initialized");
 	   - REQUIRE(assigned != NULL, "Job is not assigned to a device");
