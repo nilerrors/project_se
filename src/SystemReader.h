@@ -19,10 +19,21 @@ public:
      * \brief Constructor of SystemReader
      * @param manager
      * @param logger
+
+     * @require
+         - REQUIRE(manager != NULL, "manager is a null pointer");
+         - REQUIRE(logger != NULL, "Logger is a NULL pointer");
+
+     * @ensure
+         - ENSURE(properlyInitialized(), "SystemReader is not properly initialized");
      */
 	SystemReader(SystemManager *manager,
 				 Logger *logger)
-				: _init(this), manager(manager), logger(logger) {}
+				: _init(this), manager(manager), logger(logger) {
+        REQUIRE(manager != NULL, "Manager is a NULL pointer");
+        REQUIRE(logger != NULL, "Logger is a NULL pointer");
+        ENSURE(properlyInitialized(), "SystemReader is not properly initialized");
+    }
 
     /**
      * \brief Destructor of SystemReader

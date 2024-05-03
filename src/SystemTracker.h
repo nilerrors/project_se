@@ -4,6 +4,7 @@
 
 #ifndef PRINTSYSTEM_SYSTEMTRACKER_H
 #define PRINTSYSTEM_SYSTEMTRACKER_H
+
 #include "lib/DesignByContract.h"
 
 class SystemTracker {
@@ -63,8 +64,9 @@ public:
      */
     void addPages(int pages);
 
-private:
     bool properlyInitialized() const { return init_ == this; }
+
+private:
     SystemTracker* init_;
     int CO2_emission;
     int total_pages;

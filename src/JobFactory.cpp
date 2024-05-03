@@ -48,8 +48,12 @@ JobFactory::JobFactory(TiXmlElement *job_element) {
     } else if (type == "scan") {
         job = new JobScan(std::stoi(jobNumber), std::stoi(pageCount), userName);
     }
+
+    init_ = this;
+    ENSURE(properlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
 Job *JobFactory::getJob() const {
+    REQUIRE(properlyInitialized(), "JobFactory is not properly initialized");
     return job;
 }
