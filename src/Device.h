@@ -28,32 +28,40 @@ public:
     virtual ~Device() = default;
 
 	/**
-	 * \brief Checks if the class is properly
-	 * @return A boolean indicating if the class is properly
+	 * \brief Checks if the class is properly initialized
+	 * @return A boolean indicating if the class is properly initialized
 	 */
 	bool properlyInitialized() const { return init_ == this; }
 
     /**
      * \brief Get type of device
      * @return
+     * @require
+     * - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
      */
     virtual std::string getType() = 0;
 
     /**
      * \brief Gets the name of the device
      * @return name
+     * @require
+     * - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
      */
     const std::string &getName() const;
 
 	/**
 	 * \brief Gets the emission of the device
 	 * @return emmission
+	 * @require
+	 * - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
 	 */
     int getEmission() const;
 
 	/**
 	 * \brief Gets the speed of the device
 	 * @return speed
+	 * @require
+	 * - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
      */
 
     int getSpeed() const;
@@ -62,6 +70,8 @@ public:
     /**
      * \brief Gets the cost of the device
      * @return cost
+     * @require
+     * - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
      */
     int getCost() const;
 
@@ -69,6 +79,8 @@ public:
     /**
      * \brief Gets the jobs of the device
      * @return A deque containing the jobs
+     * @require
+     * - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
      */
 
     std::deque<Job *> getJobs() const;
@@ -78,7 +90,7 @@ public:
 	 * \param job Job to be added
 
 	 * @require
-	    - REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	    - REQUIRE(properlyInitialized(), "Device is not properly initialized.");
 		- REQUIRE(job != NULL, "Job is empty.");
 
 	 * @ensure
@@ -91,10 +103,9 @@ public:
 	 * \return The load of the device
 
 	 * @require
-		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+		- REQUIRE(properlyInitialized(), "Device is not properly initialized.");
 
-	 * @ensure
-		- ENSURE(result >= 0, "Load is negative.");
+
 	 */
 	int getLoad() const;
 

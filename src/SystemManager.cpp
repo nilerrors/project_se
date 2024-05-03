@@ -24,16 +24,20 @@ SystemManager::~SystemManager()
 
 
 Device *SystemManager::getFirstDevice() const {
-    REQUIRE(properlyInitialized(), "Class is not properly initialized");
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
     return devices.empty() ? nullptr : devices.front();
 }
 
 Job *SystemManager::getFirstJob() const {
-    REQUIRE(properlyInitialized(), "Class is not properly initialized");
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
     return jobs.empty() ? nullptr : jobs.front();
 }
 
 Job *SystemManager::getFirstUnfinishedJob() const {
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
     for(Job *job : jobs){
         if(job->getStatus() != Job::done) {
             return job;
@@ -43,8 +47,9 @@ Job *SystemManager::getFirstUnfinishedJob() const {
 }
 
 Job *SystemManager::getFirstUnprocessedJob() const {
-    REQUIRE(properlyInitialized(), "System is not properly initialized");
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
     REQUIRE(!jobs.empty(), "No jobs were found");
+
     for(Job *job : jobs){
         if(job->getStatus() == Job::assigned) {
             return job;
@@ -54,14 +59,20 @@ Job *SystemManager::getFirstUnprocessedJob() const {
 }
 
 const std::vector<Device *> &SystemManager::getDevices() const {
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
     return devices;
 }
 
 const std::vector<Job *> &SystemManager::getJobs() const {
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
     return jobs;
 }
 
 std::vector<Job *> SystemManager::getUnfinishedJobs() const {
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
+
     std::vector<Job *> unfinished_jobs;
     for(Job *job : jobs){
         if(job->getStatus() != Job::done) {
@@ -72,7 +83,7 @@ std::vector<Job *> SystemManager::getUnfinishedJobs() const {
 }
 
 Device *SystemManager::getDeviceWithLeastLoadOfType(std::string deviceType) const {
-    REQUIRE(properlyInitialized(), "System is not properly initialized.");
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized.");
     REQUIRE(!devices.empty(), "No devices were found.");
 
     Device *least_loaded_device = NULL;
@@ -109,6 +120,7 @@ void SystemManager::addJob(Job *job) {
 void SystemManager::setJobUnassignable(Job *job) {
     std::vector<Job *>::const_iterator job_at = std::find(jobs.begin(), jobs.end(), job);
     REQUIRE(job_at != jobs.end(), "Job was not found in the jobs");
+    REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
 
     jobs.erase(job_at);
 

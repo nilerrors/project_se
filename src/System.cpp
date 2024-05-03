@@ -31,28 +31,37 @@ System::~System() {
 }
 
 SystemManager *System::getManager() const {
-    REQUIRE(properlyInitialized(), "Class is not properly initialized");
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     return manager;
 }
 
 Logger *System::getLogger() const {
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     return logger;
 }
 
 SystemReader *System::getReader() const {
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     return reader;
 }
 
 SystemAssigner *System::getAssigner() const {
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     return assigner;
 }
 
 SystemTracker *System::getTracker() const {
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     return tracker;
 }
 
 void System::ReadData(const std::string &file_name) {
-    REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+    REQUIRE(properlyInitialized(), "System is not properly initialized.");
     REQUIRE(FileExists(file_name), "File does not exist.");
 
 	reader->ReadData(file_name);
@@ -61,6 +70,8 @@ void System::ReadData(const std::string &file_name) {
 }
 
 void System::clear() {
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     delete manager;
     manager = new SystemManager();
 }
@@ -73,9 +84,8 @@ std::string System::printReport() const {
 
     Prints a report of the system
      */
-	REQUIRE(properlyInitialized(), "Class is not properly initialized");
+	REQUIRE(properlyInitialized(), "System is not properly initialized");
 	REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
-
     REQUIRE(properlyInitialized(), "System is not properly initialised");
 
 
@@ -108,7 +118,7 @@ std::string System::printReport() const {
 }
 
 bool System::VerifyConsistency() const {
-    REQUIRE(properlyInitialized(),  "Class is not properly initialized.");
+    REQUIRE(properlyInitialized(),  "System is not properly initialized.");
 
     std::vector<int> job_nums{};
     ///Check if PageCount and JobNumber are not negative
@@ -185,10 +195,12 @@ void System::processAll() {
     Postcon: All pages have been printed i.e. all jobs are finished
     */
     REQUIRE(properlyInitialized(), "System is not properly initialized");
+
     assigner->assignAllJobs();
     while(manager->getFirstUnprocessedJob() != NULL){
         processFirstJob();
     }
+
     ENSURE(manager->getFirstUnprocessedJob() == NULL, "Not all pages were printed");
 }
 
@@ -196,15 +208,17 @@ void System::setLogger(Logger *log)
 {
 	REQUIRE(properlyInitialized(), "System is not properly initialized");
 	REQUIRE(log != NULL, "Logger is a NULL pointer");
+
     delete logger;
 	logger = log;
     assigner->setLogger(logger);
     reader->setLogger(logger);
+
 	ENSURE(logger == log, "Logger was not set");
 }
 
 std::string System::AdvancePrintReport() {
-    REQUIRE(properlyInitialized(), "Class is not properly initialized");
+    REQUIRE(properlyInitialized(), "System is not properly initialized");
     REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
 
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);

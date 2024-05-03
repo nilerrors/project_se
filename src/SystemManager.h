@@ -59,7 +59,7 @@ public:
      * @return
 
      * @require
-          - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+          - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
      */
     Device *getFirstDevice() const;
 
@@ -68,7 +68,7 @@ public:
      * @return
 
      * @require
-          - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+          - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
      */
     Job *getFirstJob() const;
 
@@ -77,7 +77,7 @@ public:
      * @return
 
      * @require
-          - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+          - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
      */
     Job *getFirstUnfinishedJob() const;
 
@@ -86,7 +86,7 @@ public:
      * @return
 
      * @require
-          - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+          - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
           - REQUIRE(!jobs.empty(), "No jobs were found");
      */
     Job *getFirstUnprocessedJob() const;
@@ -94,27 +94,37 @@ public:
     /**
      * \brief Gets the devices
      * @return A vector containing the devices
+     *
+     * @require
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
      */
     const std::vector<Device *> &getDevices() const;
 
     /**
      * \brief Gets the jobs
      * @return A vector containing the jobs
+     *
+     * @require
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
      */
     const std::vector<Job *> &getJobs() const;
 
     /**
      * \brief Gets the unfinished jobs
      * @return A vector containing the unfinished jobs
+     *
+     * @require
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
      */
     std::vector<Job *> getUnfinishedJobs() const;
 
     /**
      * \brief Gets the device with the least load
+     * @param deviceType
      * @return A pointer to the device with the least load
 
      * @require
-         - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
          - REQUIRE(!devices.empty(), "No devices were found.");
      */
     Device *getDeviceWithLeastLoadOfType(std::string deviceType) const;
@@ -123,7 +133,7 @@ public:
      * \brief Moves the job to unassignable jobs
      * @param job
      * @require
-         - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+         - REQUIRE(properlyInitialized(), "SystemManager is not properly initialized");
          - REQUIRE(job_at != jobs.end(), "Job was not found in the jobs");
 
     * @ensure

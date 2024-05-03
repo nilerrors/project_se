@@ -2,6 +2,7 @@
 // Created by nilerrors on 3/28/24.
 //
 
+#include <algorithm>
 #include "SystemAssigner.h"
 #include "lib/DesignByContract.h"
 
@@ -29,6 +30,11 @@ Device *SystemAssigner::assignJobToDevice(Job *job) const {
     }
     device->addJob(job);
     job->setAssignedTo(device);
+
+    ENSURE(std::find(device->getJobs().begin(), device->getJobs().end(), job) != device->getJobs().end(),
+           "Job was not added to the device");
+    ENSURE(job->getAssignedTo() == device, "Job was not assigned to the device");
+
     return device;
 }
 
@@ -48,8 +54,10 @@ void SystemAssigner::assignAllJobs() const {
 }
 
 void SystemAssigner::setLogger(Logger *log) {
-    REQUIRE(properlyInitialized(), "System is not properly initialized");
+    REQUIRE(properlyInitialized(), "SystemAssigner is not properly initialized");
     REQUIRE(log != NULL, "Logger is a NULL pointer");
+
     logger = log;
+
     ENSURE(logger == log, "Logger was not set");
 }

@@ -36,10 +36,11 @@ public:
 
     /**
      * \brief Gets the device with the least load
+     * @param job A pointer to the job
      * @return A pointer to the device with the least load
 
      * @require
-         - REQUIRE(properlyInitialized(), "Class is not properly initialized");
+         - REQUIRE(properlyInitialized(), "SystemAssigner is not properly initialized");
          - REQUIRE(!devices.empty(), "No devices were found.");
          - REQUIRE(job->getAssignedTo() == NULL, "Job is already assigned to a device.");
      */
@@ -49,15 +50,26 @@ public:
      * \brief Assigns all jobs to devices
 
      * @require
-        - REQUIRE(properlyInitialized(), "System is not properly initialized.");
+        - REQUIRE(properlyInitialized(), "SystemAssigner is not properly initialized.");
         - REQUIRE(!jobs.empty(), "No jobs were found");
         - REQUIRE(!devices.empty(), "No devices were found");
+
+     * @ensure
+        - ENSURE(std::find(device->getJobs().begin(), device->getJobs().end(), job) != device->getJobs().end(),
+            "Job was not added to the device");
+        - ENSURE(job->getAssignedTo() == device, "Job was not assigned to the device");
      */
     void assignAllJobs() const;
 
     /**
      * \brief Sets the logger of the assigner
      * @param logger
+     * @require
+     * - REQUIRE(properlyInitialized(), "SystemAssigner is not properly initialized");
+     * - REQUIRE(logger != NULL, "Logger is a NULL pointer");
+     *
+     * @ensure
+     * - ENSURE(logger == logger, "Logger was not set");
      */
     void setLogger(Logger *logger);
 

@@ -14,20 +14,26 @@ Device::Device(const std::string &name, int emission, int speed, int cost)
         : init_(this), name(name), emission(emission), speed(speed), cost(cost) {}
 
 const std::string &Device::getName() const {
+    REQUIRE(properlyInitialized(), "Device is not properly initialized.");
+
     return name;
 }
 
 int Device::getEmission() const {
+    REQUIRE(properlyInitialized(), "Device is not properly initialized.");
+
     return emission;
 }
 
 int Device::getSpeed() const {
+    REQUIRE(properlyInitialized(), "Device is not properly initialized.");
+
     return speed;
 }
 
 void Device::addJob(Job *job)
 {
-	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(properlyInitialized(), "Device is not properly initialized.");
 	REQUIRE(job != NULL, "Job is empty.");
     job->setAssignedTo(this);
 	jobs.push_back(job);
@@ -36,19 +42,19 @@ void Device::addJob(Job *job)
 
 int Device::getLoad() const
 {
-	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(properlyInitialized(), "Device is not properly initialized.");
 	int load = 0;
 	for (Job *job : jobs)
 	{
 		load += job->getPageCount();
 	}
-	ENSURE(load >= 0, "Load is negative.");
+
 	return load;
 }
 
 std::string Device::processJob()
 {
-	REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+	REQUIRE(properlyInitialized(), "Device is not properly initialized.");
 	REQUIRE(!jobs.empty(), "No jobs to process.");
 	REQUIRE(jobs.front() != NULL, "First job is empty");
 
@@ -72,10 +78,14 @@ std::string Device::processJob()
 }
 
 int Device::getCost() const {
+    REQUIRE(properlyInitialized(), "Device is not properly initialized.");
+
     return cost;
 }
 
 std::deque<Job *> Device::getJobs() const {
+    REQUIRE(properlyInitialized(), "Device is not properly initialized.");
+
     return jobs;
 }
 

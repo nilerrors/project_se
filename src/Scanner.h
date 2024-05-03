@@ -11,15 +11,24 @@
 class Scanner : public Device {
 public:
     /**
-     * \brief Constructor for Device
+     * \brief Constructor for Scanner
      * @param name
      * @param emission
      * @param speed
      */
     Scanner(const std::string &name, int emission, int speed, int cost);
 
+    /**
+     * \brief Destructor for Scanner
+     */
     ~Scanner() override;
 
+    /**
+     * \brief Get type of Scanner
+     * @return
+     * @require
+     * - REQUIRE(properlyInitialized(), "Scanner is not properly initialized.");
+     */
     std::string getType() override;
 };
 

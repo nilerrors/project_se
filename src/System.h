@@ -50,18 +50,24 @@ public:
     /**
      * \brief Get Logger
      * @return A pointer to the Logger
+     * @require
+     * - REQUIRE(properlyInitialized(), "System is not properly initialized.");
      */
     Logger *getLogger() const;
 
     /**
      * \brief Get System Reader
      * @return A pointer to the System Reader
+     * @require
+     * - REQUIRE(properlyInitialized(), "System is not properly initialized.");
      */
     SystemReader *getReader() const;
 
     /**
      * \brief Get System Assigner
      * @return A pointer to the System Assigner
+     * @require
+     * - REQUIRE(properlyInitialized(), "System is not properly initialized.");
      */
     SystemAssigner *getAssigner() const;
 
@@ -69,11 +75,15 @@ public:
     /**
      * \brief Get System Tracker
      * @return A pointer to the System Tracker
+     * @require
+     * - REQUIRE(properlyInitialized(), "System is not properly initialized.");
      */
     SystemTracker*getTracker() const;
 
 	/**
 	 * \brief Clears the system
+	 * @require
+	 *   - REQUIRE(properlyInitialized(), "System is not properly initialized.");
 	 */
     void clear();
 
@@ -82,7 +92,7 @@ public:
 	 * @param file_name
 
 	 * @require
-		- REQUIRE(properlyInitialized(), "Class is not properly initialized.");
+		- REQUIRE(properlyInitialized(), "System is not properly initialized.");
 		- REQUIRE(FileExists(file_name), "File does not exist.");
 	 */
     void ReadData(const std::string &file_name);
@@ -92,7 +102,7 @@ public:
 	 * \return A string containing the report
 
 	 * @require
-		- REQUIRE(properlyInitialized(), "Class is not properly initialized");
+		- REQUIRE(properlyInitialized(), "System is not properly initialized");
 		- REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
 	 */
     std::string printReport() const;
@@ -102,7 +112,7 @@ public:
 	 * @return A boolean indicating if the system is consistent
 
 	 * @require
-	 	- REQUIRE(properlyInitialized(), "Class is not properly initialized");
+	 	- REQUIRE(properlyInitialized(), "System is not properly initialized");
 
 	 */
     bool VerifyConsistency() const;
@@ -138,6 +148,7 @@ public:
 
 	/**
 	 * \brief Sets the logger to the given logger
+	 * @param logger
 
 	 * @require
 	 	- REQUIRE(properlyInitialized(), "System is not properly initialized");
@@ -151,6 +162,9 @@ public:
      /**
       * \brief Prints the current state of the system in an advanced way
       * @return string
+      * @require
+      * - REQUIRE(properlyInitialized(), "System is not properly initialized");
+      * - REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
       */
      std::string AdvancePrintReport();
 

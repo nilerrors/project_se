@@ -10,15 +10,24 @@
 class Printer : public Device {
 public:
     /**
-     * \brief Constructor for Device
+     * \brief Constructor for Printer
      * @param name
      * @param emission
      * @param speed
      */
     Printer(const std::string &name, int emission, int speed, int cost);
 
+    /**
+     * \brief Destructor for Printer
+     */
     ~Printer() override;
 
+    /**
+     * \brief Get type of device
+     * @return
+     * @require
+     * - REQUIRE(properlyInitialized(), "Printer is not properly initialized.");
+     */
     std::string getType() override = 0;
 };
 

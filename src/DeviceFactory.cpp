@@ -59,5 +59,7 @@ DeviceFactory::DeviceFactory(TiXmlElement *device_node) {
 }
 
 Device *DeviceFactory::getDevice() const {
+    REQUIRE(properlyInitialized(), "DeviceFactory is not properly initialized.");
+
     return device;
 }

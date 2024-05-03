@@ -23,10 +23,24 @@ public:
      */
     explicit DeviceFactory(TiXmlElement *device_element);
 
+    /**
+     * \brief Checks if the class is properly initialized
+     * @return A boolean indicating if the class is properly initialized
+     */
+    bool properlyInitialized() const { return init_ == this; }
+
+
+    /**
+     * \brief Get Device
+     * @return A pointer to the Device
+     * @require
+     * - REQUIRE(properlyInitialized(), "DeviceFactory is not properly initialized.");
+     */
     Device *getDevice() const;
 
 private:
     Device *device = nullptr;
+    DeviceFactory *init_ = this;
 };
 
 
