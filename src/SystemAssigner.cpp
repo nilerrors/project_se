@@ -24,7 +24,7 @@ Device *SystemAssigner::assignJobToDevice(Job *job) const {
     if (device == NULL)
     {
         manager->setJobUnassignable(job);
-        logger->error("No device found for the specifed job type: " + PrintingTypeToJobString(job->getType()));
+        logger->error("No device found for the specifed job type: " + job->getType());
         return NULL;
     }
     device->addJob(job);
