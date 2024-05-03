@@ -5,6 +5,7 @@
 #ifndef PRINTSYSTEM_LOGGER_H
 #define PRINTSYSTEM_LOGGER_H
 
+#include "lib/DesignByContract.h"
 #include <string>
 
 class Logger
@@ -66,10 +67,16 @@ public:
      * \brief Sets the name of the file to write to.
      * @param filename
      * @param add option to append to the file
+
+     * @ensure
+         - ENSURE(file_name == filename, "File name was not set correctly");
+         - ENSURE(append == add, "Append was not set correctly");
      */
 	void setFileName(const std::string &filename, bool add = true) {
 		file_name = filename;
 		append = add;
+        ENSURE(file_name == filename, "File name was not set correctly");
+        ENSURE(append == add, "Append was not set correctly");
 	}
 
 private:
