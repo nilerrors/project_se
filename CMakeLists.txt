@@ -26,10 +26,22 @@ set(RELEASE_SOURCE_FILES src/main.cpp
         src/lib/tinyxml.cpp
         src/lib/tinyxmlerror.cpp
         src/lib/tinyxmlparser.cpp
+        src/Logger.cpp
+        src/SystemReader.cpp
+        src/SystemAssigner.cpp
+        src/SystemManager.cpp
         src/SystemTracker.cpp
-        src/SystemTracker.h
-        src/Reporter.h
         src/Reporter.cpp
+        src/Printer.cpp
+        src/PrinterBlackWhite.cpp
+        src/PrinterColor.cpp
+        src/Scanner.cpp
+        src/DeviceFactory.cpp
+        src/JobScan.cpp
+        src/JobBlackWhite.cpp
+        src/JobPrint.cpp
+        src/JobColor.cpp
+        src/JobFactory.cpp
 )
 
 # Set source files for DEBUG target
@@ -44,37 +56,21 @@ set(DEBUG_SOURCE_FILES src/tests.cpp
         src/lib/tinyxmlerror.cpp
         src/lib/tinyxmlparser.cpp
         src/Logger.cpp
-        src/Logger.h
         src/SystemReader.cpp
-        src/SystemReader.h
         src/SystemAssigner.cpp
-        src/SystemAssigner.h
         src/SystemManager.cpp
-        src/SystemManager.h
         src/SystemTracker.cpp
-        src/SystemTracker.h
-        src/Reporter.h
         src/Reporter.cpp
         src/Printer.cpp
-        src/Printer.h
         src/PrinterBlackWhite.cpp
-        src/PrinterBlackWhite.h
         src/PrinterColor.cpp
-        src/PrinterColor.h
         src/Scanner.cpp
-        src/Scanner.h
         src/DeviceFactory.cpp
-        src/DeviceFactory.h
         src/JobScan.cpp
-        src/JobScan.h
         src/JobBlackWhite.cpp
-        src/JobBlackWhite.h
         src/JobPrint.cpp
-        src/JobPrint.h
         src/JobColor.cpp
-        src/JobColor.h
         src/JobFactory.cpp
-        src/JobFactory.h
 )
 
 # Create RELEASE target

@@ -9,10 +9,7 @@ int main(int argc, const char *argv[])
 {
     System system;
     system.ReadData("xml_tests/ReportHD.xml");
-    system.getDevices().front()->addJob(system.getFirstJob());
-    system.getDevices().front()->addJob(system.getJobs()[1]);
-    system.getDevices().front()->addJob(system.getJobs()[2]);
-    system.getDevices().front()->addJob(system.getJobs().back());
+    system.processAll();
     std::cout << system.printReport() << std::endl;
 
     return 0;
