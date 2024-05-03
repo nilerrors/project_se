@@ -73,6 +73,8 @@ void SystemReader::ReadJob(TiXmlElement *job_element) {
 void SystemReader::setLogger(Logger *log) {
     REQUIRE(properlyInitialized(), "System is not properly initialized");
     REQUIRE(logger != NULL, "Logger is a NULL pointer");
+
     logger = log;
+
     ENSURE(logger == log, "Logger was not set");
 }

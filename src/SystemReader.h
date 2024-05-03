@@ -72,6 +72,12 @@ public:
     /**
      * \brief Sets the logger of SystemReader
      * @param logger
+     * @require
+         - REQUIRE(properlyInitialized(), "SystemReader is not properly initialized");
+         - REQUIRE(logger != NULL, "Logger is a NULL pointer");
+
+     * @ensure
+         - ENSURE(logger == log, "Logger was not set");
      */
     void setLogger(Logger *logger);
 
