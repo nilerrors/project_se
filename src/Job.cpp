@@ -5,7 +5,6 @@
 #include <iostream>
 #include <sstream>
 #include "lib/DesignByContract.h"
-#include "lib/utils.h"
 #include "Job.h"
 #include "Device.h"
 
@@ -19,6 +18,7 @@ Job::Job(int jobNumber, int pageCount, const std::string &userName) : init_(this
     ENSURE(getPrintedPageCount() == 0, "Printed page count is not set correctly");
     ENSURE(properlyInitialized(), "Job is not properly initialized");
 }
+
 int Job::getJobNumber() const {
     REQUIRE(properlyInitialized(), "Job is not properly initialized");
     return jobNumber;

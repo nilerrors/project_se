@@ -180,12 +180,19 @@ TEST_F(TestSystem, printReportHD) {
     system->ReadData("xml_tests/ReportHD.xml");
     system->processAll();
 
-    std::string filename = system->printReport();
+    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
+    std::cout << filename << std::endl;
+    Reporter reporter;
+    system->printReport(&reporter);
+    reporter.toFile(filename);
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportHD.txt"));
 }
 
 TEST_F(TestSystem, printEmpty) {
-    std::string filename = system->printReport();
+    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
+    Reporter reporter;
+    system->printReport(&reporter);
+    reporter.toFile(filename);
     EXPECT_TRUE(FileCompare(filename, "report_tests/ReportEMPTY.txt"));
 }
 
@@ -194,7 +201,11 @@ TEST_F(TestSystem, PartialProcessing) {
     system->getAssigner()->assignAllJobs();
     system->getManager()->getDevices()[0]->processJob();
 
-    std::string filename = system->printReport();
+    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
+    std::cout << filename << std::endl;
+    Reporter reporter;
+    system->printReport(&reporter);
+    reporter.toFile(filename);
     EXPECT_TRUE(FileCompare(filename, "report_tests/PartialProcessing.txt"));
 }
 
@@ -202,7 +213,10 @@ TEST_F(TestSystem, AdvancedTextualOutput) {
     system->ReadData("xml_tests/ReportHD.xml");
     system->getAssigner()->assignAllJobs();
 
-    std::string filename = system->AdvancePrintReport();
+    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
+    Reporter reporter;
+    system->AdvancePrintReport(&reporter);
+    reporter.toFile(filename);
     EXPECT_TRUE(FileCompare(filename, "report_tests/AdvancedReport.txt"));
 }
 

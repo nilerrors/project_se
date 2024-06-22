@@ -12,6 +12,7 @@
 #include "Device.h"
 #include "Job.h"
 #include "Logger.h"
+#include "Reporter.h"
 #include "SystemReader.h"
 #include "SystemAssigner.h"
 #include "SystemManager.h"
@@ -99,13 +100,13 @@ public:
 
 	/**
 	 * \brief Prints the report
-	 * \return A string containing the report
+	 * \param reporter
 
 	 * @require
 		- REQUIRE(properlyInitialized(), "System is not properly initialized");
 		- REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
 	 */
-    std::string printReport() const;
+    void printReport(Reporter *reporter) const;
 
 	/**
 	 * \brief Verifies the consistency of the system, prints errors if inconsistent and logs are enabled
@@ -166,7 +167,7 @@ public:
       * - REQUIRE(properlyInitialized(), "System is not properly initialized");
       * - REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
       */
-     std::string AdvancePrintReport();
+     void AdvancePrintReport(Reporter *reporter);
 
 private:
     System* _init;

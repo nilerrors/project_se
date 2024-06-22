@@ -4,8 +4,7 @@
 
 #include "lib/DesignByContract.h"
 #include "Device.h"
-#include "lib/utils.h"
-#include "System.h"
+#include "Job.h"
 #include "Reporter.h"
 #include <iostream>
 #include <sstream>
@@ -88,9 +87,4 @@ std::deque<Job *> Device::getJobs() const {
 
     return jobs;
 }
-
-//PrintingType Device::getType() const {
-//    return type;
-//}
-
 

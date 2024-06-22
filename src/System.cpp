@@ -76,45 +76,12 @@ void System::clear() {
     manager = new SystemManager();
 }
 
-std::string System::printReport() const {
-    /*
-     Generate a .txt file detailing the contents of the system. The file will contain information about all printers and jobs of the system respectively.
-     Precon: System is properly initialised
-     return: Filename van de report
-
-    Prints a report of the system
-     */
+void System::printReport(Reporter *reporter) const {
 	REQUIRE(properlyInitialized(), "System is not properly initialized");
 	REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
     REQUIRE(properlyInitialized(), "System is not properly initialised");
 
-
-    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
-    std::ofstream report;
-    Reporter reporter;
-    report.open(filename);
-
-    report << "# === [System Status] === #" << std::endl << std::endl;
-    report << "--== Devices ==--" << std::endl << std::endl;
-
-    for(Device *device : manager->getDevices()) {
-        reporter.generateDeviceReport(device);
-        report << reporter.getReport() << std::endl;
-        reporter.clearReport();
-    }
-
-    report << "--== Jobs ==--" << std::endl << std::endl;
-    for(Job *job : manager->getJobs()) {
-        if (job->getAssignedTo() == NULL) continue;
-        reporter.generateJobReport(job);
-        report << reporter.getReport() << std::endl;
-        reporter.clearReport();
-    }
-
-    report<<"# ======================= #"<<std::endl;
-
-    report.close();
-    return filename;
+    reporter->generateSystemStatus(manager->getDevices(), manager->getJobs());
 }
 
 bool System::VerifyConsistency() const {
@@ -217,20 +184,11 @@ void System::setLogger(Logger *log)
 	ENSURE(logger == log, "Logger was not set");
 }
 
-std::string System::AdvancePrintReport() {
+void System::AdvancePrintReport(Reporter *reporter) {
     REQUIRE(properlyInitialized(), "System is not properly initialized");
     REQUIRE(VerifyConsistency(), "Printing system is inconsistent");
 
-    std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
-    std::ofstream report;
-    report.open(filename);
-    Reporter reporter;
-
     for(Device *device : manager->getDevices()){
-        reporter.generateDeviceAdvancedReport(device);
-        report << reporter.getReport();
-        reporter.clearReport();
+        reporter->generateDeviceAdvancedReport(device);
     }
-    report.close();
-    return filename;
 }
