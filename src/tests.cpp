@@ -181,7 +181,6 @@ TEST_F(TestSystem, printReportHD) {
     system->processAll();
 
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
-    std::cout << filename << std::endl;
     Reporter reporter;
     system->printReport(&reporter);
     reporter.toFile(filename);
@@ -202,7 +201,6 @@ TEST_F(TestSystem, PartialProcessing) {
     system->getManager()->getDevices()[0]->processJob();
 
     std::string filename = GenerateFileName("reports/report-", REPORT_FILE_EXTENSION);
-    std::cout << filename << std::endl;
     Reporter reporter;
     system->printReport(&reporter);
     reporter.toFile(filename);
